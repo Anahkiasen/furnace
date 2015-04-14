@@ -39,6 +39,7 @@ class TracksSeeder
     {
         $reader = $this->container->get('paths.fixtures').'/tracks.csv';
         $reader = Reader::createFromPath($reader);
+        $reader->setDelimiter("\t");
 
         $fixtures = $reader->fetchAssoc(0);
         $fixtures = new Collection($fixtures);
@@ -56,19 +57,34 @@ class TracksSeeder
     {
         $file  = basename($track);
         $track = $this->fixtures->get($file, ['file' => $file]);
-        $meta  = Arr::get($file, 'meta', '');
-        $meta  = (array) json_decode($meta, true);
-        $track = array_merge($meta, $track);
+
+        $meta = Arr::get($track, 'meta', '{}');
+        $meta = (array) json_decode($meta, true);
 
         // Create Tracker
-        $tracker = Arr::get($track, 'tracker');
+        $tracker = Arr::get($meta, 'member');
         if ($tracker) {
-            $tracker             = Tracker::firstOrCreate(['name' => $tracker]);
-            $track['tracker_id'] = $tracker->id;
+            $tracker = Tracker::firstOrCreate(['name' => $tracker]);
+        } else {
+            dump($track);
+            exit;
         }
 
-        $track = array_except($track, ['meta', 'tracker']);
-
-        return $track;
+        return [
+            'file'              => $file,
+            'artist'            => array_get($meta, 'artist'),
+            'album'             => array_get($meta, 'album'),
+            'name'              => array_get($meta, 'title'),
+            'presilence'        => array_get($track, 'presilence', false),
+            'normalized_volume' => array_get($track, 'normalized_volume', false),
+            'live'              => array_get($track, 'live', false),
+            'dd'                => array_get($meta, 'dd', 'no') == 'yes',
+            'tone'              => array_get($track, 'tone'),
+            'track'             => array_get($track, 'track'),
+            'parts'             => array_get($meta, 'parts'),
+            'tuning'             => array_get($meta, 'tuning'),
+            'tab'               => array_get($track, 'tab'),
+            'tracker_id'        => $tracker->id,
+        ];
     }
 }

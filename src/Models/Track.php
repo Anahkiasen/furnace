@@ -34,4 +34,20 @@ class Track extends Model
 
         return $rating;
     }
+
+    /**
+     * @return string
+     */
+    public function getTuningAttribute()
+    {
+        $tunings = [
+            'estandard'      => 'E',
+            'edropd'         => 'E DROP D',
+            'eflatstandard'  => 'E♭',
+            'eflatdropflat'  => 'E♭ DROP D',
+            'eflatdropdflat' => 'E♭ DROP D♭',
+        ];
+
+        return $tunings[$this->attributes['tuning']];
+    }
 }
