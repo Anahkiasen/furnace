@@ -43,40 +43,5 @@ class DatabaseServiceProvider extends ServiceProvider
 
             return $capsule;
         });
-
-        $this->runMigrations();
-        $this->seedDatabase();
-    }
-
-    /**
-     * Run outstanding migrations
-     */
-    protected function runMigrations()
-    {
-        /** @type Builder $schema */
-        $schema     = $this->container->get('db')->schema();
-        $migrations = $this->container->get('paths.migrations');
-        $migrations = glob($migrations.'/*.php');
-
-        foreach ($migrations as $migration) {
-            $table = basename($migration, '.php');
-
-            if (!$schema->hasTable($table)) {
-                include $migration;
-            }
-        }
-    }
-
-    /**
-     * Seed the database
-     */
-    protected function seedDatabase()
-    {
-        $seeders = [TracksSeeder::class];
-        foreach ($seeders as $seeder) {
-            $seeder = new $seeder;
-            $seeder->setContainer($this->container);
-            $seeder->run();
-        }
     }
 }

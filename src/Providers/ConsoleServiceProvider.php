@@ -1,8 +1,13 @@
 <?php
 namespace Notetracker\Providers;
 
+use Illuminate\Database\Schema\Builder;
 use League\Container\ServiceProvider;
 use Notetracker\Console\Console;
+use Notetracker\Models\Track;
+use Notetracker\Models\Tracker;
+use Notetracker\Seeders\TracksSeeder;
+use Silly\Application;
 
 class ConsoleServiceProvider extends ServiceProvider
 {
@@ -23,10 +28,49 @@ class ConsoleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->container->singleton('console', function () {
-            $console = new Console();
-            $console->useContainer($this->container);
+            return new Application('Notetracker');
+        });
 
-            return $console;
+        $this->registerCommands();
+    }
+
+    /**
+     * Register the commands
+     */
+    private function registerCommands()
+    {
+        /** @type Application $console */
+        $console   = $this->container->get('console');
+        $container = $this->container;
+
+        $console->command('remigrate', function () use ($container) {
+            /** @type Builder $schema */
+            $schema = $container->get('db')->schema();
+            $schema->drop('tracks');
+            $schema->drop('trackers');
+
+            $migrations = $container->get('paths.migrations');
+            $migrations = glob($migrations.'/*.php');
+
+            foreach ($migrations as $migration) {
+                $table = basename($migration, '.php');
+
+                if (!$schema->hasTable($table)) {
+                    include $migration;
+                }
+            }
+        });
+
+        $console->command('seed', function () use ($container) {
+            Track::query()->delete();
+            Tracker::query()->delete();
+
+            $seeders = [TracksSeeder::class];
+            foreach ($seeders as $seeder) {
+                $seeder = new $seeder;
+                $seeder->setContainer($container);
+                $seeder->run();
+            }
         });
     }
 }
