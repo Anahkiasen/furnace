@@ -36,11 +36,7 @@ class TracksSeeder
         $reader = Reader::createFromPath($reader);
         $reader->setDelimiter("\t");
 
-        $fixtures = $reader->fetchAssoc(0);
-        $fixtures = new Collection($fixtures);
-        $fixtures = $fixtures->keyBy('file');
-
-        return $fixtures;
+        return $reader->fetchAssoc(0);
     }
 
     /**
