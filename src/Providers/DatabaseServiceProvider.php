@@ -2,6 +2,7 @@
 namespace Notetracker\Providers;
 
 use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use League\Container\ServiceProvider;
@@ -56,10 +57,12 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     protected function runMigrations()
     {
+        /** @type Builder $schema */
+        $schema = $this->container->get('db')->schema();
         $migrations = $this->container->get('paths.migrations');
         $migrations = glob($migrations.'/*.php');
+        
         foreach ($migrations as $migration) {
-            $schema = $this->container->get('db')->schema();
             $table  = basename($migration, '.php');
 
             if (!$schema->hasTable($table)) {
