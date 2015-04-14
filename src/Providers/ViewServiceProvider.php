@@ -3,6 +3,7 @@ namespace Notetracker\Providers;
 
 use League\Container\ServiceProvider;
 use Twig_Environment;
+use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
 
 class ViewServiceProvider extends ServiceProvider
@@ -31,7 +32,8 @@ class ViewServiceProvider extends ServiceProvider
                 'autoescape'       => false,
             ]);
 
-            $twig->addExtension(new \Twig_Extension_Debug());
+            $twig->addExtension(new Twig_Extension_Debug());
+            $twig->addGlobal('request', $this->container->get('request'));
 
             return $twig;
         });

@@ -6,20 +6,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand">Notetracker</a>
-			</div>
-
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/">Tracks</a></li>
-					<li><a href="/trackers">Trackers</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	{% include '_partials/navigation.twig' %}
 
 	<main class="container">
 		{% block content %}{% endblock %}
