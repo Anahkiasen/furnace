@@ -58,25 +58,32 @@ class TracksSeeder
             exit;
         }
 
-        return [
-            'file'              => array_get($track, 'file'),
-            'artist'            => array_get($meta, 'artist'),
-            'album'             => array_get($meta, 'album'),
-            'name'              => array_get($meta, 'title'),
-            'presilence'        => array_get($track, 'presilence', false),
-            'normalized_volume' => array_get($track, 'normalized_volume', false),
-            'live'              => array_get($track, 'live', false),
-            'playable'          => array_get($track, 'playable', false),
-            'dd'                => array_get($meta, 'dd', 'no') == 'yes',
-            'tone'              => array_get($track, 'tone'),
-            'track'             => array_get($track, 'track'),
-            'parts'             => array_get($meta, 'parts'),
-            'tuning'            => array_get($meta, 'tuning'),
-            'version'           => array_get($meta, 'version'),
-            'tab'               => array_get($track, 'tab'),
-            'tracker_id'        => $tracker->id,
-            'created_at'        => array_get($meta, 'added'),
-            'updated_at'        => array_get($meta, 'updated'),
-        ];
+        return array_merge(
+            array_only($track, [
+                'file',
+                'presilence',
+                'normalized_volume',
+                'live',
+                'playable',
+                'tone',
+                'track',
+                'tab'
+            ]),
+            array_only($meta, [
+                'artist',
+                'album',
+                'parts',
+                'tuning',
+                'version',
+            ]),
+            [
+                'dd'                => array_get($meta, 'dd', 'no') == 'yes',
+                'name'              => array_get($meta, 'title'),
+                'tracker_id'        => $tracker->id,
+                'created_at'        => array_get($meta, 'added'),
+                'updated_at'        => array_get($meta, 'updated'),
+
+            ]
+        );
     }
 }
