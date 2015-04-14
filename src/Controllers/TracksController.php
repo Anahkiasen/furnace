@@ -28,7 +28,7 @@ class TracksController
         $tracks = Track::with('tracker')->get();
         $tracks = $tracks->sortByDesc('rating');
 
-        return $this->view->render('home.twig', [
+        return $this->view->render('tracks/index.twig', [
             'tracks' => $tracks,
         ]);
     }
