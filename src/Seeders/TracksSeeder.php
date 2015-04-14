@@ -13,22 +13,17 @@ class TracksSeeder
     use ContainerAwareTrait;
 
     /**
-     * @type Collection
-     */
-    protected $fixtures;
-
-    /**
      * Run the seeder.
      */
     public function run()
     {
-        $this->getFixtures();
+        $tracks = $this->getFixtures();
 
-        $cdlc = $this->container->get('paths.cdlc');
-        $cdlc = glob($cdlc.'/*');
-        foreach ($cdlc as $track) {
-            $track = $this->getTrackInformations($track);
-            Track::firstOrCreate($track);
+        foreach ($tracks as $track) {
+            if ($track['file']) {
+                $track = $this->getTrackInformations($track);
+                Track::firstOrCreate($track);
+            }
         }
     }
 
@@ -45,7 +40,7 @@ class TracksSeeder
         $fixtures = new Collection($fixtures);
         $fixtures = $fixtures->keyBy('file');
 
-        $this->fixtures = $fixtures;
+        return $fixtures;
     }
 
     /**
@@ -55,9 +50,6 @@ class TracksSeeder
      */
     protected function getTrackInformations($track)
     {
-        $file  = basename($track);
-        $track = $this->fixtures->get($file, ['file' => $file]);
-
         $meta = Arr::get($track, 'meta', '{}');
         $meta = (array) json_decode($meta, true);
 
@@ -71,18 +63,20 @@ class TracksSeeder
         }
 
         return [
-            'file'              => $file,
+            'file'              => array_get($track, 'file'),
             'artist'            => array_get($meta, 'artist'),
             'album'             => array_get($meta, 'album'),
             'name'              => array_get($meta, 'title'),
             'presilence'        => array_get($track, 'presilence', false),
             'normalized_volume' => array_get($track, 'normalized_volume', false),
             'live'              => array_get($track, 'live', false),
+            'playable'          => array_get($track, 'playable', false),
             'dd'                => array_get($meta, 'dd', 'no') == 'yes',
             'tone'              => array_get($track, 'tone'),
             'track'             => array_get($track, 'track'),
             'parts'             => array_get($meta, 'parts'),
             'tuning'            => array_get($meta, 'tuning'),
+            'version'           => array_get($meta, 'version'),
             'tab'               => array_get($track, 'tab'),
             'tracker_id'        => $tracker->id,
             'created_at'        => array_get($meta, 'added'),

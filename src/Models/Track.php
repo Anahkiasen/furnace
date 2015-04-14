@@ -13,7 +13,7 @@ class Track extends Model
     /**
      * @type integer
      */
-    const RATING_SCALE = 16;
+    const RATING_SCALE = 18;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
@@ -38,6 +38,10 @@ class Track extends Model
      */
     public function getRatingAttribute()
     {
+        if (!$this->playable) {
+            return 0;
+        }
+
         $parts = array_filter($this->parts);
 
         $notes = [
@@ -45,6 +49,8 @@ class Track extends Model
             $this->track,
             $this->tab,
             !$this->live,
+            $this->normalized_volume,
+            $this->presilence,
             $this->dd,
             count($parts),
             $this->updated_at->diffInMonths() < 6,
@@ -90,10 +96,11 @@ class Track extends Model
     {
         $tunings = [
             'estandard'      => 'E',
-            'edropd'         => 'E DROP D',
+            'edropd'         => 'DROP D',
             'eflatstandard'  => 'E♭',
             'eflatdropflat'  => 'E♭ DROP D',
             'eflatdropdflat' => 'E♭ DROP D♭',
+            'other'          => 'Other',
         ];
 
         return $tunings[$this->attributes['tuning']];

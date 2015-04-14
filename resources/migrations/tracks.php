@@ -11,10 +11,12 @@ $schema->create('tracks', function (Blueprint $table) {
     $table->string('file');
     $table->string('parts');
     $table->string('tuning');
+    $table->string('version');
     $table->boolean('presilence')->default(false);
     $table->boolean('normalized_volume')->default(false);
     $table->boolean('live')->default(false);
     $table->boolean('dd')->default(false);
+    $table->boolean('playable')->default(false);
     $table->integer('tone')->default(0);
     $table->integer('track')->default(0);
     $table->integer('tab')->default(0);

@@ -12,6 +12,10 @@
 			<th>Parts</th>
 			<th>DD</th>
 			<th>Live</th>
+			<th>Volume</th>
+			<th>Silence</th>
+			<th>Playable</th>
+			<th>Version</th>
 			<th>Last update</th>
 			<th>Tone</th>
 			<th>Track</th>
@@ -21,7 +25,7 @@
 		</thead>
 		<tbody>
 		{% for track in tracks %}
-			<tr>
+			<tr {% if not track.playable %}class="danger"{% endif %}>
 				<td>{{ track.artist }}</td>
 				<td>{{ track.name }}</td>
 				<td>{{ track.tracker.name }}</td>
@@ -34,6 +38,10 @@
 				</td>
 				<td>{{ boolean(track.dd) }}</td>
 				<td>{{ boolean(track.live) }}</td>
+				<td>{{ boolean(track.normalized_volume) }}</td>
+				<td>{{ boolean(track.presilence) }}</td>
+				<td>{{ boolean(track.playable) }}</td>
+				<td>{{ track.version }}</td>
 				<td>{{ track.last_update }}</td>
 				<td>
 					{{ progress(track.tone, 3) }}
