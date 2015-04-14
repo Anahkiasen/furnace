@@ -61,7 +61,7 @@ class DatabaseServiceProvider extends ServiceProvider
         $schema = $this->container->get('db')->schema();
         $migrations = $this->container->get('paths.migrations');
         $migrations = glob($migrations.'/*.php');
-        
+
         foreach ($migrations as $migration) {
             $table  = basename($migration, '.php');
 

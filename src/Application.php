@@ -4,6 +4,8 @@ namespace Notetracker;
 use Illuminate\Database\Capsule\Manager;
 use League\Container\ContainerInterface;
 use League\Route\RouteCollection;
+use Notetracker\Console\Console;
+use Notetracker\Providers\ConsoleServiceProvider;
 use Notetracker\Providers\DatabaseServiceProvider;
 use Notetracker\Providers\ErrorsServiceProvider;
 use Notetracker\Providers\PathsServiceProvider;
@@ -17,6 +19,7 @@ use Whoops\Run;
  * @property RouteCollection routes
  * @property Request         request
  * @property Manager         db
+ * @property Console         console
  */
 class Application
 {
@@ -35,6 +38,7 @@ class Application
         RoutingServiceProvider::class,
         ViewServiceProvider::class,
         DatabaseServiceProvider::class,
+        ConsoleServiceProvider::class,
     ];
 
     /**
