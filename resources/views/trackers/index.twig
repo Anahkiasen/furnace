@@ -1,4 +1,5 @@
 {% extends '_layouts/global.twig' %}
+{% from '_macros/table.twig' import progress %}
 
 {% block content %}
 	<table class="table">
@@ -13,7 +14,7 @@
 		{% for tracker in trackers %}
 			<tr>
 				<td>{{ tracker.name }}</td>
-				<td>{{ tracker.rating }}</td>
+				<td>{{ progress(tracker.rating, 3) }}</td>
 				<td>{{ tracker.tracks.count() }}</td>
 			</tr>
 		{% endfor %}

@@ -1,0 +1,8 @@
+{% macro progress(progress, max, style) %}
+	{% set value = ((progress / max) * 100)|round %}
+	<div class="progress">
+		<div class="progress-bar {% if style %}progress-bar-{{ style }}{% endif %}" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;">
+			{{ progress }}/{{ max }}
+		</div>
+	</div>
+{% endmacro %}

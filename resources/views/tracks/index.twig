@@ -1,13 +1,5 @@
 {% extends '_layouts/global.twig' %}
-
-{% macro progress(progress, max, style) %}
-	{% set value = ((progress / max) * 100)|round %}
-	<div class="progress">
-		<div class="progress-bar {% if style %}progress-bar-{{ style }}{% endif %}" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;">
-			{{ progress }}/{{ max }}
-		</div>
-	</div>
-{% endmacro %}
+{% from '_macros/table.twig' import progress %}
 
 {% block content %}
 	<table class="table">
@@ -29,16 +21,16 @@
 				<td>{{ track.name }}</td>
 				<td>{{ track.tracker.name }}</td>
 				<td>
-					{{ _self.progress(track.tone, 3) }}
+					{{ progress(track.tone, 3) }}
 				</td>
 				<td>
-					{{ _self.progress(track.track, 3) }}
+					{{ progress(track.track, 3) }}
 				</td>
 				<td>
-					{{ _self.progress(track.tab, 3) }}
+					{{ progress(track.tab, 3) }}
 				</td>
 				<td>
-					{{ _self.progress(track.rating, 3, 'success') }}
+					{{ progress(track.rating, 3, 'success') }}
 				</td>
 			</tr>
 		{% endfor %}
