@@ -8,6 +8,10 @@ $schema->create('tracks', function (Blueprint $table) {
     $table->string('artist')->nullable();
     $table->string('name')->nullable();
     $table->string('file');
+    $table->boolean('presilence');
+    $table->boolean('normalized_volume');
+    $table->boolean('live');
+    $table->boolean('dd');
     $table->integer('tone')->default(0);
     $table->integer('track')->default(0);
     $table->integer('tab')->default(0);

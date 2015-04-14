@@ -3,12 +3,8 @@ namespace Notetracker\Providers;
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Schema\Builder;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use League\Container\ServiceProvider;
-use League\Csv\Reader;
-use Notetracker\Models\Tracker;
-use Notetracker\Models\Track;
+use Notetracker\Seeders\TracksSeeder;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
@@ -58,12 +54,12 @@ class DatabaseServiceProvider extends ServiceProvider
     protected function runMigrations()
     {
         /** @type Builder $schema */
-        $schema = $this->container->get('db')->schema();
+        $schema     = $this->container->get('db')->schema();
         $migrations = $this->container->get('paths.migrations');
         $migrations = glob($migrations.'/*.php');
 
         foreach ($migrations as $migration) {
-            $table  = basename($migration, '.php');
+            $table = basename($migration, '.php');
 
             if (!$schema->hasTable($table)) {
                 include $migration;
@@ -76,28 +72,11 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     protected function seedDatabase()
     {
-        $reader = $this->container->get('paths.fixtures').'/tracks.csv';
-        $reader = Reader::createFromPath($reader);
-
-        $fixtures = $reader->fetchAssoc(0);
-        $fixtures = new Collection($fixtures);
-        $fixtures = $fixtures->keyBy('file');
-
-        $cdlc = $this->container->get('paths.cdlc');
-        $cdlc = glob($cdlc.'/*');
-        foreach ($cdlc as $track) {
-            $file = basename($track);
-            $track = Arr::get($fixtures, $file, ['file' => $file]);
-
-            // Create Tracker
-            $tracker = Arr::get($track, 'tracker');
-            if ($tracker) {
-                $tracker = Tracker::firstOrCreate(['name' => $tracker]);
-                $track['tracker_id'] = $tracker->id;
-                unset($track['tracker']);
-            }
-
-            Track::firstOrCreate($track);
+        $seeders = [TracksSeeder::class];
+        foreach ($seeders as $seeder) {
+            $seeder = new $seeder;
+            $seeder->setContainer($this->container);
+            $seeder->run();
         }
     }
 }
