@@ -1,0 +1,47 @@
+{% extends '_layouts/global.twig' %}
+
+{% macro progress(progress, max, style) %}
+	{% set value = ((progress / max) * 100)|round %}
+	<div class="progress">
+		<div class="progress-bar {% if style %}progress-bar-{{ style }}{% endif %}" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;">
+			{{ progress }}/{{ max }}
+		</div>
+	</div>
+{% endmacro %}
+
+{% block content %}
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Tracker</th>
+			<th>Tone</th>
+			<th>Track</th>
+			<th>Tab</th>
+			<th>Rating</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for track in tracks %}
+			<tr>
+				<td>{{ track.artist }}</td>
+				<td>{{ track.name }}</td>
+				<td>{{ track.tracker.name }}</td>
+				<td>
+					{{ _self.progress(track.tone, 3) }}
+				</td>
+				<td>
+					{{ _self.progress(track.track, 3) }}
+				</td>
+				<td>
+					{{ _self.progress(track.tab, 3) }}
+				</td>
+				<td>
+					{{ _self.progress(track.rating, 3, 'success') }}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
