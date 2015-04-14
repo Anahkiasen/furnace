@@ -1,0 +1,22 @@
+{% extends '_layouts/global.twig' %}
+
+{% block content %}
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Tracker</th>
+			<th>Rating</th>
+			<th>Tracks</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for tracker in trackers %}
+			<tr>
+				<td>{{ tracker.name }}</td>
+				<td>{{ tracker.rating }}</td>
+				<td>{{ tracker.tracks.count() }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

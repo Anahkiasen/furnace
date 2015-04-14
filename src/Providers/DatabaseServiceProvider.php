@@ -88,9 +88,11 @@ class DatabaseServiceProvider extends ServiceProvider
 
             // Create Tracker
             $tracker = Arr::get($track, 'tracker');
-            $tracker = Tracker::firstOrCreate(['name' => $tracker]);
-            $track['tracker_id'] = $tracker->id;
-            unset($track['tracker']);
+            if ($tracker) {
+                $tracker = Tracker::firstOrCreate(['name' => $tracker]);
+                $track['tracker_id'] = $tracker->id;
+                unset($track['tracker']);
+            }
 
             Track::firstOrCreate($track);
         }

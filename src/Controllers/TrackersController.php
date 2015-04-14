@@ -1,11 +1,10 @@
 <?php
 namespace Notetracker\Controllers;
 
-use GuzzleHttp\Client;
-use Notetracker\Models\Track;
+use Notetracker\Models\Tracker;
 use Twig_Environment;
 
-class HomeController
+class TrackersController
 {
     /**
      * @type Twig_Environment
@@ -13,6 +12,8 @@ class HomeController
     protected $view;
 
     /**
+     * TrackersController constructor.
+     *
      * @param Twig_Environment $view
      */
     public function __construct(Twig_Environment $view)
@@ -25,11 +26,11 @@ class HomeController
      */
     public function index()
     {
-        $tracks = Track::with('tracker')->get();
-        $tracks = $tracks->sortByDesc('rating');
+        $trackers = Tracker::with('tracks')->get();
+        $trackers = $trackers->sortByDesc('rating');
 
-        return $this->view->render('home.twig', [
-            'tracks' => $tracks,
+        return $this->view->render('trackers/index.twig', [
+            'trackers' => $trackers,
         ]);
     }
 }
