@@ -1,6 +1,15 @@
 {% macro progress(progress, max) %}
 	{% set value = ((progress / max) * 100)|round %}
-	{% set style = ['danger', 'warning', 'success'][progress|round - 1] %}
+	{% if value <= 25 %}
+		{% set style = 'danger' %}
+	{% elseif value > 25 and value <= 50 %}
+		{% set style = 'warning' %}
+	{% elseif value > 50 and value <= 75 %}
+		{% set style = 'info' %}
+	{% else %}
+		{% set style = 'success' %}
+	{% endif %}
+
 	<div class="progress">
 		<div class="progress-bar {% if style %}progress-bar-{{ style }}{% endif %}" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;">
 			{{ progress }}/{{ max }}

@@ -10,6 +10,10 @@ class Tracker extends Model
      */
     protected $guarded = [];
 
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////// RELATIONSHIPS ///////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -17,6 +21,10 @@ class Tracker extends Model
     {
         return $this->hasMany(Track::class);
     }
+
+    //////////////////////////////////////////////////////////////////////
+    ///////////////////////////// ATTRIBUTES /////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
     /**
      * @return float
@@ -27,5 +35,17 @@ class Tracker extends Model
         $ratings = array_sum($ratings) / count($ratings);
 
         return round($ratings, 1);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getArtistsAttribute()
+    {
+        $artists = $this->tracks->lists('artist');
+        $artists = array_unique($artists);
+        sort($artists);
+
+        return $artists;
     }
 }

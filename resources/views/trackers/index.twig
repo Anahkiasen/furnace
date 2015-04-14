@@ -6,6 +6,7 @@
 		<thead>
 		<tr>
 			<th>Tracker</th>
+			<th>Artists</th>
 			<th>Rating</th>
 			<th>Tracks</th>
 		</tr>
@@ -13,8 +14,9 @@
 		<tbody>
 		{% for tracker in trackers %}
 			<tr>
-				<td>{{ tracker.name }}</td>
-				<td>{{ progress(tracker.rating, 3) }}</td>
+				<td><a target="_blank" href='http://ignition.customsforge.com/search/browse?filters={"member":"{{ tracker.name }}"}&group=artist'>{{ tracker.name }}</a></td>
+				<td>{{ tracker.artists|join(', ') }}</td>
+				<td>{{ progress(tracker.rating, rating_scale) }}</td>
 				<td>{{ tracker.tracks.count() }}</td>
 			</tr>
 		{% endfor %}

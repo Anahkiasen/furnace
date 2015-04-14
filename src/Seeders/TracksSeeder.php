@@ -82,9 +82,11 @@ class TracksSeeder
             'tone'              => array_get($track, 'tone'),
             'track'             => array_get($track, 'track'),
             'parts'             => array_get($meta, 'parts'),
-            'tuning'             => array_get($meta, 'tuning'),
+            'tuning'            => array_get($meta, 'tuning'),
             'tab'               => array_get($track, 'tab'),
             'tracker_id'        => $tracker->id,
+            'created_at'        => array_get($meta, 'added'),
+            'updated_at'        => array_get($meta, 'updated'),
         ];
     }
 }

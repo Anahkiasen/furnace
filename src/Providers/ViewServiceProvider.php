@@ -2,6 +2,7 @@
 namespace Notetracker\Providers;
 
 use League\Container\ServiceProvider;
+use Notetracker\Models\Track;
 use Twig_Environment;
 use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
@@ -34,6 +35,7 @@ class ViewServiceProvider extends ServiceProvider
 
             $twig->addExtension(new Twig_Extension_Debug());
             $twig->addGlobal('request', $this->container->get('request'));
+            $twig->addGlobal('rating_scale', Track::RATING_SCALE);
 
             return $twig;
         });

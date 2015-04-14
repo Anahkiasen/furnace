@@ -9,8 +9,10 @@
 			<th>Title</th>
 			<th>Tracker</th>
 			<th>Tuning</th>
+			<th>Parts</th>
 			<th>DD</th>
 			<th>Live</th>
+			<th>Last update</th>
 			<th>Tone</th>
 			<th>Track</th>
 			<th>Tab</th>
@@ -24,8 +26,15 @@
 				<td>{{ track.name }}</td>
 				<td>{{ track.tracker.name }}</td>
 				<td>{{ track.tuning }}</td>
+				<td>
+					<span class="label label-warning" {% if not track.parts.lead %}disabled{% endif %}>L</span>
+					<span class="label label-success" {% if not track.parts.rhythm %}disabled{% endif %}>R</span>
+					<span class="label label-info" {% if not track.parts.bass %}disabled{% endif %}>B</span>
+					<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
+				</td>
 				<td>{{ boolean(track.dd) }}</td>
 				<td>{{ boolean(track.live) }}</td>
+				<td>{{ track.last_update }}</td>
 				<td>
 					{{ progress(track.tone, 3) }}
 				</td>
@@ -36,7 +45,7 @@
 					{{ progress(track.tab, 3) }}
 				</td>
 				<td>
-					{{ progress(track.rating, 3, 'success') }}
+					{{ progress(track.rating, rating_scale) }}
 				</td>
 			</tr>
 		{% endfor %}
