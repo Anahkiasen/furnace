@@ -1,48 +1,50 @@
-ignition_id	file	tone	track	tab	presilence	normalized_volume	live	playable
-3358	megadeth-peacesells-v1-dd_m.psarc	1	0	0				0
-10135	pantera-the-sleep-v7_m.psarc	1	0	0				0
-2199	slash-godfather-theme_m.psarc	1	0	0				0
-3680	Stevie-Ray-Vaughan_Pride-And-Joy_v2_DD_m.psarc	2	3	2	1	0	0	0
-20	avenged-sevenfold-hail-to-the-king-dd-v12_m.psarc							0
-517	Guns_N_Roses_Sweet_Child_O_Mine_v3_m.psarc	2	3	3	0	0		1
-4733	Ozzy-Osbourne_No-More-Tears_v2_DD_m.psarc	2	3	3	1	1	0	1
-1809	Scorpions_Still-loving-you_v1-2_m.psarc							0
-3115	Sonata Arctica - My Land v1p5_m.psarc	2	3	3	0	1	0	1
-6622	ACDC_Thunderstruck_v1_m.psarc	1			1	1	1	1
-1174	red-hot-chili-peppers-cant-stop-v2-1-dd_m.psarc	1	3	2				1
-4984	derek-and-the-dominos-layla-v1-dd_m.psarc	2	3	2				1
-4985	Guns-N-Roses_Civil-War_v107_DD_m.psarc	2	3	2	1	0	0	1
-1154	jerryc-canon-rock-v11-dd_m.psarc	2	3	3				1
-10576	marilyn-manson-sweet-dreams-are-made-of-this-v4-{crossbolt242}_m.psarc	2	3	3				1
-2117	Nirvana_Smells-Like-Teen-Spirit_v2_0_DD_m.psarc	2	3	2	1	0	0	1
-3573	Red-Hot-Chili-Peppers_Under-the-Bridge_v4_6_m.psarc	2	3	3	1	1	0	1
-5406	santana-europa-v2-2_m.psarc	2	3	3				1
-3345	skid-row-18-and-life-v2_m.psarc	2	3	2				1
-4029	the-rolling-stones-gimme-shelter-v1-dd_m.psarc	2	3	3				1
-3176	akira-yamaoka-promise-v2_m.psarc	3	3	3				1
-405	avenged-sevenfold-critical-acclaim-v-dd_m.psarc	3	3	3				1
-5452	black-sabbath-war-pigs-v1-dd_m.psarc	3	3	3	1	1	0	1
-3201	metallica-one_m.psarc	3	3	2	1	1	1	1
-9213	michael-jackson-beat-it-dd-v5.2_m.psarc	3	3	2	1	0	0	1
-1075	Muse_Uprising_v1-23_m.psarc	3	3	3	1	1	0	1
-3545	red-hot-chili-peppers-californication-v4-6_m.psarc	3	2	2				1
-1877	Tenacious-D_The-Metal_v1_m.psarc	3	3	2	0	1	0	1
-915	black-sabbath-heaven-and-hell-v1-dd_m.psarc	2	2	3	1	0	0	1
-605	led-zeppelin-stairway-to-heaven-v2-1_m.psarc							1
-6019	journey-any-way-you-want-it-v_m.psarc	2	2	2				
-951	Dire-Straits_Money-For-Nothing_v1_m.psarc							
-3253	dire-straits-sultans-of-swing-v1_m.psarc							
-894	eagles-hotel-california_m.psarc	2	3	3	1	1	0	1
-3137	guns-n-roses-knockin-on-heavens-door-v2_m.psarc							
-3300	guns-n-roses-welcome-to-the-jungle_m.psarc	2	3	3	1	1	0	1
-339	Muse_Supremacy_v1_4_m.psarc							
-3202	the-outlaws-green-grass-and-high-tides_m.psarc							
-9145	Opeth_To-Bid-You-Farewell_v1_m.psarc	2	3	2	1	1	0	1
-2080	Metallica - Enter Sandman_m.psarc	1	3	3	1	1	0	1
-571	Buckethead_King-James_v140328_m.psarc	3	3	2	1	1	0	1
-2181	Metallica - Nothing Else Matters_m.psarc	2	3	3	1	1	0	1
-2181	Metallica - Master of Puppets_m.psarc	1	3	3	1	0	0	0
-5720	Filter_Hey-Man-Nice-Shot_v1_DD_m.psarc	3	3	3	1	1	0	1
-4703	Trust_Antisocial_v1_DD_m.psarc							1
-4628	Skid-Row_Youth-Gone-Wild_v2_DD_m.psarc	2	3	3	1	1	0	1
-6407	Skid-Row_I-Remember-You_v1_DD_m.psarc							1
+ignition_id,file,tone,track,tab,presilence,normalized_volume,live,playable
+6622,ACDC_Thunderstruck_v1_m.psarc,1,,,1,1,1,1
+3176,akira-yamaoka-promise-v2_m.psarc,3,3,3,,,,1
+405,avenged-sevenfold-critical-acclaim-v-dd_m.psarc,3,3,3,,,,1
+20,avenged-sevenfold-hail-to-the-king-dd-v12_m.psarc,,,,,,,0
+915,black-sabbath-heaven-and-hell-v1-dd_m.psarc,2,2,3,1,0,0,1
+5452,black-sabbath-war-pigs-v1-dd_m.psarc,3,3,3,1,1,0,1
+571,Buckethead_King-James_v140328_m.psarc,3,3,2,1,1,0,1
+4984,derek-and-the-dominos-layla-v1-dd_m.psarc,2,3,2,,,,1
+951,Dire-Straits_Money-For-Nothing_v1_m.psarc,,,,,,,
+3253,dire-straits-sultans-of-swing-v1_m.psarc,,,,,,,
+894,eagles-hotel-california_m.psarc,2,3,3,1,1,0,1
+5720,Filter_Hey-Man-Nice-Shot_v1_DD_m.psarc,3,3,3,1,1,0,1
+517,Guns_N_Roses_Sweet_Child_O_Mine_v3_m.psarc,2,3,3,0,0,,1
+4985,Guns-N-Roses_Civil-War_v107_DD_m.psarc,2,3,2,1,0,0,1
+3137,guns-n-roses-knockin-on-heavens-door-v2_m.psarc,,,,,,,
+3300,guns-n-roses-welcome-to-the-jungle_m.psarc,2,3,3,1,1,0,1
+1154,jerryc-canon-rock-v11-dd_m.psarc,2,3,3,,,,1
+6019,journey-any-way-you-want-it-v_m.psarc,2,2,2,,,,
+605,led-zeppelin-stairway-to-heaven-v2-1_m.psarc,,,,,,,1
+10576,marilyn-manson-sweet-dreams-are-made-of-this-v4-{crossbolt242}_m.psarc,2,3,3,,,,1
+3358,megadeth-peacesells-v1-dd_m.psarc,1,0,0,,,,0
+2080,Metallica - Enter Sandman_m.psarc,1,3,3,1,1,0,1
+2181,Metallica - Master of Puppets_m.psarc,1,3,3,1,0,0,0
+2181,Metallica - Nothing Else Matters_m.psarc,2,3,3,1,1,0,1
+3201,metallica-one_m.psarc,3,3,2,1,1,1,1
+9213,michael-jackson-beat-it-dd-v5.2_m.psarc,3,3,2,1,0,0,1
+339,Muse_Supremacy_v1_4_m.psarc,,,,,,,
+1075,Muse_Uprising_v1-23_m.psarc,3,3,3,1,1,0,1
+2117,Nirvana_Smells-Like-Teen-Spirit_v2_0_DD_m.psarc,2,3,2,1,0,0,1
+9145,Opeth_To-Bid-You-Farewell_v1_m.psarc,2,3,2,1,1,0,1
+4733,Ozzy-Osbourne_No-More-Tears_v2_DD_m.psarc,2,3,3,1,1,0,1
+10135,pantera-the-sleep-v7_m.psarc,1,0,0,,,,0
+3573,Red-Hot-Chili-Peppers_Under-the-Bridge_v4_6_m.psarc,2,3,3,1,1,0,1
+3545,red-hot-chili-peppers-californication-v4-6_m.psarc,3,2,2,,,,1
+1174,red-hot-chili-peppers-cant-stop-v2-1-dd_m.psarc,1,3,2,,,,1
+5406,santana-europa-v2-2_m.psarc,2,3,3,,,,1
+1809,Scorpions_Still-loving-you_v1-2_m.psarc,,,,,,,0
+6407,Skid-Row_I-Remember-You_v1_DD_m.psarc,,,,,,,1
+4628,Skid-Row_Youth-Gone-Wild_v2_DD_m.psarc,2,3,3,1,1,0,1
+3345,skid-row-18-and-life-v2_m.psarc,2,3,3,1,1,0,1
+2199,slash-godfather-theme_m.psarc,1,0,0,,,,0
+3115,Sonata Arctica - My Land v1p5_m.psarc,2,3,3,0,1,0,1
+3680,Stevie-Ray-Vaughan_Pride-And-Joy_v2_DD_m.psarc,2,3,2,1,0,0,0
+1877,Tenacious-D_The-Metal_v1_m.psarc,3,3,2,0,1,0,1
+3202,the-outlaws-green-grass-and-high-tides_m.psarc,,,,,,,
+4029,the-rolling-stones-gimme-shelter-v1-dd_m.psarc,2,3,3,,,,1
+4703,Trust_Antisocial_v1_DD_m.psarc,,,,,,,1
+2219,Black-Sabbath_Paranoid_v_1_6_m.psarc,,,,,,,
+945,Led-Zeppelin_Since-Ive-Been-Loving-You_v1_2_m.psarc,,,,,,,

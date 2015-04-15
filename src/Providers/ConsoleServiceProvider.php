@@ -8,6 +8,7 @@ use Notetracker\Models\Track;
 use Notetracker\Models\Tracker;
 use Notetracker\Seeders\TracksSeeder;
 use Silly\Application;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleServiceProvider extends ServiceProvider
 {
@@ -61,7 +62,7 @@ class ConsoleServiceProvider extends ServiceProvider
             }
         });
 
-        $console->command('seed', function () use ($container) {
+        $console->command('seed', function (OutputInterface $output) use ($container) {
             Track::query()->delete();
             Tracker::query()->delete();
 
@@ -69,6 +70,7 @@ class ConsoleServiceProvider extends ServiceProvider
             foreach ($seeders as $seeder) {
                 $seeder = new $seeder;
                 $seeder->setContainer($container);
+                $seeder->setOutput($output);
                 $seeder->run();
             }
         });
