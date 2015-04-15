@@ -42,7 +42,7 @@
 				<td>{{ boolean(track.presilence) }}</td>
 				<td>{{ boolean(track.playable) }}</td>
 				<td>{{ track.version }}</td>
-				<td>{{ track.last_update }}</td>
+				<td>{{ track.updated_at.toDateString() }}</td>
 				<td>
 					{{ progress(track.tone, 3) }}
 				</td>
