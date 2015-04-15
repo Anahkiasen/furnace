@@ -8,6 +8,7 @@ use Notetracker\Console\Console;
 use Notetracker\Providers\ConsoleServiceProvider;
 use Notetracker\Providers\DatabaseServiceProvider;
 use Notetracker\Providers\ErrorsServiceProvider;
+use Notetracker\Providers\IgnitionServiceProvider;
 use Notetracker\Providers\PathsServiceProvider;
 use Notetracker\Providers\RequestServiceProvider;
 use Notetracker\Providers\RoutingServiceProvider;
@@ -39,6 +40,7 @@ class Application
         ViewServiceProvider::class,
         DatabaseServiceProvider::class,
         ConsoleServiceProvider::class,
+        IgnitionServiceProvider::class,
     ];
 
     /**

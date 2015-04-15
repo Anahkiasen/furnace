@@ -1,8 +1,10 @@
 <?php
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use League\Container\Container;
 use Notetracker\Application;
-use Notetracker\Controllers\TracksController;
 use Notetracker\Controllers\TrackersController;
+use Notetracker\Controllers\TracksController;
 
 require __DIR__.'/../vendor/autoload.php';
 
