@@ -32,7 +32,7 @@ class Tracker extends Model
     public function getRatingAttribute()
     {
         $ratings = $this->tracks->lists('rating');
-        $ratings = array_sum($ratings) / count($ratings);
+        $ratings = array_sum($ratings);
 
         return round($ratings, 1);
     }
