@@ -9,8 +9,9 @@ class PathsServiceProvider extends ServiceProvider
      * @type array
      */
     protected $provides = [
-        'paths.migrations',
+        'paths.cache',
         'paths.fixtures',
+        'paths.migrations',
         'paths.views',
     ];
 
@@ -19,8 +20,9 @@ class PathsServiceProvider extends ServiceProvider
      */
     protected $paths = [
         'cdlc'       => '/Users/anahkiasen/Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc',
-        'migrations' => 'resources/migrations',
+        'cache'      => 'cache',
         'fixtures'   => 'resources/fixtures',
+        'migrations' => 'resources/migrations',
         'views'      => 'resources/views',
     ];
 

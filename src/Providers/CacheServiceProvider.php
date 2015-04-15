@@ -1,19 +1,18 @@
 <?php
 namespace Notetracker\Providers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
+use Illuminate\Cache\FileStore;
 use Illuminate\Cache\Repository;
+use Illuminate\Filesystem\Filesystem;
 use League\Container\ServiceProvider;
-use Notetracker\Services\Ignition;
 
-class IgnitionServiceProvider extends ServiceProvider
+class CacheServiceProvider extends ServiceProvider
 {
     /**
      * @type array
      */
     protected $provides = [
-        'ignition',
+        Repository::class,
     ];
 
     /**
@@ -25,14 +24,10 @@ class IgnitionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->container->singleton('ignition', function () {
-            $client = new Client([
-                'defaults' => [
-                    'cookies' => new CookieJar(),
-                ]
-            ]);
+        $this->container->singleton(Repository::class, function () {
+            $store = new FileStore(new Filesystem(), $this->container->get('paths.cache'));
 
-            return new Ignition($client, $this->container->get(Repository::class));
+            return new Repository($store);
         });
     }
 }

@@ -5,6 +5,7 @@ use Illuminate\Database\Capsule\Manager;
 use League\Container\ContainerInterface;
 use League\Route\RouteCollection;
 use Notetracker\Console\Console;
+use Notetracker\Providers\CacheServiceProvider;
 use Notetracker\Providers\ConsoleServiceProvider;
 use Notetracker\Providers\DatabaseServiceProvider;
 use Notetracker\Providers\ErrorsServiceProvider;
@@ -41,6 +42,7 @@ class Application
         DatabaseServiceProvider::class,
         ConsoleServiceProvider::class,
         IgnitionServiceProvider::class,
+        CacheServiceProvider::class,
     ];
 
     /**

@@ -2,6 +2,7 @@
 namespace Notetracker\Services;
 
 use GuzzleHttp\Client;
+use Illuminate\Cache\Repository;
 
 class Ignition
 {
@@ -11,13 +12,20 @@ class Ignition
     protected $client;
 
     /**
+     * @type Repository
+     */
+    protected $cache;
+
+    /**
      * Ignition constructor.
      *
-     * @param Client $client
+     * @param Client     $client
+     * @param Repository $cache
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, Repository $cache)
     {
         $this->client = $client;
+        $this->cache  = $cache;
 
         $this->authenticate();
     }
@@ -31,7 +39,9 @@ class Ignition
      */
     public function track($track)
     {
-        return $this->client->get('http://ignition.customsforge.com/search/get_cdlc?id='.$track)->json();
+        return $this->cache->sear($track, function () use ($track) {
+            return $this->client->get('http://ignition.customsforge.com/search/get_cdlc?id='.$track)->json();
+        });
     }
 
     /**

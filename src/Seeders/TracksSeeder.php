@@ -46,8 +46,7 @@ class TracksSeeder
      */
     protected function getTrackInformations($track)
     {
-        $meta = Arr::get($track, 'meta', '{}');
-        $meta = (array) json_decode($meta, true);
+        $meta = $this->container->get('ignition')->track($track['ignition_id']);
 
         // Create Tracker
         $tracker = Arr::get($meta, 'member');
