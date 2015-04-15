@@ -1,38 +1,19 @@
 <?php
 namespace Notetracker\Seeders;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
-use League\Container\ContainerAwareTrait;
-use League\Csv\Reader;
 use Notetracker\Models\Track;
 use Notetracker\Models\Tracker;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Output\OutputInterface;
 
-class TracksSeeder
+class TracksSeeder extends AbstractSeeder
 {
-    use ContainerAwareTrait;
-
-    /**
-     * @type OutputInterface
-     */
-    protected $output;
-
-    /**
-     * @param OutputInterface $output
-     */
-    public function setOutput($output)
-    {
-        $this->output = $output;
-    }
-
     /**
      * Run the seeder.
      */
     public function run()
     {
-        $tracks = $this->getFixtures();
+        $tracks   = $this->getFixture('tracks');
         $progress = new ProgressBar($this->output, sizeof($tracks));
         $progress->start();
 
@@ -51,17 +32,6 @@ class TracksSeeder
     //////////////////////////////////////////////////////////////////////
     ////////////////////////////// HELPERS ///////////////////////////////
     //////////////////////////////////////////////////////////////////////
-
-    /**
-     * @return array|Collection|static
-     */
-    protected function getFixtures()
-    {
-        $reader = $this->container->get('paths.fixtures').'/tracks.csv';
-        $reader = Reader::createFromPath($reader);
-
-        return $reader->fetchAssoc(0);
-    }
 
     /**
      * @param $track
@@ -100,11 +70,11 @@ class TracksSeeder
                 'version',
             ]),
             [
-                'dd'                => array_get($meta, 'dd', 'no') == 'yes',
-                'name'              => array_get($meta, 'title'),
-                'tracker_id'        => $tracker->id,
-                'created_at'        => array_get($meta, 'added'),
-                'updated_at'        => array_get($meta, 'updated'),
+                'dd'         => array_get($meta, 'dd', 'no') == 'yes',
+                'name'       => array_get($meta, 'title'),
+                'tracker_id' => $tracker->id,
+                'created_at' => array_get($meta, 'added'),
+                'updated_at' => array_get($meta, 'updated'),
 
             ]
         );
