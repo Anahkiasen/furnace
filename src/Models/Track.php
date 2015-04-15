@@ -1,9 +1,7 @@
 <?php
 namespace Notetracker\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Track extends Model
+class Track extends AbstractModel
 {
     /**
      * @type array

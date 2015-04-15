@@ -7,6 +7,9 @@
 		<tr>
 			<th>Tracker</th>
 			<th>Artists</th>
+			<th>Tone</th>
+			<th>Track</th>
+			<th>Tab</th>
 			<th>Rating</th>
 			<th>Tracks</th>
 		</tr>
@@ -16,6 +19,9 @@
 			<tr>
 				<td><a target="_blank" href='http://ignition.customsforge.com/search/browse?filters={"member":"{{ tracker.name }}"}&group=artist'>{{ tracker.name }}</a></td>
 				<td>{{ tracker.artists|join(', ') }}</td>
+				<td>{{ progress(tracker.tracks.average('tone'), 3) }}</td>
+				<td>{{ progress(tracker.tracks.average('track'), 3) }}</td>
+				<td>{{ progress(tracker.tracks.average('tab'), 3) }}</td>
 				<td>{{ progress(tracker.rating, trackers.max('rating')) }}</td>
 				<td>{{ tracker.tracks.count() }}</td>
 			</tr>
