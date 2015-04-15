@@ -8,7 +8,7 @@ ignition_id,file,tone,track,tab,presilence,normalized_volume,live,playable
 571,Buckethead_King-James_v140328_m.psarc,3,3,2,1,1,0,1
 4984,derek-and-the-dominos-layla-v1-dd_m.psarc,2,3,2,,,,1
 951,Dire-Straits_Money-For-Nothing_v1_m.psarc,,,,,,,
-3253,dire-straits-sultans-of-swing-v1_m.psarc,,,,,,,
+3253,dire-straits-sultans-of-swing-v1_m.psarc,2,3,3,1,0,0,1
 894,eagles-hotel-california_m.psarc,2,3,3,1,1,0,1
 5720,Filter_Hey-Man-Nice-Shot_v1_DD_m.psarc,3,3,3,1,1,0,1
 517,Guns_N_Roses_Sweet_Child_O_Mine_v3_m.psarc,2,3,3,0,0,,1
@@ -45,6 +45,6 @@ ignition_id,file,tone,track,tab,presilence,normalized_volume,live,playable
 1877,Tenacious-D_The-Metal_v1_m.psarc,3,3,2,0,1,0,1
 3202,the-outlaws-green-grass-and-high-tides_m.psarc,,,,,,,
 4029,the-rolling-stones-gimme-shelter-v1-dd_m.psarc,2,3,3,,,,1
-4703,Trust_Antisocial_v1_DD_m.psarc,,,,,,,1
-2219,Black-Sabbath_Paranoid_v_1_6_m.psarc,,,,,,,
-945,Led-Zeppelin_Since-Ive-Been-Loving-You_v1_2_m.psarc,,,,,,,
+4703,Trust_Antisocial_v1_DD_m.psarc,2,3,3,1,1,0,1
+2219,Black-Sabbath_Paranoid_v_1_6_m.psarc,2,3,3,1,2,0,1
+945,Led-Zeppelin_Since-Ive-Been-Loving-You_v1_2_m.psarc,3,3,3,1,1,0,1
