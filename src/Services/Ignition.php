@@ -31,7 +31,7 @@ class Ignition
     }
 
     /**
-     * Get a track's informations
+     * Get a track's informations.
      *
      * @param $track
      *
@@ -45,7 +45,7 @@ class Ignition
     }
 
     /**
-     * Authenticate with the API
+     * Authenticate with the API.
      */
     protected function authenticate()
     {
@@ -55,7 +55,7 @@ class Ignition
                 'ips_password' => 'cXQMU9PF6mXMxYdeplLEkfqwFScgDl',
                 'auth_key'     => '880ea6a14ea49e853634fbdc5015a024',
                 'rememberMe'   => 1,
-            ]
+            ],
         ]);
     }
 }

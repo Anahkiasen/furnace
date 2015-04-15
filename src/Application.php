@@ -73,7 +73,7 @@ class Application
     }
 
     /**
-     * Run the application
+     * Run the application.
      */
     public function run()
     {

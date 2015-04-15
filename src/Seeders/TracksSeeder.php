@@ -14,7 +14,7 @@ class TracksSeeder extends AbstractSeeder
     public function run()
     {
         $tracks   = $this->getFixture('tracks');
-        $progress = new ProgressBar($this->output, sizeof($tracks));
+        $progress = new ProgressBar($this->output, count($tracks));
         $progress->start();
 
         foreach ($tracks as $track) {
@@ -60,7 +60,7 @@ class TracksSeeder extends AbstractSeeder
                 'playable',
                 'tone',
                 'track',
-                'tab'
+                'tab',
             ]),
             array_only($meta, [
                 'artist',

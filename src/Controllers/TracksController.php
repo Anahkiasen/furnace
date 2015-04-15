@@ -1,7 +1,6 @@
 <?php
 namespace Notetracker\Controllers;
 
-use GuzzleHttp\Client;
 use Notetracker\Models\Track;
 use Twig_Environment;
 

@@ -23,8 +23,6 @@ class ConsoleServiceProvider extends ServiceProvider
      * Use the register method to register items with the container via the
      * protected $this->container property or the `getContainer` method
      * from the ContainerAwareTrait.
-     *
-     * @return void
      */
     public function register()
     {
@@ -36,7 +34,7 @@ class ConsoleServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the commands
+     * Register the commands.
      */
     private function registerCommands()
     {
@@ -68,7 +66,7 @@ class ConsoleServiceProvider extends ServiceProvider
 
             $seeders = [TracksSeeder::class];
             foreach ($seeders as $seeder) {
-                $seeder = new $seeder;
+                $seeder = new $seeder();
                 $seeder->setContainer($container);
                 $seeder->setOutput($output);
                 $seeder->run();

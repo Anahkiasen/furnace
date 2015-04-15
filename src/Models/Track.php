@@ -11,7 +11,7 @@ class Track extends Model
     protected $guarded = [];
 
     /**
-     * @type integer
+     * @type int
      */
     const RATING_SCALE = 18;
 
@@ -32,7 +32,7 @@ class Track extends Model
     //////////////////////////////////////////////////////////////////////
 
     /**
-     * Get the rating of the track
+     * Get the rating of the track.
      *
      * @return float
      */
@@ -71,7 +71,7 @@ class Track extends Model
     }
 
     /**
-     * Get which parts the track supports
+     * Get which parts the track supports.
      *
      * @return array
      */
@@ -88,7 +88,7 @@ class Track extends Model
     }
 
     /**
-     * Get the human-readable tuning
+     * Get the human-readable tuning.
      *
      * @return string
      */

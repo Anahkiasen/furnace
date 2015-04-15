@@ -20,8 +20,6 @@ class IgnitionServiceProvider extends ServiceProvider
      * Use the register method to register items with the container via the
      * protected $this->container property or the `getContainer` method
      * from the ContainerAwareTrait.
-     *
-     * @return void
      */
     public function register()
     {
@@ -29,7 +27,7 @@ class IgnitionServiceProvider extends ServiceProvider
             $client = new Client([
                 'defaults' => [
                     'cookies' => new CookieJar(),
-                ]
+                ],
             ]);
 
             return new Ignition($client, $this->container->get(Repository::class));

@@ -31,7 +31,7 @@ abstract class AbstractSeeder
      */
     protected function getFixture($fixture)
     {
-        $reader = $this->container->get('paths.fixtures').'/' .$fixture. '.csv';
+        $reader = $this->container->get('paths.fixtures').'/'.$fixture.'.csv';
         $reader = Reader::createFromPath($reader);
 
         return $reader->fetchAssoc(0);
