@@ -7,10 +7,10 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li {% if request.getPathInfo() == '/' %}class="active"{% endif %}>
-					<a href="/">Tracks</a>
+					<a href="{{ URL.action('TracksController@index') }}">Tracks</a>
 				</li>
 				<li {% if request.getPathInfo() == '/trackers' %}class="active"{% endif %}>
-					<a href="/trackers">Blacksmiths</a>
+					<a href="{{ URL.action('TrackersController@index') }}">Blacksmiths</a>
 				</li>
 			</ul>
 		</div>

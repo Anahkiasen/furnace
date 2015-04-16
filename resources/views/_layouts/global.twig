@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{{ title ? "#{title} - Furnace" : 'Furnace' }}</title>
-	<link rel="stylesheet" href="/builds/css/styles.css" />
+	<link rel="stylesheet" href="{{ URL.asset('builds/css/styles.css') }}" />
 </head>
 <body ng-app="notetracker" ng-controller="AppController">
 	{% include '_partials/navigation.twig' %}
@@ -12,6 +12,6 @@
 		{% block content %}{% endblock %}
 	</main>
 
-	<script src="/builds/js/scripts.js"></script>
+	<script src="{{ URL.asset('builds/js/scripts.js') }}"></script>
 </body>
 </html>
