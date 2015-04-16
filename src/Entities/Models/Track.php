@@ -99,15 +99,18 @@ class Track extends AbstractModel
      */
     public function getTuningAttribute()
     {
+        $tuning  = $this->attributes['tuning'];
         $tunings = [
             'estandard'      => 'E',
             'edropd'         => 'DROP D',
             'eflatstandard'  => 'E♭',
             'eflatdropflat'  => 'E♭ DROP D',
             'eflatdropdflat' => 'E♭ DROP D♭',
+            'dstandard'      => 'D',
+            'ddropc'         => 'D DROP C',
             'other'          => 'Other',
         ];
 
-        return $tunings[$this->attributes['tuning']];
+        return array_get($tunings, $tuning, $tuning);
     }
 }
