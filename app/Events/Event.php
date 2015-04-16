@@ -1,7 +1,7 @@
-<?php namespace Furnace\Events;
+<?php
+namespace Furnace\Events;
 
-abstract class Event {
-
-	//
-
+abstract class Event
+{
+    //
 }

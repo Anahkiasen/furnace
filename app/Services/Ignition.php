@@ -36,7 +36,7 @@ class Ignition
     /**
      * Get a track's informations.
      *
-     * @param integer $track
+     * @param int $track
      *
      * @return array
      */
@@ -49,7 +49,7 @@ class Ignition
     }
 
     /**
-     * Complete a track's informations
+     * Complete a track's informations.
      *
      * @param array $track
      *
@@ -88,14 +88,13 @@ class Ignition
                 'version',
             ]),
             [
-                'dd'         => array_get($meta, 'dd', 'no') == 'yes',
+                'dd'         => array_get($meta, 'dd', 'no') === 'yes',
                 'name'       => array_get($meta, 'title'),
                 'tracker_id' => $tracker->id,
                 'created_at' => array_get($meta, 'added'),
                 'updated_at' => array_get($meta, 'updated'),
             ]
         );
-
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -103,9 +102,9 @@ class Ignition
     //////////////////////////////////////////////////////////////////////
 
     /**
-     * Get the track's forum page informations
+     * Get the track's forum page informations.
      *
-     * @param integer $track
+     * @param int $track
      *
      * @return array
      */
@@ -126,13 +125,13 @@ class Ignition
         });
 
         return [
-            'riff_repeater'     => $infos['Riff Repeater:'] == 'Yes',
+            'riff_repeater'     => $infos['Riff Repeater:'] === 'Yes',
             'difficulty_levels' => (int) $infos['Difficulty Levels:'],
         ];
     }
 
     /**
-     * @param integer $track
+     * @param int $track
      *
      * @return array
      */

@@ -9,9 +9,9 @@ class PathsServiceProvider extends ServiceProvider
      * @type array
      */
     protected $paths = [
-        'cdlc'       => '/Users/anahkiasen/Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc',
-        'fixtures'   => 'database/fixtures',
-        'views'      => 'resources/views',
+        'cdlc'     => '/Users/anahkiasen/Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc',
+        'fixtures' => 'database/fixtures',
+        'views'    => 'resources/views',
     ];
 
     /**

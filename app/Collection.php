@@ -4,7 +4,7 @@ namespace Furnace;
 class Collection extends \Illuminate\Database\Eloquent\Collection
 {
     /**
-     * Get the average of an attribute
+     * Get the average of an attribute.
      *
      * @param string $attribute
      * @param int    $precision

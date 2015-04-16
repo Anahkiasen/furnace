@@ -1,7 +1,7 @@
-<?php namespace Furnace\Commands;
+<?php
+namespace Furnace\Commands;
 
-abstract class Command {
-
-	//
-
+abstract class Command
+{
+    //
 }

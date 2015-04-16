@@ -10,7 +10,6 @@ use View;
 
 class TracksController extends Controller
 {
-
     /**
      * @type Request
      */
@@ -26,7 +25,7 @@ class TracksController extends Controller
      */
     public function __construct(Ignition $ignition, Request $request)
     {
-        $this->request = $request;
+        $this->request  = $request;
         $this->ignition = $ignition;
     }
 
@@ -46,7 +45,7 @@ class TracksController extends Controller
     }
 
     /**
-     * Store a track
+     * Store a track.
      */
     public function store()
     {

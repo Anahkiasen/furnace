@@ -6,7 +6,6 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class TracksTableSeeder extends AbstractSeeder
 {
-
     public function run()
     {
         $tracks   = $this->getFixture('tracks');

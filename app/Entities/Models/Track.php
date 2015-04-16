@@ -14,7 +14,7 @@ class Track extends AbstractModel
     public static $ratingScale = 19;
 
     /**
-     * The standard number of difficulty levels
+     * The standard number of difficulty levels.
      */
     const STANDARD_DIFFICULTY_LEVELS = 8;
 
@@ -85,10 +85,10 @@ class Track extends AbstractModel
         $parts = explode(',', $this->attributes['parts']);
 
         return [
-            'lead'   => array_search('lead', $parts) !== false,
-            'rhythm' => array_search('rhythm', $parts) !== false,
-            'bass'   => array_search('bass', $parts) !== false,
-            'vocals' => array_search('vocals', $parts) !== false,
+            'lead'   => array_search('lead', $parts, true) !== false,
+            'rhythm' => array_search('rhythm', $parts, true) !== false,
+            'bass'   => array_search('bass', $parts, true) !== false,
+            'vocals' => array_search('vocals', $parts, true) !== false,
         ];
     }
 

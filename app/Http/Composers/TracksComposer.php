@@ -22,7 +22,6 @@ class TracksComposer
         $this->container = $container;
     }
 
-
     /**
      * @param View $view
      */
@@ -32,7 +31,7 @@ class TracksComposer
     }
 
     /**
-     * Get the CDLC in the local files
+     * Get the CDLC in the local files.
      *
      * @return string[]
      */

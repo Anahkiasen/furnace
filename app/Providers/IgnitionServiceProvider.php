@@ -1,10 +1,9 @@
 <?php
 namespace Furnace\Providers;
 
+use Furnace\Services\Ignition;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
-use Illuminate\Cache\Repository;
-use Furnace\Services\Ignition;
 use Illuminate\Support\ServiceProvider;
 
 class IgnitionServiceProvider extends ServiceProvider
