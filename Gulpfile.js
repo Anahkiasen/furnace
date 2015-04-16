@@ -15,8 +15,8 @@ var gulp       = require('gulp'),
 var config = {
 	"paths"  : {
 		"original": {
-			"css"  : "public/app/sass",
-			"js"   : "public/app/js",
+			"css"  : "resources/assets/sass",
+			"js"   : "resources/assets/js",
 			"views": "resources/views"
 		},
 		"compiled": {
@@ -30,13 +30,13 @@ var config = {
 	],
 	"styles" : [
 		"public/components/bootswatch/flatly/bootstrap.css",
-		"public/app/sass/**/*.scss"
+		"resources/assets/sass/**/*.scss"
 	],
 	"scripts": [
 		"public/components/jquery/dist/jquery.js",
 		"public/components/angular/angular.js",
 		"public/components/jquery.tablesorter/js/jquery.tablesorter.js",
-		"public/app/js/**/*.js"
+		"resources/assets/js/**/*.js"
 	]
 };
 

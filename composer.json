@@ -1,32 +1,50 @@
 {
-  "name": "Anahkiasen/notetracker",
+  "name": "anahkiasen/furnace",
+  "description": "An app to rate Rocksmith CDLCs",
+  "keywords": [
+    "rocksmith",
+    "cdlc"
+  ],
+  "license": "MIT",
+  "type": "project",
   "require": {
-    "twig/twig": "~1.18",
-    "league/container": "~1.3",
-    "league/route": "~1.1",
-    "filp/whoops": "~1.1",
-    "illuminate/database": "~5.0",
+    "laravel/framework": "5.0.*",
     "league/csv": "~7.0",
     "guzzlehttp/guzzle": "~5.2",
-    "mnapoli/silly": "~1.1",
-    "illuminate/cache": "~5.0",
-    "illuminate/filesystem": "~5.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Notetracker\\": "src"
-    }
-  },
-  "authors": [
-    {
-      "name": "Maxime Fabre",
-      "email": "ehtnam6@gmail.com"
-    }
-  ],
-  "require-dev": {
-    "symfony/var-dumper": "~2.6",
-    "psy/psysh": "0.4.*",
+    "rcrowe/twigbridge": "0.7.*",
     "symfony/dom-crawler": "~2.6",
     "symfony/css-selector": "~2.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "phpspec/phpspec": "~2.1",
+    "laracasts/generators": "~1.1",
+    "symfony/var-dumper": "~2.6",
+    "barryvdh/laravel-debugbar": "~2.0"
+  },
+  "autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "Furnace\\": "app/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php artisan clear-compiled",
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "php artisan clear-compiled",
+      "php artisan optimize"
+    ],
+    "post-create-project-cmd": [
+      "php -r \"copy('.env.example', '.env');\"",
+      "php artisan key:generate"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
   }
 }

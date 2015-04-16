@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Furnace
+        psr4_prefix: Furnace
+        src_path: app
