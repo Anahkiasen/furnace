@@ -3,20 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tracker</title>
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/flatly/bootstrap.min.css" rel="stylesheet">
-	<style type="text/css">
-		.container {
-			width: 85%;
-		}
-		.label[disabled] {
-			opacity: 0.25;
-			background-color: #AAA;
-		}
-		.table .success td {
-			background-color: hsla(168, 77%, 41%, 0.1) !important;
-			color: black;
-		}
-	</style>
+	<link rel="stylesheet" href="/builds/css/styles.css" />
 </head>
 <body>
 	{% include '_partials/navigation.twig' %}
@@ -25,25 +12,6 @@
 		{% block content %}{% endblock %}
 	</main>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.21.5/js/jquery.tablesorter.combined.min.js"></script>
-	<script>
-		$.tablesorter.addParser({
-			id: 'boolean',
-			is: function (text, table, cell) {
-				return cell.getElementsByClassName('glyphicon').length;
-			},
-			format: function (text, table, cell) {
-				var icon = cell.getElementsByClassName('glyphicon')[0];
-
-				return icon.classList.contains('glyphicon-ok');
-
-			},
-			parsed: false,
-			type: 'numeric',
-		});
-
-		$('table').tablesorter();
-	</script>
+	<script src="/builds/js/scripts.js"></script>
 </body>
 </html>
