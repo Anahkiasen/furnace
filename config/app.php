@@ -137,7 +137,6 @@ return [
         // Application
         'Furnace\Providers\AppServiceProvider',
         'Furnace\Providers\BusServiceProvider',
-        'Furnace\Providers\ConfigServiceProvider',
         'Furnace\Providers\EventServiceProvider',
         'Furnace\Providers\RouteServiceProvider',
         'Furnace\Providers\IgnitionServiceProvider',
