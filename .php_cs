@@ -4,7 +4,7 @@ use Symfony\CS\Finder\DefaultFinder;
 use Symfony\CS\Fixer\Contrib\HeaderCommentFixer;
 use Symfony\CS\FixerInterface;
 
-$finder = DefaultFinder::create()->in(['app', 'database']);
+$finder = DefaultFinder::create()->in(['app', 'database', 'config']);
 
 return Config::create()
              ->level(FixerInterface::SYMFONY_LEVEL)

@@ -10,14 +10,14 @@ class AnnotationsServiceProvider extends ServiceProvider
     /**
      * The classes to scan for event annotations.
      *
-     * @var array
+     * @type array
      */
     protected $scanEvents = [];
 
     /**
      * The classes to scan for route annotations.
      *
-     * @var array
+     * @type array
      */
     protected $scanRoutes = [
         TracksController::class,
@@ -27,22 +27,22 @@ class AnnotationsServiceProvider extends ServiceProvider
     /**
      * The classes to scan for model annotations.
      *
-     * @var array
+     * @type array
      */
     protected $scanModels = [];
 
     /**
      * Determines if we will auto-scan in the local environment.
      *
-     * @var bool
+     * @type bool
      */
     protected $scanWhenLocal = false;
 
     /**
      * Determines whether or not to automatically scan the controllers
-     * directory (App\Http\Controllers) for routes
+     * directory (App\Http\Controllers) for routes.
      *
-     * @var bool
+     * @type bool
      */
     protected $scanControllers = false;
 
@@ -50,8 +50,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      * Determines whether or not to automatically scan all namespaced
      * classes for event, route, and model annotations.
      *
-     * @var bool
+     * @type bool
      */
     protected $scanEverything = false;
-
 }

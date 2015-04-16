@@ -9,6 +9,7 @@ class TrackersController extends Controller
 {
     /**
      * @Get("trackers")
+     *
      * @return string
      */
     public function index()

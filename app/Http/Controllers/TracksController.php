@@ -26,6 +26,7 @@ class TracksController extends Controller
 
     /**
      * @Get("/")
+     *
      * @return \Illuminate\View\View
      */
     public function index()
@@ -42,6 +43,7 @@ class TracksController extends Controller
 
     /**
      * @Post("/")
+     *
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
