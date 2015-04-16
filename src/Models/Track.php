@@ -11,7 +11,12 @@ class Track extends AbstractModel
     /**
      * @type int
      */
-    const RATING_SCALE = 19;
+    public static $ratingScale = 19;
+
+    /**
+     * The standard number of difficulty levels
+     */
+    const STANDARD_DIFFICULTY_LEVELS = 8;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
@@ -51,6 +56,7 @@ class Track extends AbstractModel
             $this->presilence,
             $this->dd,
             $this->riff_repeater,
+            round($this->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS),
             count($parts),
             $this->updated_at->diffInMonths() < 6,
         ];

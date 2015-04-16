@@ -24,11 +24,13 @@ class TracksController
      */
     public function index()
     {
-        $tracks = Track::with('tracker')->get();
-        $tracks = $tracks->sortByDesc('rating');
+        $tracks             = Track::with('tracker')->get();
+        $tracks             = $tracks->sortByDesc('rating');
+        Track::$ratingScale = $tracks->max('rating');
 
         return $this->view->render('tracks/index.twig', [
-            'tracks' => $tracks,
+            'tracks'       => $tracks,
+            'rating_scale' => Track::$ratingScale,
         ]);
     }
 }

@@ -33,7 +33,6 @@ class ViewServiceProvider extends ServiceProvider
 
             $twig->addExtension(new Twig_Extension_Debug());
             $twig->addGlobal('request', $this->container->get('request'));
-            $twig->addGlobal('rating_scale', Track::RATING_SCALE);
 
             return $twig;
         });

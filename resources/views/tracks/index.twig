@@ -12,6 +12,7 @@
 			<th>Parts</th>
 			<th>DD</th>
 			<th>RR</th>
+			<th>Levels</th>
 			<th>Live</th>
 			<th>Volume</th>
 			<th>Silence</th>
@@ -26,7 +27,7 @@
 		</thead>
 		<tbody>
 		{% for track in tracks %}
-			<tr class="{% if not track.playable %}danger{% endif %} {% if track.rating >= 16 %}success{% endif %}">
+			<tr class="{% if not track.playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
 				<td>{{ track.artist }}</td>
 				<td>{{ track.name }}</td>
 				<td>{{ track.tracker.name }}</td>
@@ -39,6 +40,7 @@
 				</td>
 				<td>{{ boolean(track.dd) }}</td>
 				<td>{{ boolean(track.riff_repeater) }}</td>
+				<td>{{ track.difficulty_levels }}</td>
 				<td>{{ boolean(track.live) }}</td>
 				<td>{{ boolean(track.normalized_volume) }}</td>
 				<td>{{ boolean(track.presilence) }}</td>
