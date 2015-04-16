@@ -1,0 +1,29 @@
+{% macro boolean(name) %}
+	<select name="{{ name }}" id="{{ name }}" class="form-control">
+		<option disabled selected="selected">{{ name }}</option>
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+{% endmacro %}
+
+<form class="form-inline" action="/tracks" method="POST" enctype="multipart/form-data">
+	<input type="text" class="form-control" name="ignition_id" placeholder="#">
+
+	<select name="file" id="file" class="form-control">
+		{% for file, track in cdlc %}
+			<option value="{{ file }}">{{ track }}</option>
+		{% endfor %}
+	</select>
+
+	<input type="number" class="form-control" name="tone" min="1" max="3" placeholder="tone" />
+	<input type="number" class="form-control" name="track" min="1" max="3" placeholder="track" />
+	<input type="number" class="form-control" name="tab" min="1" max="3" placeholder="tab" />
+
+	{{ _self.boolean('presilence') }}
+	{{ _self.boolean('normalized_volume') }}
+	{{ _self.boolean('live') }}
+	{{ _self.boolean('playable') }}
+
+	<input type="submit" class="btn btn-primary" value="Add" />
+</form>
+

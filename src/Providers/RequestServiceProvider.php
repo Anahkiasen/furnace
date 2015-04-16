@@ -10,7 +10,8 @@ class RequestServiceProvider extends ServiceProvider
      * @type array
      */
     protected $provides = [
-      'request',
+        Request::class,
+        'request',
     ];
 
     /**
@@ -20,8 +21,12 @@ class RequestServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->container->singleton(Request::class, function () {
+            return Request::createFromGlobals();
+        });
+
         $this->container->singleton('request', function () {
-           return Request::createFromGlobals();
+            return $this->container->get(Request::class);
         });
     }
 }

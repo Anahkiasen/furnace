@@ -2,6 +2,7 @@
 namespace Notetracker\Providers;
 
 use Illuminate\Database\Capsule\Manager;
+use Illuminate\Events\Dispatcher;
 use League\Container\ServiceProvider;
 
 class DatabaseServiceProvider extends ServiceProvider

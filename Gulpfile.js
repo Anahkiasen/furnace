@@ -95,7 +95,7 @@ gulp.task('watch', function () {
 
 	gulp.watch(config.paths.original.css + '/**/*.scss', ['css']);
 	gulp.watch(config.paths.original.js + '/**/*.js', ['js']);
-	gulp.watch(config.paths.original.views + '/**/*.php', function () {
+	gulp.watch(config.paths.original.views + '/**/*.twig', function () {
 		livereload.reload('index.php');
 	});
 });

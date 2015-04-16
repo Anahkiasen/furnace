@@ -1,7 +1,10 @@
 <?php
 namespace Notetracker\Controllers;
 
-use Notetracker\Models\Track;
+use Notetracker\Entities\Models\Track;
+use Notetracker\Services\Ignition;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Twig_Environment;
 
 class TracksController
@@ -12,11 +15,23 @@ class TracksController
     protected $view;
 
     /**
-     * @param Twig_Environment $view
+     * @type Request
      */
-    public function __construct(Twig_Environment $view)
+    private $request;
+    /**
+     * @type Ignition
+     */
+    private $ignition;
+
+    /**
+     * @param Twig_Environment $view
+     * @param Request          $request
+     */
+    public function __construct(Twig_Environment $view, Ignition $ignition, Request $request)
     {
-        $this->view = $view;
+        $this->view    = $view;
+        $this->request = $request;
+        $this->ignition = $ignition;
     }
 
     /**
@@ -32,5 +47,17 @@ class TracksController
             'tracks'       => $tracks,
             'rating_scale' => Track::$ratingScale,
         ]);
+    }
+
+    /**
+     * Store a track
+     */
+    public function store()
+    {
+        $attributes = $this->request->request->all();
+        $attributes = $this->ignition->complete($attributes);
+        $track      = Track::create($attributes);
+
+        return new RedirectResponse('/');
     }
 }

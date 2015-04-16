@@ -1,13 +1,14 @@
+@import 'utils/variables';
+@import 'utils/functions';
+
 .container {
 	width: 85%;
 }
 
 .label[disabled] {
 	opacity: 0.25;
-	background-color: #AAA;
+	background-color: grey(65);
 }
 
-.table .success td {
-	background-color: hsla(168, 77%, 41%, 0.1) !important;
-	color: black;
-}
+@import 'components/table';
+@import 'components/forms';

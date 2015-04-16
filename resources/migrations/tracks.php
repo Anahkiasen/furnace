@@ -22,6 +22,7 @@ $schema->create('tracks', function (Blueprint $table) {
     $table->integer('tone')->default(0);
     $table->integer('track')->default(0);
     $table->integer('tab')->default(0);
+    $table->integer('ignition_id')->unsigned();
     $table->integer('tracker_id')->unsigned()->index()->nullable();
     $table->timestamps();
 

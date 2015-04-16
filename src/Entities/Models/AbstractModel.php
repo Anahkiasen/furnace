@@ -1,5 +1,5 @@
 <?php
-namespace Notetracker\Models;
+namespace Notetracker\Entities\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Notetracker\Collection;

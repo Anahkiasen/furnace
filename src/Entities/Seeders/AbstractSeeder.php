@@ -1,5 +1,5 @@
 <?php
-namespace Notetracker\Seeders;
+namespace Notetracker\Entities\Seeders;
 
 use League\Container\ContainerAwareTrait;
 use League\Csv\Reader;

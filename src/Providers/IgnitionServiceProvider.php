@@ -13,6 +13,7 @@ class IgnitionServiceProvider extends ServiceProvider
      * @type array
      */
     protected $provides = [
+        Ignition::class,
         'ignition',
     ];
 
@@ -31,6 +32,10 @@ class IgnitionServiceProvider extends ServiceProvider
             ]);
 
             return new Ignition($client, $this->container->get(Repository::class));
+        });
+
+        $this->container->singleton(Ignition::class, function () {
+            return $this->container->get('ignition');
         });
     }
 }

@@ -1,0 +1,19 @@
+.table {
+	.success td {
+		background-color: rgba($color-green, 0.1) !important;
+
+		&, a {
+			color: black;
+		}
+	}
+
+	tfoot {
+		background: grey(95);
+		text-align: center;
+
+		input[type="number"] {
+			width: 8rem;
+		}
+	}
+}
+

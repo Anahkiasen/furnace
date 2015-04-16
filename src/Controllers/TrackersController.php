@@ -1,7 +1,7 @@
 <?php
 namespace Notetracker\Controllers;
 
-use Notetracker\Models\Tracker;
+use Notetracker\Entities\Models\Tracker;
 use Twig_Environment;
 
 class TrackersController

@@ -3,6 +3,8 @@ namespace Notetracker\Services;
 
 use GuzzleHttp\Client;
 use Illuminate\Cache\Repository;
+use Illuminate\Support\Arr;
+use Notetracker\Entities\Models\Tracker;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Ignition
@@ -47,6 +49,60 @@ class Ignition
     }
 
     /**
+     * Complete a track's informations
+     *
+     * @param array $track
+     *
+     * @return array|void
+     */
+    public function complete(array $track)
+    {
+        $meta = $this->track($track['ignition_id']);
+
+        // Create Tracker
+        if (!$tracker = Arr::get($meta, 'member')) {
+            return;
+        }
+
+        $tracker = Tracker::firstOrCreate(['name' => $tracker]);
+
+        return array_merge(
+            array_only($track, [
+                'file',
+                'presilence',
+                'normalized_volume',
+                'live',
+                'playable',
+                'tone',
+                'track',
+                'tab',
+                'ignition_id',
+            ]),
+            array_only($meta, [
+                'artist',
+                'album',
+                'parts',
+                'tuning',
+                'difficulty_levels',
+                'riff_repeater',
+                'version',
+            ]),
+            [
+                'dd'         => array_get($meta, 'dd', 'no') == 'yes',
+                'name'       => array_get($meta, 'title'),
+                'tracker_id' => $tracker->id,
+                'created_at' => array_get($meta, 'added'),
+                'updated_at' => array_get($meta, 'updated'),
+            ]
+        );
+
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////// INFORMATIONS ////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+    /**
      * Get the track's forum page informations
      *
      * @param integer $track
@@ -86,6 +142,10 @@ class Ignition
             return $this->client->get('http://ignition.customsforge.com/search/get_cdlc?id='.$track)->json();
         });
     }
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////// AUTH ////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
     /**
      * Authenticate with the API.

@@ -1,5 +1,5 @@
 <?php
-namespace Notetracker\Models;
+namespace Notetracker\Entities\Models;
 
 class Track extends AbstractModel
 {

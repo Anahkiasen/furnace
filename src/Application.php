@@ -2,6 +2,7 @@
 namespace Notetracker;
 
 use Illuminate\Database\Capsule\Manager;
+use League\Container\ContainerAwareTrait;
 use League\Container\ContainerInterface;
 use League\Route\RouteCollection;
 use Notetracker\Console\Console;
@@ -25,10 +26,7 @@ use Whoops\Run;
  */
 class Application
 {
-    /**
-     * @type ContainerInterface
-     */
-    protected $container;
+    use ContainerAwareTrait;
 
     /**
      * @type array
