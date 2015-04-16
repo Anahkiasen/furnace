@@ -67,6 +67,8 @@ class TracksSeeder extends AbstractSeeder
                 'album',
                 'parts',
                 'tuning',
+                'difficulty_levels',
+                'riff_repeater',
                 'version',
             ]),
             [

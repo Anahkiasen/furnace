@@ -11,6 +11,7 @@
 			<th>Tuning</th>
 			<th>Parts</th>
 			<th>DD</th>
+			<th>RR</th>
 			<th>Live</th>
 			<th>Volume</th>
 			<th>Silence</th>
@@ -37,6 +38,7 @@
 					<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
 				</td>
 				<td>{{ boolean(track.dd) }}</td>
+				<td>{{ boolean(track.riff_repeater) }}</td>
 				<td>{{ boolean(track.live) }}</td>
 				<td>{{ boolean(track.normalized_volume) }}</td>
 				<td>{{ boolean(track.presilence) }}</td>

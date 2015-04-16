@@ -16,6 +16,8 @@ $schema->create('tracks', function (Blueprint $table) {
     $table->boolean('normalized_volume')->default(false);
     $table->boolean('live')->default(false);
     $table->boolean('dd')->default(false);
+    $table->boolean('riff_repeater')->default(false);
+    $table->integer('difficulty_levels');
     $table->boolean('playable')->default(false);
     $table->integer('tone')->default(0);
     $table->integer('track')->default(0);

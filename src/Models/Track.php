@@ -11,7 +11,7 @@ class Track extends AbstractModel
     /**
      * @type int
      */
-    const RATING_SCALE = 18;
+    const RATING_SCALE = 19;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
@@ -50,6 +50,7 @@ class Track extends AbstractModel
             $this->normalized_volume,
             $this->presilence,
             $this->dd,
+            $this->riff_repeater,
             count($parts),
             $this->updated_at->diffInMonths() < 6,
         ];

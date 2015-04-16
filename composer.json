@@ -25,6 +25,8 @@
   ],
   "require-dev": {
     "symfony/var-dumper": "~2.6",
-    "psy/psysh": "0.4.*"
+    "psy/psysh": "0.4.*",
+    "symfony/dom-crawler": "~2.6",
+    "symfony/css-selector": "~2.6"
   }
 }
