@@ -7,6 +7,7 @@ use Notetracker\Console\Console;
 use Notetracker\Models\Track;
 use Notetracker\Models\Tracker;
 use Notetracker\Seeders\TracksSeeder;
+use Psy\Shell;
 use Silly\Application;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -71,6 +72,15 @@ class ConsoleServiceProvider extends ServiceProvider
                 $seeder->setOutput($output);
                 $seeder->run();
             }
+        });
+
+        $console->command('tinker', function () use ($container) {
+            $shell = new Shell();
+            $shell->setScopeVariables([
+                'app' => new \Notetracker\Application($container),
+            ]);
+
+            $shell->run();
         });
     }
 }
