@@ -5,18 +5,12 @@ use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Post;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
+use Illuminate\Http\Request;
 use Redirect;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Twig_Environment;
 use View;
 
 class TracksController extends Controller
 {
-    /**
-     * @type Request
-     */
-    private $request;
     /**
      * @type Ignition
      */
@@ -24,18 +18,15 @@ class TracksController extends Controller
 
     /**
      * @param Ignition $ignition
-     * @param Request  $request
      */
-    public function __construct(Ignition $ignition, Request $request)
+    public function __construct(Ignition $ignition)
     {
-        $this->request  = $request;
         $this->ignition = $ignition;
     }
 
     /**
      * @Get("/")
-     *
-     * @return string
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -51,12 +42,13 @@ class TracksController extends Controller
 
     /**
      * @Post("/")
+     * @param Request $request
      *
-     * Store a track.
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(Request $request)
     {
-        $attributes = $this->request->request->all();
+        $attributes = $request->all();
         $attributes = $this->ignition->complete($attributes);
         $track      = Track::create($attributes);
 
