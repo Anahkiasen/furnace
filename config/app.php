@@ -136,18 +136,19 @@ return [
 
         // Application
         'Furnace\Providers\AppServiceProvider',
-        'Furnace\Providers\BusServiceProvider',
-        'Furnace\Providers\EventServiceProvider',
-        'Furnace\Providers\RouteServiceProvider',
+        'Furnace\Providers\Kernel\BusServiceProvider',
+        'Furnace\Providers\Kernel\EventServiceProvider',
+        'Furnace\Providers\Kernel\RouteServiceProvider',
         'Furnace\Providers\IgnitionServiceProvider',
         'Furnace\Providers\ViewServiceProvider',
         'Furnace\Providers\PathsServiceProvider',
-        'Furnace\Providers\AnnotationsServiceProvider',
+        'Furnace\Providers\Kernel\AnnotationsServiceProvider',
 
         // Packages
         'TwigBridge\ServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Gvb\Whoops\ServiceProvider',
 
     ],
 

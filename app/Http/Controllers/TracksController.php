@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Redirect;
 use View;
 
-class TracksController extends Controller
+class TracksController extends AbstractController
 {
     /**
      * @type Ignition

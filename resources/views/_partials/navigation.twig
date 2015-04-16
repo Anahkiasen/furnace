@@ -13,6 +13,14 @@
 					<a href="{{ URL.action('TrackersController@index') }}">Blacksmiths</a>
 				</li>
 			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				{% if Auth.guest() %}
+					<li><a href="#">Login</a></li>
+					<li><a href="{{ URL.action('UsersController@signup') }}">Signup</a></li>
+				{% else %}
+				{% endif %}
+			</ul>
 		</div>
 	</div>
 </nav>

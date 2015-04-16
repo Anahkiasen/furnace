@@ -7,6 +7,9 @@ use View;
 
 class ViewServiceProvider extends ServiceProvider
 {
+    /**
+     * Boot the provider
+     */
     public function boot()
     {
         View::composer('tracks/index', TracksComposer::class);

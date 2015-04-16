@@ -1,9 +1,7 @@
 <?php
-namespace Furnace\Providers;
+namespace Furnace\Providers\Kernel;
 
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
-use Furnace\Http\Controllers\TrackersController;
-use Furnace\Http\Controllers\TracksController;
 
 class AnnotationsServiceProvider extends ServiceProvider
 {
@@ -19,10 +17,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      *
      * @type array
      */
-    protected $scanRoutes = [
-        TracksController::class,
-        TrackersController::class,
-    ];
+    protected $scanRoutes = [];
 
     /**
      * The classes to scan for model annotations.
@@ -36,7 +31,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      *
      * @type bool
      */
-    protected $scanWhenLocal = false;
+    protected $scanWhenLocal = true;
 
     /**
      * Determines whether or not to automatically scan the controllers
@@ -44,7 +39,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      *
      * @type bool
      */
-    protected $scanControllers = false;
+    protected $scanControllers = true;
 
     /**
      * Determines whether or not to automatically scan all namespaced

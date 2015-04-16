@@ -1,5 +1,5 @@
 <?php
-namespace Furnace\Providers;
+namespace Furnace\Providers\Kernel;
 
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;

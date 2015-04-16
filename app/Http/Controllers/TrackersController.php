@@ -5,7 +5,7 @@ use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Furnace\Entities\Models\Tracker;
 use View;
 
-class TrackersController extends Controller
+class TrackersController extends AbstractController
 {
     /**
      * @Get("trackers")

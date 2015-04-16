@@ -129,6 +129,7 @@ return [
         |
         */
         'facades'   => [
+            'Auth',
             'URL',
         ],
         /*
