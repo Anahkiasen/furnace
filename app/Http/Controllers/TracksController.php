@@ -1,8 +1,11 @@
 <?php
 namespace Furnace\Http\Controllers;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
+use Collective\Annotations\Routing\Annotations\Annotations\Post;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
+use Redirect;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Twig_Environment;
@@ -20,8 +23,8 @@ class TracksController extends Controller
     private $ignition;
 
     /**
-     * @param Twig_Environment $view
-     * @param Request          $request
+     * @param Ignition $ignition
+     * @param Request  $request
      */
     public function __construct(Ignition $ignition, Request $request)
     {
@@ -30,6 +33,8 @@ class TracksController extends Controller
     }
 
     /**
+     * @Get("/")
+     *
      * @return string
      */
     public function index()
@@ -45,6 +50,8 @@ class TracksController extends Controller
     }
 
     /**
+     * @Post("/")
+     *
      * Store a track.
      */
     public function store()
@@ -53,6 +60,6 @@ class TracksController extends Controller
         $attributes = $this->ignition->complete($attributes);
         $track      = Track::create($attributes);
 
-        return new RedirectResponse('/');
+        return Redirect::action(static::class.'@index');
     }
 }

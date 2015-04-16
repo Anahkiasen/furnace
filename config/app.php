@@ -143,10 +143,12 @@ return [
 		'Furnace\Providers\IgnitionServiceProvider',
 		'Furnace\Providers\ViewServiceProvider',
 		'Furnace\Providers\PathsServiceProvider',
+		'Furnace\Providers\AnnotationsServiceProvider',
 
 		// Packages
 		'TwigBridge\ServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	],
 

@@ -4,7 +4,7 @@ namespace Furnace\Entities\Models;
 use Furnace\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class AbstractModel extends Model
+abstract class AbstractModel extends Model
 {
     /**
      * Create a new Eloquent Collection instance.

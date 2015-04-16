@@ -1,27 +1,14 @@
 <?php
 namespace Furnace\Http\Controllers;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Furnace\Entities\Models\Tracker;
-use Twig_Environment;
+use View;
 
 class TrackersController extends Controller
 {
     /**
-     * @type Twig_Environment
-     */
-    protected $view;
-
-    /**
-     * TrackersController constructor.
-     *
-     * @param Twig_Environment $view
-     */
-    public function __construct(Twig_Environment $view)
-    {
-        $this->view = $view;
-    }
-
-    /**
+     * @Get("trackers")
      * @return string
      */
     public function index()
@@ -29,7 +16,7 @@ class TrackersController extends Controller
         $trackers = Tracker::with('tracks')->get();
         $trackers = $trackers->sortByDesc('rating');
 
-        return $this->view->render('trackers/index.twig', [
+        return View::make('trackers/index', [
             'trackers' => $trackers,
         ]);
     }
