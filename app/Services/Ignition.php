@@ -145,9 +145,9 @@ class Ignition
     {
         $this->client->post('http://customsforge.com/index.php?app=core&module=global&section=login&do=process', [
             'body' => [
-                'ips_username' => 'Anahkiasen',
-                'ips_password' => 'cXQMU9PF6mXMxYdeplLEkfqwFScgDl',
-                'auth_key'     => '880ea6a14ea49e853634fbdc5015a024',
+                'ips_username' => env('IGNITION_USERNAME'),
+                'ips_password' => env('IGNITION_PASSWORD'),
+                'auth_key'     => env('IGNITION_KEY'),
                 'rememberMe'   => 1,
             ],
         ]);
