@@ -9,7 +9,9 @@
 		<fieldset>
 			<legend>CDLC</legend>
 			{{ Former.select('track_id', 'CDLC').options(tracks).setAttribute('selectize', '').help('If you can\t find the one you want here, fill the field below') }}
-			{{ Former.text('ignition_id', 'Track #').help("<a target=\"_blank\" href=\"#{URL.route('help.identifier')}\">Where can I find this?</a>") }}
+			{% if not rating.track_id %}
+				{{ Former.text('ignition_id', 'Track #').help("<a target=\"_blank\" href=\"#{URL.route('help.identifier')}\">Where can I find this?</a>") }}
+			{% endif %}
 		</fieldset>
 
 		<fieldset>

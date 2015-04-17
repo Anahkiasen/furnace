@@ -29,9 +29,9 @@
 		<tbody>
 		{% for track in tracks %}
 			<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
-				<td>{{ track.artist }}</td>
-				<td>{{ track.name }}</td>
-				<td>{{ track.tracker.name }}</td>
+				<td>{{ track.artist|raw }}</td>
+				<td>{{ track.name|raw }}</td>
+				<td>{{ track.tracker.name|raw }}</td>
 				<td>{{ track.tuning }}</td>
 				<td>
 					<span class="label label-warning" {% if not track.parts.lead %}disabled{% endif %}>L</span>

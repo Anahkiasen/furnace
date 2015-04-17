@@ -3,13 +3,15 @@
 
 	.navbar-nav {
 
-		> li > .btn {
-			padding: 0.5em;
-			margin-top: 0.75em;
+		> li {
+			> .cta {
+				background: $color-green;
+				transition: background 0.3s;
 
-			&-success:hover {
-				background: lighten($color-green, 5);
-				color: white;
+				&:hover, &:active {
+					background: lighten($color-green, 5);
+					color: white;
+				}
 			}
 		}
 
