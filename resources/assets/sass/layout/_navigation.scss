@@ -1,8 +1,11 @@
 .navbar-default {
 	border-radius: 0;
 
-	.navbar-nav {
+	.navbar-brand em {
+		opacity: 0.55;
+	}
 
+	.navbar-nav {
 		> li {
 			> .cta {
 				background: $color-green;
