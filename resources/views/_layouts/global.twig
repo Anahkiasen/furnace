@@ -5,7 +5,7 @@
 	<title>{{ title ? "#{title} - Furnace" : 'Furnace' }}</title>
 	<link rel="stylesheet" href="{{ URL.asset('builds/css/styles.css') }}" />
 </head>
-<body>
+<body ng-app="notetracker" ng-controller="AppController">
 	{% include '_partials/navigation.twig' %}
 
 	<main class="container {{ body_classes }}">

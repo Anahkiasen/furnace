@@ -4,7 +4,11 @@
 {% block content %}
 	{% autoescape false %}
 		{{ Former.open() }}
-			{{ Former.text('track_id', 'Track #').help('<a target="_blank" href="#">Where can I find this?</a>') }}
+			<fieldset>
+				<legend>CDLC</legend>
+				{{ Former.select('track_id', 'CDLC').options(tracks).help('If you can\t find the one you want here, fill the field below') }}
+				{{ Former.text('ignition_id', 'Track #').help('<a target="_blank" href="#">Where can I find this?</a>') }}
+			</fieldset>
 
 		<fieldset>
 			<legend>Experience</legend>

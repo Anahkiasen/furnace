@@ -2,10 +2,9 @@
 
 {% block content %}
 	{% autoescape false %}
-		{{ Former.open() }}
+		{{ Former.open().action('#') }}
 		<fieldset>
 			<legend>Login</legend>
-			{{ dump(Session.get('error'), Session.all()) }}
 			{% if Session.has('error') %}
 				<p class="alert alert-danger">Username or password is incorrect</p>
 			{% endif %}

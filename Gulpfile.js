@@ -35,6 +35,7 @@ var config = {
 	"scripts": [
 		"public/components/jquery/dist/jquery.js",
 		"public/components/angular/angular.js",
+		"public/components/bootstrap/dist/js/bootstrap.js",
 		"public/components/jquery.tablesorter/js/jquery.tablesorter.js",
 		"resources/assets/js/**/*.js"
 	]

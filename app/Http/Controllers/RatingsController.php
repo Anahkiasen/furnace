@@ -6,7 +6,7 @@ use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use View;
 
 /**
- * @Resource("ratings", only={"create"})
+ * @Resource("ratings", only={"create", "store"})
  * @Middleware("auth")
  */
 class RatingsController extends AbstractController
@@ -17,5 +17,10 @@ class RatingsController extends AbstractController
     public function create()
     {
         return View::make('ratings/create');
+    }
+
+    public function store()
+    {
+
     }
 }

@@ -19,9 +19,14 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				{% if Auth.check() %}
-					<li><a href="#">{{ current_user.name }}</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_user.name }} <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ URL.route('auth.logout') }}">Logout</a></li>
+						</ul>
+					</li>
 				{% else %}
-					<li><a href="#">Login</a></li>
+					<li><a href="{{ URL.route('auth.login') }}">Login</a></li>
 					<li><a href="{{ URL.route('users.create') }}">Signup</a></li>
 				{% endif %}
 			</ul>
