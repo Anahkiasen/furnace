@@ -17,7 +17,7 @@ class RatingsComposer
             $options[$track->id] = sprintf('%s - %s [%s]', $track->artist, $track->name, $track->tracker->name);
         }
 
-        sort($options);
+        ksort($options);
 
         $view->tracks = ['' => ''] + $options;
     }
