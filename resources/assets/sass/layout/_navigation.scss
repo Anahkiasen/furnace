@@ -1,15 +1,17 @@
-.navbar-default .navbar-nav {
+.navbar-default {
+	border-radius: 0;
 
-	> li > .btn {
-		padding: 0.5em;
-		margin-top: 0.75em;
+	.navbar-nav {
 
-		&-success:hover {
-			background: lighten($color-green, 5);
-			color: white;
+		> li > .btn {
+			padding: 0.5em;
+			margin-top: 0.75em;
+
+			&-success:hover {
+				background: lighten($color-green, 5);
+				color: white;
+			}
 		}
+
 	}
-
-
-
 }
