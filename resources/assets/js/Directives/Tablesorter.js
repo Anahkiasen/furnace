@@ -1,4 +1,4 @@
-angular.module('notetracker').directive('tablesorter', function () {
+angular.module('furnace').directive('tablesorter', function () {
 	return {
 		restrict: 'A',
 		link    : function ($scope, $element) {

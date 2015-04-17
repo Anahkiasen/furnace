@@ -19,6 +19,6 @@ class RatingsComposer
 
         sort($options);
 
-        $view->tracks = $options;
+        $view->tracks = ['' => ''] + $options;
     }
 }

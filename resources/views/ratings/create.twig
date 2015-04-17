@@ -6,7 +6,7 @@
 		{{ Former.open() }}
 			<fieldset>
 				<legend>CDLC</legend>
-				{{ Former.select('track_id', 'CDLC').options(tracks).help('If you can\t find the one you want here, fill the field below') }}
+				{{ Former.select('track_id', 'CDLC').options(tracks).setAttribute('selectize', '').help('If you can\t find the one you want here, fill the field below') }}
 				{{ Former.text('ignition_id', 'Track #').help('<a target="_blank" href="#">Where can I find this?</a>') }}
 			</fieldset>
 

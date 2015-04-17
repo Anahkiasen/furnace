@@ -1,16 +1,11 @@
-var gulp       = require('gulp'),
-		annotate   = require('gulp-ng-annotate'),
-		changed    = require('gulp-changed'),
-		concat     = require('gulp-concat'),
-		cssmin     = require('gulp-cssmin'),
-		copy       = require('gulp-copy'),
-		livereload = require('gulp-livereload'),
-		plumber    = require('gulp-plumber'),
-		prefix     = require('gulp-autoprefixer'),
-		rename     = require('gulp-rename'),
-		sass       = require('gulp-sass'),
-		sourcemaps = require('gulp-sourcemaps'),
-		uglify     = require('gulp-uglify');
+var gulp     = require('gulp'),
+		gulpLoadPlugins = require('gulp-load-plugins'),
+		plugins  = gulpLoadPlugins({
+			rename: {
+				'gulp-ng-annotate'  : 'annotate',
+				'gulp-autoprefixer': 'prefix',
+			}
+		});
 
 var config = {
 	"paths"  : {
@@ -25,16 +20,19 @@ var config = {
 			"js"   : "public/builds/js"
 		}
 	},
-	"fonts": [
+	"fonts"  : [
 		"public/components/bootswatch/fonts/*",
 	],
 	"styles" : [
 		"public/components/bootswatch/flatly/bootstrap.css",
+		'public/components/selectize/dist/css/selectize.bootstrap3.css',
 		"resources/assets/sass/**/*.scss"
 	],
 	"scripts": [
 		"public/components/jquery/dist/jquery.js",
 		"public/components/angular/angular.js",
+		'public/components/microplugin/src/microplugin.js',
+		'public/components/selectize/dist/js/standalone/selectize.js',
 		"public/components/bootstrap/dist/js/bootstrap.js",
 		"public/components/jquery.tablesorter/js/jquery.tablesorter.js",
 		"resources/assets/js/**/*.js"
@@ -46,43 +44,43 @@ var config = {
 
 gulp.task('css', function () {
 	gulp.src(config.fonts)
-		.pipe(copy(config.paths.compiled.fonts, {prefix: 4}));
+		.pipe(plugins.copy(config.paths.compiled.fonts, {prefix: 4}));
 
 	return gulp.src(config.styles)
-		.pipe(plumber())
-		.pipe(changed(config.paths.compiled.css))
-		.pipe(sass())
-		.pipe(prefix())
-		.pipe(sourcemaps.init())
-		.pipe(concat('styles.css'))
-		.pipe(sourcemaps.write())
+		.pipe(plugins.plumber())
+		.pipe(plugins.changed(config.paths.compiled.css))
+		.pipe(plugins.sass())
+		.pipe(plugins.prefix())
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.concat('styles.css'))
+		.pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(config.paths.compiled.css))
-		.pipe(livereload());
+		.pipe(plugins.livereload());
 });
 
 gulp.task('js', function () {
 	return gulp.src(config.scripts)
-		.pipe(plumber())
-		.pipe(changed(config.paths.compiled.js))
-		.pipe(sourcemaps.init())
-		.pipe(annotate())
-		.pipe(concat('scripts.js'))
-		.pipe(sourcemaps.write())
+		.pipe(plugins.plumber())
+		.pipe(plugins.changed(config.paths.compiled.js))
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.annotate())
+		.pipe(plugins.concat('scripts.js'))
+		.pipe(plugins.sourcemaps.write())
 		.pipe(gulp.dest(config.paths.compiled.js))
-		.pipe(livereload());
+		.pipe(plugins.livereload());
 });
 
 gulp.task('minify', function () {
 	gulp.src(config.paths.compiled.css + '/styles.css')
-		.pipe(plumber())
-		.pipe(cssmin())
-		.pipe(rename({suffix: '.min'}))
+		.pipe(plugins.plumber())
+		.pipe(plugins.cssmin())
+		.pipe(plugins.rename({suffix: '.min'}))
 		.pipe(gulp.dest(config.paths.compiled.css));
 
 	gulp.src(config.paths.compiled.js + '/scripts.js')
-		.pipe(plumber())
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
+		.pipe(plugins.plumber())
+		.pipe(plugins.uglify())
+		.pipe(plugins.rename({suffix: '.min'}))
 		.pipe(gulp.dest(config.paths.compiled.js));
 });
 
@@ -92,11 +90,11 @@ gulp.task('minify', function () {
 gulp.task('default', ['css', 'js']);
 
 gulp.task('watch', function () {
-	livereload.listen();
+	plugins.livereload.listen();
 
 	gulp.watch(config.paths.original.css + '/**/*.scss', ['css']);
 	gulp.watch(config.paths.original.js + '/**/*.js', ['js']);
 	gulp.watch(config.paths.original.views + '/**/*.twig', function () {
-		livereload.reload('index.php');
+		plugins.livereload.reload('index.php');
 	});
 });

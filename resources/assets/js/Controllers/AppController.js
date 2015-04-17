@@ -1,3 +1,3 @@
-angular.module('notetracker').controller('AppController', function ($scope) {
+angular.module('furnace').controller('AppController', function ($scope) {
 
 });

@@ -1,3 +1,5 @@
-var app = angular.module('notetracker', []);
+var app = angular.module('furnace', [
+	// ...
+]);
 
 
