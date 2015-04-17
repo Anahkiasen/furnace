@@ -30,6 +30,7 @@
 
 		<fieldset>
 			<legend>Notes</legend>
+			{{ Former.select('plateform').options(plateforms, null, true) }}
 			{{ Former.textarea('comments', 'Additional comments').rows(15).placeholder('Leaving feedback and explaining you ratings is important. The track will not get better if you never tell what is wrong.') }}
 		</fieldset>
 

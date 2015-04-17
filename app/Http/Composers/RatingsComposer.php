@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Http\Composers;
 
+use Config;
 use Furnace\Entities\Models\Track;
 use Illuminate\View\View;
 
@@ -19,6 +20,21 @@ class RatingsComposer
 
         ksort($options);
 
-        $view->tracks = ['' => ''] + $options;
+        $view->tracks     = ['' => ''] + $options;
+        $view->plateforms = $this->getPlateforms();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getPlateforms()
+    {
+        $options = [];
+        $plateforms = Config::get('furnace.plateforms');
+        foreach ($plateforms as $plateform) {
+            $options[$plateform] = ucfirst($plateform);
+        }
+
+        return $options;
     }
 }

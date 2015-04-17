@@ -21,6 +21,7 @@ class CreateRatingsTable extends Migration
             $table->integer('tab')->default(0);
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
+            $table->enum('plateform', Config::get('furnace.plateforms'))->default('pc');
             $table->timestamps();
 
             $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade');
