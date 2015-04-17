@@ -13,11 +13,7 @@ class UpsertRating extends Request
      */
     public function authorize()
     {
-        /** @type Rating $rating */
-        $rating = $this->route('ratings');
-        $user   = Auth::user();
-
-        return $user && $rating->user_id == $user->id;
+        return Auth::check();
     }
 
     /**

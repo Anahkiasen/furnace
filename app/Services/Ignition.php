@@ -4,7 +4,7 @@ namespace Furnace\Services;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Arr;
-use Notetracker\Entities\Models\Tracker;
+use Furnace\Entities\Models\Tracker;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Ignition
@@ -68,14 +68,6 @@ class Ignition
 
         return array_merge(
             array_only($track, [
-                'file',
-                'presilence',
-                'normalized_volume',
-                'live',
-                'playable',
-                'tone',
-                'track',
-                'tab',
                 'ignition_id',
             ]),
             array_only($meta, [
