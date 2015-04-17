@@ -11,7 +11,7 @@ class RatingsComposer
      */
     public function composeCreate(View $view)
     {
-        $tracks  = Track::all();
+        $tracks  = Track::with('tracker')->get();
         $options = [];
         foreach ($tracks as $track) {
             $options[$track->id] = sprintf('%s - %s [%s]', $track->artist, $track->name, $track->tracker->name);
