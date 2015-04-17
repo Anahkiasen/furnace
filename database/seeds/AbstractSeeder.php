@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use League\Csv\Reader;
-use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class AbstractSeeder extends Seeder
 {

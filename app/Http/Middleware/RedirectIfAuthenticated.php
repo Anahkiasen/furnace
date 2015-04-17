@@ -3,7 +3,6 @@ namespace Furnace\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\RedirectResponse;
 use Redirect;
 
 class RedirectIfAuthenticated

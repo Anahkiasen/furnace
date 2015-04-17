@@ -1,7 +1,6 @@
 <?php
 namespace Furnace\Commands;
 
-use Furnace\Commands\Command;
 use Furnace\Entities\Models\Rating;
 
 class UpsertRatingCommand

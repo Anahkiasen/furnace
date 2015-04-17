@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands;
+<?php
+namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\UpsertRatingCommand;
 use Furnace\Entities\Models\Rating;
@@ -21,7 +22,7 @@ class UpsertRatingCommandHandler
     /**
      * Handle the command.
      *
-     * @param  UpsertRatingCommand $command
+     * @param UpsertRatingCommand $command
      *
      * @return Rating
      */

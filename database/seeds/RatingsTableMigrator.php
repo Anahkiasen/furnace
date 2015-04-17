@@ -1,4 +1,5 @@
 <?php
+
 use Furnace\Entities\Models\Rating;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\User;

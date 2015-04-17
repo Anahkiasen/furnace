@@ -2,7 +2,6 @@
 namespace Furnace\Http\Controllers;
 
 use Auth;
-use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Commands\CreateUserCommand;
@@ -17,6 +16,7 @@ class UsersController extends AbstractController
 {
     /**
      * @Middleware("guest")
+     *
      * @return \Illuminate\View\View
      */
     public function create()

@@ -1,4 +1,5 @@
 <?php
+
 use Furnace\Entities\Models\User;
 
 class UsersTableSeeder extends AbstractSeeder

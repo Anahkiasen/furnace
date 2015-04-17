@@ -2,7 +2,6 @@
 namespace Furnace\Providers;
 
 use Arrounded\Macros\FormerBuilder;
-use Former\Former;
 use Illuminate\Support\ServiceProvider;
 use Laracasts\Generators\GeneratorsServiceProvider;
 
@@ -16,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() === 'local') {
             $this->app->register(GeneratorsServiceProvider::class);
         }
-
     }
 
     /**

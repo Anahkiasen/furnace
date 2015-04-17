@@ -24,6 +24,7 @@ class AuthController extends AbstractController
 
     /**
      * @Post("auth/login")
+     *
      * @param Request $request
      * @param Guard   $auth
      *
@@ -41,6 +42,7 @@ class AuthController extends AbstractController
 
     /**
      * @Get("auth/logout", as="auth.logout")
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout()
