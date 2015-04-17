@@ -1,0 +1,24 @@
+{% extends '_layouts/global.twig' %}
+{% set title = "Getting a track's identifier" %}
+
+{% block content %}
+	<header class="page-header">
+		<h1>{{ title }}</h1>
+	</header>
+
+	<p>
+		To get the identifier of a track on Ignition, click on it. A modal will open with the track's informations.
+		From there, hover over the <strong>Download</strong> button; in your browser's status bar you'll see the link it points to. The number in this link is the identifier you're looking for.
+	</p>
+
+	<div class="row">
+		<p class="col-lg-3">
+			Per example to get Stairway to Heaven's identifier, I click on it in the list, and hover the download button.<br>
+			In this case the identifier would be <code>605</code>
+		</p>
+		<figure class="col-lg-9">
+			<img class="img-thumbnail" src="{{ URL.asset('builds/img/identifier.png') }}" alt="" />
+		</figure>
+
+	</div>
+{% endblock %}

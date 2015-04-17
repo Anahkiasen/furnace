@@ -1,8 +1,8 @@
-var gulp     = require('gulp'),
+var gulp            = require('gulp'),
 		gulpLoadPlugins = require('gulp-load-plugins'),
-		plugins  = gulpLoadPlugins({
+		plugins         = gulpLoadPlugins({
 			rename: {
-				'gulp-ng-annotate'  : 'annotate',
+				'gulp-ng-annotate' : 'annotate',
 				'gulp-autoprefixer': 'prefix',
 			}
 		});
@@ -10,16 +10,21 @@ var gulp     = require('gulp'),
 var config = {
 	"paths"  : {
 		"original": {
+			"img"  : "resources/assets/img",
 			"css"  : "resources/assets/sass",
 			"js"   : "resources/assets/js",
 			"views": "resources/views"
 		},
 		"compiled": {
 			"css"  : "public/builds/css",
+			"img"  : "public/builds/img",
 			"fonts": "public/builds/fonts",
 			"js"   : "public/builds/js"
 		}
 	},
+	"images": [
+		"resources/assets/img/*",
+	],
 	"fonts"  : [
 		"public/components/bootswatch/fonts/*",
 	],
@@ -43,8 +48,8 @@ var config = {
 //////////////////////////////////////////////////////////////////////
 
 gulp.task('css', function () {
-	gulp.src(config.fonts)
-		.pipe(plugins.copy(config.paths.compiled.fonts, {prefix: 4}));
+	gulp.src(config.fonts).pipe(plugins.copy(config.paths.compiled.fonts, {prefix: 4}));
+	gulp.src(config.images).pipe(plugins.copy(config.paths.compiled.img, {prefix: 3}));
 
 	return gulp.src(config.styles)
 		.pipe(plugins.plumber())
