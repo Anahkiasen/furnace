@@ -136,8 +136,6 @@ return [
 
         // Packages
         'TwigBridge\ServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Gvb\Whoops\ServiceProvider',
         'Former\FormerServiceProvider',
 
