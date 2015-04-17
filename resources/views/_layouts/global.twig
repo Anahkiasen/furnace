@@ -8,7 +8,7 @@
 <body ng-app="notetracker" ng-controller="AppController">
 	{% include '_partials/navigation.twig' %}
 
-	<main class="container">
+	<main class="container {{ body_classes }}">
 		{% block content %}{% endblock %}
 	</main>
 

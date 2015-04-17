@@ -15,7 +15,7 @@ class TracksComposer
     private $container;
 
     /**
-     * TracksComposer constructor.
+     * @param Container $container
      */
     public function __construct(Container $container)
     {

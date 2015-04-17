@@ -6,19 +6,20 @@
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li {% if request.getPathInfo() == '/' %}class="active"{% endif %}>
-					<a href="{{ URL.action('TracksController@index') }}">Tracks</a>
+				<li {% if Route.currentRouteNamed('tracks.index') %}class="active"{% endif %}>
+					<a href="{{ URL.route('tracks.index') }}">Tracks</a>
 				</li>
-				<li {% if request.getPathInfo() == '/trackers' %}class="active"{% endif %}>
-					<a href="{{ URL.action('TrackersController@index') }}">Blacksmiths</a>
+				<li {% if Route.currentRouteNamed('trackers.index') %}class="active"{% endif %}>
+					<a href="{{ URL.route('trackers.index') }}">Blacksmiths</a>
 				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				{% if Auth.guest() %}
-					<li><a href="#">Login</a></li>
-					<li><a href="{{ URL.action('UsersController@signup') }}">Signup</a></li>
+				{% if Auth.check() %}
+					<li><a href="#">{{ current_user.name }}</a></li>
 				{% else %}
+					<li><a href="#">Login</a></li>
+					<li><a href="{{ URL.route('users.create') }}">Signup</a></li>
 				{% endif %}
 			</ul>
 		</div>

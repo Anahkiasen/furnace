@@ -1,6 +1,8 @@
 <?php
 namespace Furnace\Providers;
 
+use Auth;
+use Furnace\Http\Composers\GlobalComposer;
 use Furnace\Http\Composers\TracksComposer;
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -12,7 +14,13 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('tracks/index', TracksComposer::class);
+        View::composers([
+            TracksComposer::class => 'tracks/index',
+        ]);
+
+        View::composer('*', function ($view) {
+           $view->current_user = Auth::user();
+        });
     }
 
     /**

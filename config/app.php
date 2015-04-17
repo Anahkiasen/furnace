@@ -136,12 +136,12 @@ return [
 
         // Application
         'Furnace\Providers\AppServiceProvider',
+        'Furnace\Providers\PathsServiceProvider',
         'Furnace\Providers\Kernel\BusServiceProvider',
         'Furnace\Providers\Kernel\EventServiceProvider',
         'Furnace\Providers\Kernel\RouteServiceProvider',
         'Furnace\Providers\IgnitionServiceProvider',
         'Furnace\Providers\ViewServiceProvider',
-        'Furnace\Providers\PathsServiceProvider',
         'Furnace\Providers\Kernel\AnnotationsServiceProvider',
 
         // Packages
@@ -149,6 +149,7 @@ return [
         'Barryvdh\Debugbar\ServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Gvb\Whoops\ServiceProvider',
+        'Former\FormerServiceProvider',
 
     ],
 
@@ -197,6 +198,9 @@ return [
         'URL'       => 'Illuminate\Support\Facades\URL',
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
+
+        // Packages
+        'Former' => 'Former\Facades\Former',
 
     ],
 

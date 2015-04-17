@@ -3,12 +3,16 @@ namespace Furnace\Http\Controllers;
 
 use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Post;
+use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
 use Illuminate\Http\Request;
 use Redirect;
 use View;
 
+/**
+ * @Resource("tracks", only={"index", "store"})
+ */
 class TracksController extends AbstractController
 {
     /**
@@ -25,7 +29,7 @@ class TracksController extends AbstractController
     }
 
     /**
-     * @Get("/")
+     * @Get("/", as="home")
      *
      * @return \Illuminate\View\View
      */
@@ -42,8 +46,6 @@ class TracksController extends AbstractController
     }
 
     /**
-     * @Post("/")
-     *
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse

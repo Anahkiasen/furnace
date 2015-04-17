@@ -2,5 +2,20 @@
 {% set title = 'Signup' %}
 
 {% block content %}
-	fooar
+	{% autoescape false %}
+		{{ Former.open().controller('UsersController@store').method('POST') }}
+		<fieldset>
+			<legend class="text-center">Sign up</legend>
+			{{ Former.text('name') }}
+			{{ Former.text('email') }}
+			{{ Former.password('password') }}
+			{{ Former.password('password_confirmation') }}
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					{{ Former.large_primary_submit('Sign up').addClass('btn-block') }}
+				</div>
+			</div>
+		</fieldset>
+		{{ Former.close() }}
+	{% endautoescape %}
 {% endblock %}

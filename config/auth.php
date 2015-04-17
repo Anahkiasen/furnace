@@ -1,5 +1,7 @@
 <?php
 
+use Furnace\Entities\Models\User;
+
 return [
 
     /*
@@ -28,7 +30,7 @@ return [
     |
     */
 
-    'model' => 'Furnace\User',
+    'model' => User::class,
 
     /*
     |--------------------------------------------------------------------------

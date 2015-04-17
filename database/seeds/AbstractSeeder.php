@@ -1,5 +1,4 @@
 <?php
-namespace Furnace\Entities\Seeders;
 
 use Illuminate\Database\Seeder;
 use League\Csv\Reader;

@@ -1,14 +1,7 @@
 @import 'utils/variables';
 @import 'utils/functions';
 
-.container {
-	width: 95%;
-}
-
-.label[disabled] {
-	opacity: 0.25;
-	background-color: grey(65);
-}
+@import 'layout/container';
 
 @import 'components/table';
 @import 'components/forms';
