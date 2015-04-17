@@ -6,7 +6,20 @@ class Track extends AbstractModel
     /**
      * @type array
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'artist',
+        'album',
+        'name',
+        'file',
+        'parts',
+        'tuning',
+        'version',
+        'dd',
+        'riff_repeater',
+        'difficulty_levels',
+        'ignition_id',
+        'tracker_id',
+    ];
 
     /**
      * @type int
@@ -30,9 +43,25 @@ class Track extends AbstractModel
         return $this->belongsTo(Tracker::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return bool
+     */
+    public function getIsPlayableAttribute()
+    {
+        return $this->ratings->average('playable') > 0.5;
+    }
 
     /**
      * Get the rating of the track.
@@ -41,19 +70,18 @@ class Track extends AbstractModel
      */
     public function getRatingAttribute()
     {
-        if (!$this->playable) {
+        if (!$this->isPlayable) {
             return 0;
         }
 
         $parts = array_filter($this->parts);
 
         $notes = [
-            $this->tone,
-            $this->track,
-            $this->tab,
-            !$this->live,
-            $this->normalized_volume,
-            $this->presilence,
+            $this->ratings->average('tone'),
+            $this->ratings->average('track'),
+            $this->ratings->average('tab'),
+            $this->ratings->average('normalized_volume'),
+            $this->ratings->average('presilence'),
             $this->dd,
             $this->riff_repeater,
             round($this->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS),

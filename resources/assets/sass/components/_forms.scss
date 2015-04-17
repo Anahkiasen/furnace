@@ -6,3 +6,6 @@ legend {
 	color: darken($color-gray, 15);
 }
 
+.label[disabled] {
+	opacity: 0.15;
+}

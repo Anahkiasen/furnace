@@ -15,7 +15,6 @@
 			<th>DD</th>
 			<th>RR</th>
 			<th>Levels</th>
-			<th>Live</th>
 			<th>Volume</th>
 			<th>Silence</th>
 			<th>Playable</th>
@@ -31,7 +30,7 @@
 		</thead>
 		<tbody>
 		{% for track in tracks %}
-			<tr class="{% if not track.playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
+			<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
 				<td>{{ track.artist }}</td>
 				<td>{{ track.name }}</td>
 				<td>{{ track.tracker.name }}</td>
@@ -45,20 +44,19 @@
 				<td>{{ boolean(track.dd) }}</td>
 				<td>{{ boolean(track.riff_repeater) }}</td>
 				<td>{{ track.difficulty_levels }}</td>
-				<td>{{ boolean(track.live) }}</td>
-				<td>{{ boolean(track.normalized_volume) }}</td>
-				<td>{{ boolean(track.presilence) }}</td>
-				<td>{{ boolean(track.playable) }}</td>
+				<td>{{ boolean(track.ratings.average('normalized_volume')) }}</td>
+				<td>{{ boolean(track.ratings.average('presilence')) }}</td>
+				<td>{{ boolean(track.ratings.average('playable')) }}</td>
 				<td>{{ track.version }}</td>
 				<td>{{ track.updated_at.toDateString() }}</td>
 				<td>
-					{{ progress(track.tone, 3) }}
+					{{ progress(track.ratings.average('tone'), 3) }}
 				</td>
 				<td>
-					{{ progress(track.track, 3) }}
+					{{ progress(track.ratings.average('track'), 3) }}
 				</td>
 				<td>
-					{{ progress(track.tab, 3) }}
+					{{ progress(track.ratings.average('tab'), 3) }}
 				</td>
 				<td>
 					{{ progress(track.rating, rating_scale) }}
