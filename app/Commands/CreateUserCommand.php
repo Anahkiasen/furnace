@@ -1,8 +1,6 @@
 <?php
 namespace Furnace\Commands;
 
-use Furnace\Commands\Command;
-
 class CreateUserCommand
 {
     /**

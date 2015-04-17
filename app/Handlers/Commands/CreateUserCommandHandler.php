@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands;
+<?php
+namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\CreateUserCommand;
 use Furnace\Entities\Models\User;
@@ -29,7 +30,7 @@ class CreateUserCommandHandler
     /**
      * Handle the command.
      *
-     * @param  CreateUserCommand $command
+     * @param CreateUserCommand $command
      *
      * @return User
      */

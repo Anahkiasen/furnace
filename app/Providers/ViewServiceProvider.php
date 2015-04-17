@@ -2,7 +2,6 @@
 namespace Furnace\Providers;
 
 use Auth;
-use Furnace\Http\Composers\GlobalComposer;
 use Furnace\Http\Composers\TracksComposer;
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -10,7 +9,7 @@ use View;
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * Boot the provider
+     * Boot the provider.
      */
     public function boot()
     {
