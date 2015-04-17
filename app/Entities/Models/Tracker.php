@@ -30,7 +30,7 @@ class Tracker extends AbstractModel
     public function getRatingAttribute()
     {
         $ratings = $this->tracks->lists('rating');
-        $ratings = array_sum($ratings);
+        $ratings = array_sum($ratings) / count($ratings);
 
         return round($ratings, 1);
     }

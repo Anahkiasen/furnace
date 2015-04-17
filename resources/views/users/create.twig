@@ -33,7 +33,7 @@
 				{{ Former.open().route('users.store') }}
 				<fieldset>
 					<legend class="text-center">Sign up</legend>
-					{{ Former.text('name') }}
+					{{ Former.text('name', 'Username') }}
 					{{ Former.text('email') }}
 					{{ Former.password('password') }}
 					{{ Former.password('password_confirmation', 'Confirm password') }}
