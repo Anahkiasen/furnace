@@ -16,13 +16,12 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composers([
-            TracksComposer::class                      => 'tracks/index',
-            RatingsComposer::class.'@composeCreate'    => 'ratings/edit',
+            RatingsComposer::class.'@composeCreate' => 'ratings/edit',
         ]);
 
         View::composer('*', function ($view) {
             $view->current_user = Auth::user();
-            $view->menu = [
+            $view->menu         = [
                 'tracks.index'   => 'Tracks',
                 'trackers.index' => 'Blacksmiths',
                 'ratings.create' => 'Rate a track',
