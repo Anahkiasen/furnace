@@ -26,7 +26,7 @@ class CreateTracksTable extends Migration
             $table->integer('tracker_id')->unsigned()->index()->nullable();
             $table->timestamps();
 
-            $table->foreign('tracker_id')->references('id')->on('trackers');
+            $table->foreign('tracker_id')->references('id')->on('trackers')->onDelete('cascade');
         });
     }
 

@@ -23,8 +23,8 @@ class CreateRatingsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('track_id')->references('id')->on('tracks');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
