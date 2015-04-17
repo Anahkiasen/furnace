@@ -18,7 +18,8 @@
     "guidovanbiemen/laravel-whoops": "~1.0",
     "anahkiasen/former": "4.0.*@dev",
     "anahkiasen/arrounded": "0.6.*",
-    "laravel/socialite": "~2.0"
+    "laravel/socialite": "~2.0",
+    "mathiasgrimm/laravel-dot-env-gen": "0.8.*"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

@@ -1,4 +1,6 @@
+# Dotenv
 .env
+.env.gen
 
 # Cached and compiled
 public/builds

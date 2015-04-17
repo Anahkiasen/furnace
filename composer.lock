@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e26f7582911be3b1c94535ebc7f878f6",
+    "hash": "006474e68ce659db7dd3768b07ec2ee8",
     "packages": [
         {
             "name": "anahkiasen/arrounded",
@@ -1464,6 +1464,48 @@
                 "twitter"
             ],
             "time": "2015-04-07 00:07:18"
+        },
+        {
+            "name": "mathiasgrimm/laravel-dot-env-gen",
+            "version": "v0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mathiasgrimm/laravel-dot-env-gen.git",
+                "reference": "62ad4c3c2c54aa1e967d31d05574898dbb726eb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mathiasgrimm/laravel-dot-env-gen/zipball/62ad4c3c2c54aa1e967d31d05574898dbb726eb7",
+                "reference": "62ad4c3c2c54aa1e967d31d05574898dbb726eb7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MathiasGrimm\\LaravelDotEnvGen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Mathias Grimm",
+                    "email": "mathiasgrimm@gmail.com",
+                    "homepage": "http://phpEmpregos.com"
+                }
+            ],
+            "description": "A Laravel 5 artisan command to generate a .env.gen file based on the existing project.",
+            "homepage": "https://github.com/mathiasgrimm/laravel-dot-env-gen/",
+            "keywords": [
+                "artisan",
+                "command",
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2015-03-30 22:36:12"
         },
         {
             "name": "monolog/monolog",

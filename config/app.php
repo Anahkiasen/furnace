@@ -139,6 +139,7 @@ return [
         'Gvb\Whoops\ServiceProvider',
         'Former\FormerServiceProvider',
         'Laravel\Socialite\SocialiteServiceProvider',
+        'MathiasGrimm\LaravelDotEnvGen\DotEnvGenServiceProvider',
 
         // Application
         'Furnace\Providers\AppServiceProvider',
