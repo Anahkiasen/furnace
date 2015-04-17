@@ -1,6 +1,11 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
+
+/**
+ * @Bind("ratings")
+ */
 class Rating extends AbstractModel
 {
     /**
@@ -12,9 +17,45 @@ class Rating extends AbstractModel
         'normalized_volume',
         'playable',
         'tone',
-        'track',
+        'audio',
         'tab',
         'track_id',
         'user_id',
     ];
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////// RELATIONSHIPS ///////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function track()
+    {
+        return $this->belongsTo(Track::class);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    ///////////////////////////// ATTRIBUTES /////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return float
+     */
+    public function getNoteAttribute()
+    {
+        $components = [
+            $this->presilence,
+            $this->normalized_volume,
+            $this->playable,
+            $this->tone,
+            $this->audio,
+            $this->tab,
+        ];
+
+        $note = array_sum($components);
+        $note = round($note, 1);
+
+        return $note;
+    }
 }

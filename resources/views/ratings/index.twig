@@ -1,0 +1,43 @@
+{% extends '_layouts/global.twig' %}
+{% from '_macros/table.twig' import progress, boolean %}
+{% set title = 'My ratings' %}
+{% set body_classes = 'container--wide' %}
+
+{% block content %}
+	<table class="table table-striped table-hover" tablesorter>
+		<thead>
+		<tr>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Tracker</th>
+			<th>Volume</th>
+			<th>Silence</th>
+			<th>Playable</th>
+			<th>Tone</th>
+			<th>Track</th>
+			<th>Tab</th>
+			<th>Rating</th>
+			<th>Edit</th>
+			<th>Remove</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for rating in ratings %}
+			<tr>
+				<td>{{ rating.track.artist }}</td>
+				<td>{{ rating.track.name }}</td>
+				<td>{{ rating.track.tracker.name }}</td>
+				<td>{{ boolean(rating.normalized_volume) }}</td>
+				<td>{{ boolean(rating.presilence) }}</td>
+				<td>{{ boolean(rating.playable) }}</td>
+				<td>{{ progress(rating.tone, 3) }}</td>
+				<td>{{ progress(rating.audio, 3) }}</td>
+				<td>{{ progress(rating.tab, 3) }}</td>
+				<td>{{ progress(rating.note, 20) }}</td>
+				<td><a href="{{ URL.route('ratings.edit', rating.id) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+				<td><a href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

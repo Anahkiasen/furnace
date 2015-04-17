@@ -1,9 +1,11 @@
 {% extends '_layouts/global.twig' %}
 {% set ratings = {0: 'Bad', 1: 'Average', 2: 'Good', 3: 'Official DLC quality'} %}
+{% set title = rating.id ? 'Edit rating' : 'Rate track' %}
+{% set endpoint = rating.id ? 'ratings.update' : 'ratings.store' %}
 
 {% block content %}
 	{% autoescape false %}
-		{{ Former.open() }}
+		{{ Former.open().route(endpoint, rating.id).populate(rating) }}
 			<fieldset>
 				<legend>CDLC</legend>
 				{{ Former.select('track_id', 'CDLC').options(tracks).setAttribute('selectize', '').help('If you can\t find the one you want here, fill the field below') }}
@@ -20,16 +22,16 @@
 		<fieldset>
 			<legend>Ratings</legend>
 			{{ Former.select('tone', 'Tones quality').options(ratings) }}
-			{{ Former.select('track', 'Track quality').options(ratings) }}
+			{{ Former.select('audio', 'Track quality').options(ratings) }}
 			{{ Former.select('tab', 'Tab quality').options(ratings) }}
 		</fieldset>
 
 		<fieldset>
 			<legend>Notes</legend>
-			{{ Former.textarea('comments', 'Additional comments') }}
+			{{ Former.textarea('comments', 'Additional comments').rows(15).placeholder('Leaving feedback and explaining you ratings is important. The track will not get better if you never tell what is wrong.') }}
 		</fieldset>
 
-		{{ Former.actions().large_primary_block_submit('Rate') }}
+		{{ Former.actions().large_primary_block_submit(rating ? 'Update rating' : 'Rate') }}
 		{{ Former.close() }}
 	{% endautoescape %}
 {% endblock %}

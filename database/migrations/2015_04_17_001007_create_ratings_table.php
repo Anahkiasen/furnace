@@ -17,7 +17,7 @@ class CreateRatingsTable extends Migration
             $table->boolean('normalized_volume')->default(false);
             $table->boolean('playable')->default(false);
             $table->integer('tone')->default(0);
-            $table->integer('track')->default(0);
+            $table->integer('audio')->default(0);
             $table->integer('tab')->default(0);
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();

@@ -16,7 +16,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composers([
             TracksComposer::class                   => 'tracks/index',
-            RatingsComposer::class.'@composeCreate' => 'ratings/create',
+            RatingsComposer::class.'@composeCreate' => 'ratings/edit',
         ]);
 
         View::composer('*', function ($view) {

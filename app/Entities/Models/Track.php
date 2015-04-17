@@ -78,7 +78,7 @@ class Track extends AbstractModel
 
         $notes = [
             $this->ratings->average('tone'),
-            $this->ratings->average('track'),
+            $this->ratings->average('audio'),
             $this->ratings->average('tab'),
             $this->ratings->average('normalized_volume'),
             $this->ratings->average('presilence'),

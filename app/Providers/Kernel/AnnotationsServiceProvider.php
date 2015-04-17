@@ -2,6 +2,7 @@
 namespace Furnace\Providers\Kernel;
 
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
+use Furnace\Entities\Models\Rating;
 
 class AnnotationsServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,9 @@ class AnnotationsServiceProvider extends ServiceProvider
      *
      * @type array
      */
-    protected $scanModels = [];
+    protected $scanModels = [
+        Rating::class,
+    ];
 
     /**
      * Determines if we will auto-scan in the local environment.
