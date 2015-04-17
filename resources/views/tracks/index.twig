@@ -24,6 +24,7 @@
 			<th>Track</th>
 			<th>Tab</th>
 			<th>Rating</th>
+			<th>View</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -58,6 +59,9 @@
 				</td>
 				<td>
 					{{ progress(track.rating, rating_scale) }}
+				</td>
+				<td>
+					<a href="{{ URL.route('tracks.show', track.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
 				</td>
 			</tr>
 		{% endfor %}

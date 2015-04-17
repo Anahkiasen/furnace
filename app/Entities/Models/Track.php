@@ -1,6 +1,11 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
+
+/**
+ * @Bind("tracks")
+ */
 class Track extends AbstractModel
 {
     /**
@@ -24,7 +29,7 @@ class Track extends AbstractModel
     /**
      * @type int
      */
-    public static $ratingScale = 19;
+    public static $ratingScale = 20;
 
     /**
      * The standard number of difficulty levels.

@@ -3,6 +3,7 @@ namespace Furnace\Providers\Kernel;
 
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
 use Furnace\Entities\Models\Rating;
+use Furnace\Entities\Models\Track;
 
 class AnnotationsServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      * @type array
      */
     protected $scanModels = [
+        Track::class,
         Rating::class,
     ];
 

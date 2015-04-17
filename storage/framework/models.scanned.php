@@ -1,1 +1,0 @@
-<?php $router->model('ratings', 'Furnace\Entities\Models\Rating');

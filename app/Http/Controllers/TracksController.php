@@ -5,12 +5,10 @@ use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
-use Illuminate\Http\Request;
-use Redirect;
 use View;
 
 /**
- * @Resource("tracks", only={"index", "store"})
+ * @Resource("tracks", only={"index", "show"})
  */
 class TracksController extends AbstractController
 {
@@ -29,7 +27,6 @@ class TracksController extends AbstractController
 
     /**
      * @Get("/", as="home")
-     *
      * @return \Illuminate\View\View
      */
     public function index()
@@ -45,16 +42,14 @@ class TracksController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param Track $track
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\View\View
      */
-    public function store(Request $request)
+    public function show(Track $track)
     {
-        $attributes = $request->all();
-        $attributes = $this->ignition->complete($attributes);
-        $track      = Track::create($attributes);
-
-        return Redirect::action(static::class.'@index');
+        return View::make('tracks/show', [
+            'track' => $track,
+        ]);
     }
 }

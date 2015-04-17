@@ -35,6 +35,14 @@ class Rating extends AbstractModel
         return $this->belongsTo(Track::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////

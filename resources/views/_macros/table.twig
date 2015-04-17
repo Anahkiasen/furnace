@@ -1,4 +1,4 @@
-{% macro progress(progress, max) %}
+{% macro progress(progress, max = 3) %}
 	{% set value = ((progress / max) * 100)|round %}
 	{% if value <= 25 %}
 		{% set style = 'danger' %}

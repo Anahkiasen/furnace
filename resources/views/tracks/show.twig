@@ -1,0 +1,46 @@
+{% extends '_layouts/global.twig' %}
+{% from '_macros/table' import boolean, progress %}
+{% set title = 'View ratings for ' ~ track.name %}
+
+{% block content %}
+	<header class="page-header">
+		<h1>{{ title }}</h1>
+	</header>
+
+	{% for rating in track.ratings %}
+		<div class="media">
+			<div class="media-left">
+				{{ rating.user.name }}
+			</div>
+			<div class="media-body">
+				<table class="table table-bordered table-condensed rating">
+					<thead>
+					<tr>
+						<th>Plateform</th>
+						<th>Presilence</th>
+						<th>Volume</th>
+						<th>Playable</th>
+						<th>Tone</th>
+						<th>Audio</th>
+						<th>Tab</th>
+						<th>Total</th>
+					</tr>
+					</thead>
+					<tr class="text-center">
+						<td>{{ rating.plateform|title }}</td>
+						<td>{{ boolean(rating.presilence) }}</td>
+						<td>{{ boolean(rating.normalized_volume) }}</td>
+						<td>{{ boolean(rating.playable) }}</td>
+						<td>{{ progress(rating.tone) }}</td>
+						<td>{{ progress(rating.audio) }}</td>
+						<td>{{ progress(rating.tab) }}</td>
+						<td>{{ progress(rating.note, rating_scale) }}</td>
+					</tr>
+				</table>
+				{% if rating.comments %}
+					<blockquote>{{ rating.comments }}</blockquote>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
