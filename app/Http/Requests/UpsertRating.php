@@ -2,6 +2,7 @@
 namespace Furnace\Http\Requests;
 
 use Auth;
+use Furnace\Entities\Models\Rating;
 
 class UpsertRating extends Request
 {
@@ -12,7 +13,11 @@ class UpsertRating extends Request
      */
     public function authorize()
     {
-        return Auth::check();
+        /** @type Rating $rating */
+        $rating = $this->route('ratings');
+        $user   = Auth::user();
+
+        return $user && $rating->user_id == $user->id;
     }
 
     /**
