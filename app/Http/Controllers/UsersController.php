@@ -34,6 +34,6 @@ class UsersController extends AbstractController
         $user = $this->dispatchFrom(CreateUserCommand::class, $request);
         Auth::login($user);
 
-        return Redirect::action('TracksController@index');
+        return Redirect::home();
     }
 }

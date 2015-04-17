@@ -3,10 +3,6 @@
 {% set title = 'View ratings for ' ~ track.name %}
 
 {% block content %}
-	<header class="page-header">
-		<h1>{{ title }}</h1>
-	</header>
-
 	{% for rating in track.ratings %}
 		<div class="media">
 			<div class="media-left">

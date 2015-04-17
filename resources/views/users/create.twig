@@ -1,21 +1,50 @@
 {% extends '_layouts/global.twig' %}
-{% set title = 'Signup' %}
+{% set title = 'Login / Signup' %}
 
 {% block content %}
 	{% autoescape false %}
-		{{ Former.open().controller('UsersController@store').method('POST') }}
-		<fieldset>
-			<legend class="text-center">Sign up</legend>
-			{{ Former.text('name') }}
-			{{ Former.text('email') }}
-			{{ Former.password('password') }}
-			{{ Former.password('password_confirmation') }}
-			<div class="form-group">
-				<div class="col-sm-10 col-sm-offset-2">
-					{{ Former.large_primary_submit('Sign up').addClass('btn-block') }}
-				</div>
+		<div class="row">
+			<div class="col-lg-6">
+				{{ Former.open().route('auth.authenticate') }}
+
+				<fieldset>
+					<legend>Login with a social account</legend>
+
+					<div class="btn-group btn-group-justified">
+						<a href="{{ URL.route('auth.socialize', 'facebook') }}" class="btn btn-facebook btn-block">Login with Facebook</a>
+						<a href="{{ URL.route('auth.socialize', 'twitter') }}" class="btn btn-twitter btn-block">Login with Twitter</a>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Login with Furnace</legend>
+					{% if Session.has('error') %}
+						<p class="alert alert-danger">Username or password is incorrect</p>
+					{% endif %}
+
+					{{ Former.text('name') }}
+					{{ Former.password('password') }}
+					{{ Former.actions().large_primary_block_submit('Login') }}
+				</fieldset>
+
+				{{ Former.close() }}
 			</div>
-		</fieldset>
-		{{ Former.close() }}
+			<div class="col-lg-6">
+				{{ Former.open().route('users.store') }}
+				<fieldset>
+					<legend class="text-center">Sign up</legend>
+					{{ Former.text('name') }}
+					{{ Former.text('email') }}
+					{{ Former.password('password') }}
+					{{ Former.password('password_confirmation', 'Confirm password') }}
+					<div class="form-group">
+						<div class="col-sm-10 col-sm-offset-2">
+							{{ Former.large_primary_submit('Sign up').addClass('btn-block') }}
+						</div>
+					</div>
+				</fieldset>
+				{{ Former.close() }}
+			</div>
+		</div>
 	{% endautoescape %}
 {% endblock %}

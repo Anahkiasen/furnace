@@ -9,6 +9,10 @@
 	{% include '_partials/navigation' %}
 
 	<main class="container {{ body_classes }}">
+		<header class="page-header">
+			<h1>{{ title }}</h1>
+		</header>
+
 		{% block content %}{% endblock %}
 	</main>
 

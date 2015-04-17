@@ -40,7 +40,7 @@ class Authenticate
             if ($request->ajax()) {
                 return Response::make('Unauthorized.', 401);
             } else {
-                return Redirect::guest(URL::route('users.login'));
+                return Redirect::guest(URL::route('users.create'));
             }
         }
 

@@ -138,6 +138,7 @@ return [
         'TwigBridge\ServiceProvider',
         'Gvb\Whoops\ServiceProvider',
         'Former\FormerServiceProvider',
+        'Laravel\Socialite\SocialiteServiceProvider',
 
         // Application
         'Furnace\Providers\AppServiceProvider',

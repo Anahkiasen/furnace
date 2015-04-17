@@ -39,6 +39,9 @@ $flat-silver: #BDC3C7;
 $flat-concrete: #95A5A6;
 $flat-asbestos: #7F8C8D;
 
+$color-facebook: #3b5998;
+$color-twitter: #55acee;
+
 // Colors
 //////////////////////////////////////////////////////////////////////
 
@@ -75,3 +78,11 @@ $color-gray: $flat-clouds;
 $color-gray-2: $flat-silver;
 $color-gray-3: $flat-concrete;
 $color-gray-4: $flat-asbestos;
+
+// Social
+//////////////////////////////////////////////////////////////////////
+
+$providers: (
+	'facebook': $color-facebook,
+	'twitter': $color-twitter,
+);
