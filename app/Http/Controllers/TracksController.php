@@ -34,7 +34,7 @@ class TracksController extends AbstractController
      */
     public function index()
     {
-        $tracks             = Track::with('tracker')->get();
+        $tracks             = Track::with('tracker', 'ratings')->get();
         $tracks             = $tracks->sortByDesc('rating');
         Track::$ratingScale = $tracks->max('rating');
 
