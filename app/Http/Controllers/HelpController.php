@@ -13,4 +13,14 @@ class HelpController extends AbstractController
     {
         return View::make('help/identifier');
     }
+
+    /**
+     * @Get("help/about", as="help.about")
+     *
+     * @return \Illuminate\View\View
+     */
+    public function about()
+    {
+        return View::make('help/about');
+    }
 }

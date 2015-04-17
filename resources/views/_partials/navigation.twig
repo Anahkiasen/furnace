@@ -6,15 +6,11 @@
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li {% if Route.currentRouteNamed('tracks.index') %}class="active"{% endif %}>
-					<a href="{{ URL.route('tracks.index') }}">Tracks</a>
-				</li>
-				<li {% if Route.currentRouteNamed('trackers.index') %}class="active"{% endif %}>
-					<a href="{{ URL.route('trackers.index') }}">Blacksmiths</a>
-				</li>
-				<li>
-					<a href="{{ URL.route('ratings.create') }}" class="cta">Rate a track</a>
-				</li>
+				{% for route, label in menu %}
+					<li {% if Route.currentRouteNamed(route) %}class="active"{% endif %}>
+						<a href="{{ URL.route(route) }}" {% if route == 'ratings.create' %}class="cta"{% endif %}>{{ label }}</a>
+					</li>
+				{% endfor %}
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="{{ URL.asset('builds/css/styles.css') }}" />
 </head>
 <body ng-app="furnace" ng-controller="AppController">
-	{% include '_partials/navigation.twig' %}
+	{% include '_partials/navigation' %}
 
 	<main class="container {{ body_classes }}">
 		{% block content %}{% endblock %}
