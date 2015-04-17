@@ -3,11 +3,12 @@
 
 @import 'base/images';
 
-@import 'layout/navigation';
-@import 'layout/container';
-
 @import 'components/buttons';
 @import 'components/table';
 @import 'components/forms';
+
+@import 'layout/navigation';
+@import 'layout/container';
+@import 'layout/footer';
 
 @import 'vendor/selectize';
