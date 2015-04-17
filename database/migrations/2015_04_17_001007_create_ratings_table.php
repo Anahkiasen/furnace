@@ -12,8 +12,19 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->text('comments');
+            $table->boolean('presilence')->default(false);
+            $table->boolean('normalized_volume')->default(false);
+            $table->boolean('playable')->default(false);
+            $table->integer('tone')->default(0);
+            $table->integer('track')->default(0);
+            $table->integer('tab')->default(0);
+            $table->integer('track_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('track_id')->references('id')->on('tracks');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

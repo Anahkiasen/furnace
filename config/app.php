@@ -134,6 +134,13 @@ return [
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
 
+        // Packages
+        'TwigBridge\ServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Gvb\Whoops\ServiceProvider',
+        'Former\FormerServiceProvider',
+
         // Application
         'Furnace\Providers\AppServiceProvider',
         'Furnace\Providers\PathsServiceProvider',
@@ -143,13 +150,6 @@ return [
         'Furnace\Providers\IgnitionServiceProvider',
         'Furnace\Providers\ViewServiceProvider',
         'Furnace\Providers\Kernel\AnnotationsServiceProvider',
-
-        // Packages
-        'TwigBridge\ServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Gvb\Whoops\ServiceProvider',
-        'Former\FormerServiceProvider',
 
     ],
 

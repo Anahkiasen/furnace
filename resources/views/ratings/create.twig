@@ -1,0 +1,31 @@
+{% extends '_layouts/global.twig' %}
+{% set ratings = {0: 'Bad', 1: 'Average', 2: 'Good', 3: 'Official DLC quality'} %}
+
+{% block content %}
+	{% autoescape false %}
+		{{ Former.open() }}
+			{{ Former.text('track_id', 'Track #').help('<a target="_blank" href="#">Where can I find this?</a>') }}
+
+		<fieldset>
+			<legend>Experience</legend>
+			{{ Former.boolean('presilence', 'Pre-silence').help('Was the silence at the start of the track long enough?') }}
+			{{ Former.boolean('normalized_volume', 'Tones/track volume').help('Was the volume of the tones correct compared to the track\'s?') }}
+			{{ Former.boolean('playable', 'Playable').help('Do you consider the track playable?') }}
+		</fieldset>
+
+		<fieldset>
+			<legend>Ratings</legend>
+			{{ Former.select('tone', 'Tones quality').options(ratings) }}
+			{{ Former.select('track', 'Track quality').options(ratings) }}
+			{{ Former.select('tab', 'Tab quality').options(ratings) }}
+		</fieldset>
+
+		<fieldset>
+			<legend>Notes</legend>
+			{{ Former.textarea('comments', 'Additional comments') }}
+		</fieldset>
+
+		{{ Former.actions().large_primary_block_submit('Rate') }}
+		{{ Former.close() }}
+	{% endautoescape %}
+{% endblock %}

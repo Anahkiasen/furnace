@@ -4,8 +4,61 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "79c34764eacacaaf19b48711c88ff735",
+    "hash": "5543f0f657fae958f63ba675851a028d",
     "packages": [
+        {
+            "name": "anahkiasen/arrounded",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anahkiasen/arrounded.git",
+                "reference": "40dabef9da5c10a146c0a9df0c8d07ed49348701"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anahkiasen/arrounded/zipball/40dabef9da5c10a146c0a9df0c8d07ed49348701",
+                "reference": "40dabef9da5c10a146c0a9df0c8d07ed49348701",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/auth": "^4.2.6",
+                "illuminate/container": "^4.2.6",
+                "illuminate/database": "^4.2.6",
+                "illuminate/mail": "^4.2.6",
+                "illuminate/pagination": "^4.2.6",
+                "illuminate/support": "^4.2.6",
+                "illuminate/view": "^4.2.6",
+                "mockery/mockery": "0.9.*",
+                "patchwork/utf8": "~1.2",
+                "phpunit/phpunit": "~4.4"
+            },
+            "suggest": {
+                "anahkiasen/former": "Form builder",
+                "codesleeve/laravel-stapler": "Uploads and thumbnails managment",
+                "cviebrock/eloquent-sluggable": "Slugs handling",
+                "dingo/api": "API creation",
+                "league/csv": "Allows setting metadata from CSV files",
+                "robclancy/presenter": "Allows presenting of models"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Arrounded\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Maxime Fabre",
+                    "email": "ehtnam6@gmail.com"
+                }
+            ],
+            "description": "A set of self-aware Laravel abstracts that know their way around",
+            "time": "2015-04-09 09:26:11"
+        },
         {
             "name": "anahkiasen/former",
             "version": "4.0.x-dev",

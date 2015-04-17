@@ -1,7 +1,8 @@
 legend {
-	font-size: 3rem;
+	font-size: 2rem;
+	text-align: center;
+	background: $color-gray;
+	padding: 0.5em;
+	color: darken($color-gray, 15);
 }
 
-select option[disabled] {
-	color: grey(80);
-}

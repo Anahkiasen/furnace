@@ -1,19 +1,13 @@
 <?php
 namespace Furnace\Providers;
 
+use Arrounded\Macros\FormerBuilder;
+use Former\Former;
 use Illuminate\Support\ServiceProvider;
 use Laracasts\Generators\GeneratorsServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot()
-    {
-        //
-    }
-
     /**
      * Register any application services.
      */
@@ -22,5 +16,14 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() === 'local') {
             $this->app->register(GeneratorsServiceProvider::class);
         }
+
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot()
+    {
+        $this->app->make(FormerBuilder::class)->registerMacros();
     }
 }

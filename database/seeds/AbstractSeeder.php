@@ -6,24 +6,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class AbstractSeeder extends Seeder
 {
-    /**
-     * @type OutputInterface
-     */
-    protected $output;
-
-    /**
-     * @param OutputInterface $output
-     */
-    public function setOutput($output)
-    {
-        $this->output = $output;
-    }
-
     //////////////////////////////////////////////////////////////////////
     ////////////////////////////// HELPERS ///////////////////////////////
     //////////////////////////////////////////////////////////////////////
 
     /**
+     * @param string $fixture
+     *
      * @return array|Collection|static
      */
     protected function getFixture($fixture)
