@@ -3,7 +3,6 @@ namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\CreateUserCommand;
 use Furnace\Entities\Models\User;
-use Illuminate\Contracts\Hashing\Hasher;
 
 class CreateUserCommandHandler
 {
@@ -13,18 +12,11 @@ class CreateUserCommandHandler
     private $repository;
 
     /**
-     * @type Hasher
+     * @param User $repository
      */
-    private $hasher;
-
-    /**
-     * @param User   $repository
-     * @param Hasher $hasher
-     */
-    public function __construct(User $repository, Hasher $hasher)
+    public function __construct(User $repository)
     {
         $this->repository = $repository;
-        $this->hasher     = $hasher;
     }
 
     /**
@@ -39,7 +31,7 @@ class CreateUserCommandHandler
         return $this->repository->create([
             'name'     => $command->name,
             'email'    => $command->email,
-            'password' => $this->hasher->make($command->password),
+            'password' => $command->password,
         ]);
     }
 }

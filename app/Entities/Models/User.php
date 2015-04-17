@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Hash;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -24,4 +25,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @type array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * @param string $password
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 }

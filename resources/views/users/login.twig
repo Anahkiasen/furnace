@@ -1,0 +1,19 @@
+{% extends '_layouts/global.twig' %}
+
+{% block content %}
+	{% autoescape false %}
+		{{ Former.open() }}
+		<fieldset>
+			<legend>Login</legend>
+			{{ dump(Session.get('error'), Session.all()) }}
+			{% if Session.has('error') %}
+				<p class="alert alert-danger">Username or password is incorrect</p>
+			{% endif %}
+
+			{{ Former.text('name') }}
+			{{ Former.password('password') }}
+			{{ Former.actions().large_primary_block_submit('Login') }}
+		</fieldset>
+		{{ Former.close() }}
+	{% endautoescape %}
+{% endblock %}

@@ -3,6 +3,9 @@ namespace Furnace\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Redirect;
+use Response;
+use URL;
 
 class Authenticate
 {
@@ -35,9 +38,9 @@ class Authenticate
     {
         if ($this->auth->guest()) {
             if ($request->ajax()) {
-                return response('Unauthorized.', 401);
+                return Response::make('Unauthorized.', 401);
             } else {
-                return redirect()->guest('auth/login');
+                return Redirect::guest(URL::route('users.login'));
             }
         }
 
