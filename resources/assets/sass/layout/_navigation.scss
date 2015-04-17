@@ -1,0 +1,15 @@
+.navbar-default .navbar-nav {
+
+	> li > .btn {
+		padding: 0.5em;
+		margin-top: 0.75em;
+
+		&-success:hover {
+			background: lighten($color-green, 5);
+			color: white;
+		}
+	}
+
+
+
+}
