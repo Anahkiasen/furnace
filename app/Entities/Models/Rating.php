@@ -1,0 +1,9 @@
+<?php
+namespace Furnace\Entities\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Rating extends Model
+{
+    // ...
+}
