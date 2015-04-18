@@ -15,8 +15,8 @@ dependencies:
 
 test:
   pre:
-    - touch app/database/codeception.sqlite
-    - php artisan db:remigrate --env="testing"
+    - touch database/testing.sqlite
+    - php artisan migrate:refresh --env="testing"
   override:
     - php artisan env
     - vendor/bin/phpspec run -vvv --no-interaction --format="pretty"
