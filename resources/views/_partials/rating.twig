@@ -33,9 +33,9 @@
 				<td>{{ boolean(rating.playable) }}</td>
 				<td>{{ boolean(rating.sync) }}</td>
 				<td>{{ boolean(rating.techniques) }}</td>
-				<td>{{ progress(rating.tone) }}</td>
-				<td>{{ progress(rating.audio) }}</td>
-				<td>{{ progress(rating.tab) }}</td>
+				<td>{{ progress(rating.tone, integer_scale) }}</td>
+				<td>{{ progress(rating.audio, integer_scale) }}</td>
+				<td>{{ progress(rating.tab, integer_scale) }}</td>
 				<td>{{ progress(rating.note, rating_scale) }}</td>
 			</tr>
 		</table>

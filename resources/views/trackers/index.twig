@@ -19,7 +19,7 @@
 				<a target="_blank" href='http://ignition.customsforge.com/search/browse?filters={"member":"{{ tracker.name }}"}&group=artist'>{{ tracker.name }}</a>
 			</td>
 			<td>{{ tracker.artists|join(', ')|raw }}</td>
-			<td>{{ progress(tracker.score, trackers.max('score')) }}</td>
+			<td>{{ progress(tracker.score, rating_scale) }}</td>
 			<td class="text-center">{{ tracker.tracks.count() }}</td>
 			{% if current_user %}
 				<td class="text-center">{{ favorite(current_user, tracker) }}</td>
