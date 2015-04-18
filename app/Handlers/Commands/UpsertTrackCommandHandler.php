@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands;
+<?php
+namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\UpsertTrackCommand;
 use Furnace\Entities\Models\Track;

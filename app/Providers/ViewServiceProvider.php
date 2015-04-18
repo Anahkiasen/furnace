@@ -3,9 +3,7 @@ namespace Furnace\Providers;
 
 use Auth;
 use Furnace\Entities\Models\Track;
-use Furnace\Http\Composers\LayoutComposer;
 use Furnace\Http\Composers\RatingsComposer;
-use Furnace\Http\Composers\TracksComposer;
 use Illuminate\Support\ServiceProvider;
 use View;
 

@@ -40,6 +40,7 @@ class AuthController extends AbstractController
 
     /**
      * @Post("auth/login", as="auth.authenticate")
+     *
      * @param Request $request
      * @param Guard   $auth
      *
@@ -57,6 +58,7 @@ class AuthController extends AbstractController
 
     /**
      * @Get("auth/logout", as="auth.logout")
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout()
@@ -81,6 +83,7 @@ class AuthController extends AbstractController
 
     /**
      * @Get("auth/socialize/{provider}/callback", as="auth.callback")
+     *
      * @param string $provider
      *
      * @return RedirectResponse

@@ -1,16 +1,15 @@
-<?php namespace Furnace\Commands;
-
-use Furnace\Commands\Command;
+<?php
+namespace Furnace\Commands;
 
 class UpsertTrackCommand
 {
     /**
-     * @type integer
+     * @type int
      */
     public $ignition;
 
     /**
-     * @param integer $ignition
+     * @param int $ignition
      */
     public function __construct($ignition)
     {

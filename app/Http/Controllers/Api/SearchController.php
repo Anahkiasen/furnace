@@ -23,6 +23,7 @@ class SearchController extends AbstractController
 
     /**
      * @Get("api/search")
+     *
      * @param Request $request
      *
      * @return array

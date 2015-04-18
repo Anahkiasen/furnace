@@ -1,4 +1,5 @@
-<?php namespace Furnace\Commands;
+<?php
+namespace Furnace\Commands;
 
 use Laravel\Socialite\AbstractUser;
 

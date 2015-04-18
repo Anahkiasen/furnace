@@ -27,6 +27,7 @@ class TracksController extends AbstractController
 
     /**
      * @Get("/", as="home")
+     *
      * @return \Illuminate\View\View
      */
     public function index()

@@ -42,7 +42,7 @@ class UpsertRatingCommandHandler
         // Update rating
         $rating->fill($command->attributes->all());
         $rating->track_id = $track->id;
-        $rating->user_id = $command->user->id;
+        $rating->user_id  = $command->user->id;
         $rating->save();
 
         return $rating;

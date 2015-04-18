@@ -1,4 +1,5 @@
-<?php namespace Furnace\Http\Requests;
+<?php
+namespace Furnace\Http\Requests;
 
 use Auth;
 

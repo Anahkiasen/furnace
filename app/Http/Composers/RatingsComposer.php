@@ -2,7 +2,6 @@
 namespace Furnace\Http\Composers;
 
 use Config;
-use Furnace\Entities\Models\Track;
 use Illuminate\View\View;
 
 class RatingsComposer
@@ -20,7 +19,7 @@ class RatingsComposer
      */
     protected function getPlateforms()
     {
-        $options = [];
+        $options    = [];
         $plateforms = Config::get('furnace.plateforms');
         foreach ($plateforms as $plateform) {
             $options[$plateform] = ucfirst($plateform);

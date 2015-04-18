@@ -2,7 +2,6 @@
 namespace Furnace\Http\Requests;
 
 use Auth;
-use Furnace\Entities\Models\Rating;
 
 class UpsertRating extends Request
 {

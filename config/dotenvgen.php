@@ -34,7 +34,7 @@ return [
 
     'rules' => [
 
-        /**
+        /*
          * We recommend uncommenting this line to improve performance in a
          * fresh Laravel install. If you are using any packages that use
          * environment variables, you may simply add the vendor/package folder

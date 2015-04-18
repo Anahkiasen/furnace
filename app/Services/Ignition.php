@@ -34,7 +34,7 @@ class Ignition
     }
 
     /**
-     * Perform a search against Ignition
+     * Perform a search against Ignition.
      *
      * @param string $query
      *
@@ -188,7 +188,7 @@ class Ignition
                     'length'                     => '100',
                     'search[value]'              => $query,
                     'search[regex]'              => 'false',
-                ]
+                ],
             ]);
 
             return array_get($response->json(), 'data');

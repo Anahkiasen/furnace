@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands;
+<?php
+namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\SocializeUserCommand;
 use Furnace\Entities\Models\User;
@@ -21,9 +22,7 @@ class SocializeUserCommandHandler
     /**
      * Handle the command.
      *
-     * @param  SocializeUserCommand $command
-     *
-     * @return void
+     * @param SocializeUserCommand $command
      */
     public function handle(SocializeUserCommand $command)
     {
