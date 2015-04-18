@@ -92,14 +92,17 @@ class Track extends AbstractModel implements Favoritable
      */
     public function getPartsAttribute()
     {
-        $parts = explode(',', $this->attributes['parts']);
+        return $this->recomposeJointArray('parts', ['lead', 'rhythm', 'bass', 'vocals']);
+    }
 
-        return [
-            'lead'   => array_search('lead', $parts, true) !== false,
-            'rhythm' => array_search('rhythm', $parts, true) !== false,
-            'bass'   => array_search('bass', $parts, true) !== false,
-            'vocals' => array_search('vocals', $parts, true) !== false,
-        ];
+    /**
+     * Get which plateforms the track supports.
+     *
+     * @return array
+     */
+    public function getPlateformsAttribute()
+    {
+        return $this->recomposeJointArray('pateforms', ['pc', 'mac', 'xbox360', 'ps3']);
     }
 
     /**
@@ -122,5 +125,22 @@ class Track extends AbstractModel implements Favoritable
         ];
 
         return array_get($tunings, $tuning, $tuning);
+    }
+
+    /**
+     * @param string   $attribute
+     * @param string[] $parts
+     *
+     * @return array
+     */
+    protected function recomposeJointArray($attribute, $parts)
+    {
+        $recomposed = [];
+        $attribute  = explode(',', $this->attributes[$attribute]);
+        foreach ($parts as $part) {
+            $recomposed[$part] = array_search($part, $attribute, true) !== false;
+        }
+
+        return $recomposed;
     }
 }
