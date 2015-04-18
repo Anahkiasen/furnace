@@ -1,0 +1,40 @@
+{% set user = user|default(rating.user) %}
+{% from '_macros/table' import boolean, progress %}
+
+<div class="media rating">
+	<figure class="media-left">
+		<img class="img-circle" src="{{ user.avatar() }}" alt="" />
+		<figcaption>
+			{{ user.name }}<br>
+			<time datetime="{{ rating.created_at }}">{{ rating.created_at.diffForHumans() }}</time>
+		</figcaption>
+	</figure>
+	<div class="media-body">
+		<h4 class="media-heading">Rated <a href="{{ URL.route('tracks.show', rating.track_id) }}">{{ rating.track.identifier }}</a></h4>
+		<table class="table table-bordered table-condensed">
+			<thead>
+			<tr>
+				<th>Plateform</th>
+				<th>Presilence</th>
+				<th>Volume</th>
+				<th>Playable</th>
+				<th>Tone</th>
+				<th>Audio</th>
+				<th>Tab</th>
+				<th>Total</th>
+			</tr>
+			</thead>
+			<tr class="text-center">
+				<td>{{ rating.plateform|title }}</td>
+				<td>{{ boolean(rating.presilence) }}</td>
+				<td>{{ boolean(rating.normalized_volume) }}</td>
+				<td>{{ boolean(rating.playable) }}</td>
+				<td>{{ progress(rating.tone) }}</td>
+				<td>{{ progress(rating.audio) }}</td>
+				<td>{{ progress(rating.tab) }}</td>
+				<td>{{ progress(rating.note, rating_scale) }}</td>
+			</tr>
+		</table>
+		<blockquote>{{ rating.comments|default('This user did not leave any additional comments.') }}</blockquote>
+	</div>
+</div>
