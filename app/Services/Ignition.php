@@ -117,7 +117,7 @@ class Ignition
                     'columns[10][name]'          => '',
                     'columns[10][searchable]'    => 'true',
                     'columns[10][orderable]'     => 'true',
-                    'columns[10][search][value]' => 'lead',
+                    'columns[10][search][value]' => '',
                     'columns[10][search][regex]' => 'false',
                     'columns[11][data][_]'       => '11',
                     'columns[11][data][filter]'  => '11',
