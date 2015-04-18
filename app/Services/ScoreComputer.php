@@ -7,6 +7,21 @@ use Furnace\Entities\Models\Tracker;
 class ScoreComputer
 {
     /**
+     * @type array
+     */
+    protected $weights;
+
+    /**
+     * ScoreComputer constructor.
+     *
+     * @param array $weights
+     */
+    public function __construct(array $weights)
+    {
+        $this->weights = $weights;
+    }
+
+    /**
      * @param Tracker $tracker
      */
     public function forBlacksmith(Tracker $tracker)
@@ -47,8 +62,8 @@ class ScoreComputer
             return 0;
         }
 
-        $parts = array_filter($track->parts);
-        $notes = [
+        $parts      = array_filter($track->parts);
+        $components = $this->applyWeights([
             $track->ratings->average('tone'),
             $track->ratings->average('audio'),
             $track->ratings->average('tab'),
@@ -59,10 +74,10 @@ class ScoreComputer
             round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
             count($parts),
             $track->updated_at->diffInMonths() < 6,
-        ];
+        ]);
 
         // Round up and ceil
-        $rating = array_sum($notes);
+        $rating = array_sum($components);
         $rating = round($rating, 1);
         $rating = min($rating, Track::$ratingScale);
 
@@ -85,5 +100,23 @@ class ScoreComputer
         $rating  = round($ratings, 1);
 
         return $rating;
+    }
+
+    /**
+     * Apply weights to the formula's components
+     *
+     * @param array $components
+     *
+     * @return array
+     */
+    private function applyWeights($components)
+    {
+        foreach ($this->weights as $name => $weight) {
+            if (array_key_exists($name, $components)) {
+                $components[$name] = $components[$name] * $weight;
+            }
+        }
+
+        return $components;
     }
 }
