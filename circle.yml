@@ -16,6 +16,7 @@ dependencies:
 test:
   pre:
     - touch database/testing.sqlite
+    - php artisan migrate --env="testing"
     - php artisan migrate:refresh --env="testing"
   override:
     - php artisan env
