@@ -8,7 +8,10 @@ class Tracker extends AbstractModel implements Favoritable
     /**
      * @type array
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'score',
+    ];
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
@@ -25,17 +28,6 @@ class Tracker extends AbstractModel implements Favoritable
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////
-
-    /**
-     * @return float
-     */
-    public function getRatingAttribute()
-    {
-        $ratings = $this->tracks->lists('rating');
-        $ratings = array_sum($ratings) / count($ratings);
-
-        return round($ratings, 1);
-    }
 
     /**
      * @return string[]

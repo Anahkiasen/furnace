@@ -22,6 +22,7 @@ class Track extends AbstractModel implements Favoritable
         'dd',
         'riff_repeater',
         'difficulty_levels',
+        'score',
         'ignition_id',
         'tracker_id',
     ];
@@ -66,38 +67,6 @@ class Track extends AbstractModel implements Favoritable
     public function getIsPlayableAttribute()
     {
         return $this->ratings->average('playable') > 0.5;
-    }
-
-    /**
-     * Get the rating of the track.
-     *
-     * @return float
-     */
-    public function getRatingAttribute()
-    {
-        if (!$this->isPlayable) {
-            return 0;
-        }
-
-        $parts = array_filter($this->parts);
-
-        $notes = [
-            $this->ratings->average('tone'),
-            $this->ratings->average('audio'),
-            $this->ratings->average('tab'),
-            $this->ratings->average('normalized_volume'),
-            $this->ratings->average('presilence'),
-            $this->dd,
-            $this->riff_repeater,
-            round($this->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS),
-            count($parts),
-            $this->updated_at->diffInMonths() < 6,
-        ];
-
-        $rating = array_sum($notes);
-        $rating = round($rating, 1);
-
-        return min($rating, static::$ratingScale);
     }
 
     /**

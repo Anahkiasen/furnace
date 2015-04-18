@@ -2,6 +2,7 @@
 namespace Furnace\Http\Controllers;
 
 use Collective\Annotations\Routing\Annotations\Annotations\Get;
+use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
@@ -33,7 +34,7 @@ class TracksController extends AbstractController
     public function index()
     {
         $tracks = Track::with('tracker', 'ratings')->get();
-        $tracks = $tracks->sortByDesc('rating');
+        $tracks = $tracks->sortByDesc('score');
 
         return View::make('tracks/index', [
             'tracks' => $tracks,

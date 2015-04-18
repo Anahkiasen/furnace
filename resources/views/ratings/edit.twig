@@ -11,6 +11,8 @@
 				<legend>CDLC</legend>
 				{{ Former.select('ignition_id', 'CDLC').selectize().help('Search for a CDLC here and pick the one in the results') }}
 			</fieldset>
+		{% else %}
+			{{ Former.hidden('ignition_id', rating.track.ignition_id) }}
 		{% endif %}
 
 		<fieldset>
