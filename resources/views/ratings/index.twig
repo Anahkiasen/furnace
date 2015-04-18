@@ -33,7 +33,7 @@
 			<td>{{ progress(rating.note, 20) }}</td>
 			<td class="text-center"><a href="{{ URL.route('ratings.edit', rating.id) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
 			<td class="text-center">{{ favorite(current_user, rating.track) }}</td>
-			<td class="text-center"><a href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+			<td class="text-center"><a ng-click="remove($event)" href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
 		</tr>
 	{% endfor %}
 {% endblock %}
