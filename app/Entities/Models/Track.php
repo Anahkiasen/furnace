@@ -35,7 +35,7 @@ class Track extends AbstractModel implements Favoritable
     /**
      * The standard number of difficulty levels.
      */
-    const STANDARD_DIFFICULTY_LEVELS = 8;
+    const STANDARD_DIFFICULTY_LEVELS = 5;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
