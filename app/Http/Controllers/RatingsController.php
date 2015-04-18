@@ -17,6 +17,20 @@ use View;
 class RatingsController extends AbstractController
 {
     /**
+     * @type array
+     */
+    protected $keys = [
+        'ignition_id',
+        'presilence',
+        'normalized_volume',
+        'playable',
+        'tone',
+        'audio',
+        'tab',
+        'comments',
+    ];
+
+    /**
      * @param Authenticatable $user
      *
      * @return \Illuminate\View\View
@@ -48,16 +62,7 @@ class RatingsController extends AbstractController
     {
         $this->dispatchFromArray(UpsertRatingCommand::class, [
             'user'       => $user,
-            'attributes' => $request->only([
-                'ignition_id',
-                'presilence',
-                'normalized_volume',
-                'playable',
-                'tone',
-                'audio',
-                'tab',
-                'comments',
-            ]),
+            'attributes' => $request->only($this->keys),
         ]);
 
         return Redirect::route('ratings.index');
@@ -87,16 +92,7 @@ class RatingsController extends AbstractController
         $this->dispatchFromArray(UpsertRatingCommand::class, [
             'user'       => $user,
             'rating'     => $rating,
-            'attributes' => $request->only([
-                'ignition_id',
-                'presilence',
-                'normalized_volume',
-                'playable',
-                'tone',
-                'audio',
-                'tab',
-                'comments',
-            ]),
+            'attributes' => $request->only($this->keys),
         ]);
 
         return Redirect::route('ratings.index');
