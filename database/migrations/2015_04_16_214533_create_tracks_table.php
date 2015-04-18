@@ -15,7 +15,6 @@ class CreateTracksTable extends Migration
             $table->string('artist')->nullable();
             $table->string('album')->nullable();
             $table->string('name')->nullable();
-            $table->string('file');
             $table->string('parts');
             $table->string('tuning');
             $table->string('version');

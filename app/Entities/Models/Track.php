@@ -15,7 +15,6 @@ class Track extends AbstractModel
         'artist',
         'album',
         'name',
-        'file',
         'parts',
         'tuning',
         'version',
