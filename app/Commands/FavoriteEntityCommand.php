@@ -1,12 +1,12 @@
-<?php namespace Furnace\Commands;
+<?php
+namespace Furnace\Commands;
 
-use Furnace\Commands\Command;
 use Furnace\Entities\Models\User;
 
 class FavoriteEntityCommand
 {
     /**
-     * @type integer
+     * @type int
      */
     public $favoritable;
 
@@ -23,9 +23,9 @@ class FavoriteEntityCommand
     /**
      * Create a new command instance.
      *
-     * @param User    $user
-     * @param string  $type
-     * @param integer $favoritable
+     * @param User   $user
+     * @param string $type
+     * @param int    $favoritable
      */
     public function __construct(User $user, $type, $favoritable)
     {

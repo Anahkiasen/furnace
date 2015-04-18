@@ -201,7 +201,7 @@ return [
         'View'      => 'Illuminate\Support\Facades\View',
 
         // Packages
-        'Former' => 'Former\Facades\Former',
+        'Former'   => 'Former\Facades\Former',
         'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
 
     ],

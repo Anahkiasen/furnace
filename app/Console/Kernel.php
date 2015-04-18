@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @type array
      */
     protected $commands = [
-        UpdateScores::class
+        UpdateScores::class,
     ];
 
     /**

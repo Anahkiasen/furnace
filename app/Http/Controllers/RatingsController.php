@@ -103,8 +103,9 @@ class RatingsController extends AbstractController
     /**
      * @param Rating $rating
      *
-     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      */
     public function destroy(Rating $rating)
     {

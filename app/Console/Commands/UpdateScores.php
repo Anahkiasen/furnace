@@ -35,9 +35,8 @@ class UpdateScores extends Command
         $this->scoresComputer = $scoresComputer;
     }
 
-
     /**
-     * Run the command
+     * Run the command.
      */
     public function handle()
     {

@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands;
+<?php
+namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\FavoriteEntityCommand;
 use Furnace\Entities\Interfaces\Favoritable;
@@ -27,22 +28,23 @@ class FavoriteEntityCommandHandler
     /**
      * Handle the command.
      *
-     * @param  FavoriteEntityCommand $command
+     * @param FavoriteEntityCommand $command
      *
-     * @return Favorite
      * @throws InvalidArgumentException
+     * @return Favorite
+     *
      */
     public function handle(FavoriteEntityCommand $command)
     {
         $type = str_replace('Furnace\Entities\Models\\', null, ucfirst($command->type));
         $type = sprintf('Furnace\Entities\Models\%s', $type);
         if (!class_exists($type)) {
-            throw new InvalidArgumentException;
+            throw new InvalidArgumentException();
         }
 
         $entity = $type::find($command->favoritable);
         if (!$entity) {
-            throw new ModelNotFoundException;
+            throw new ModelNotFoundException();
         }
 
         $favorite = $this->toggleFavorite($command->user, $entity);
@@ -66,7 +68,7 @@ class FavoriteEntityCommandHandler
 
         // Toggle favorite
         if ($user->hasFavorited($entity)) {
-            $favorite = $this->repository->where($attributes)->delete() == 1;
+            $favorite = $this->repository->where($attributes)->delete() === 1;
         } else {
             $favorite = $this->repository->create($attributes);
         }

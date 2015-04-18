@@ -2,7 +2,6 @@
 namespace Furnace\Entities\Models;
 
 use Furnace\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 abstract class AbstractModel extends \Arrounded\Abstracts\Models\AbstractModel
 {

@@ -28,6 +28,6 @@ class Kernel extends HttpKernel
         'auth'       => 'Furnace\Http\Middleware\Authenticate',
         'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
         'guest'      => 'Furnace\Http\Middleware\RedirectIfAuthenticated',
-        'csrf'       => VerifyCsrfToken::class
+        'csrf'       => VerifyCsrfToken::class,
     ];
 }

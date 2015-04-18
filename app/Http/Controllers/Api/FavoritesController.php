@@ -11,8 +11,9 @@ class FavoritesController extends AbstractController
 {
     /**
      * @Post("api/favorites/{type}/{favoritable}", as="api.favorites.store")
+     *
      * @param string          $type
-     * @param integer         $favoritable
+     * @param int             $favoritable
      * @param Authenticatable $user
      *
      * @return Favorite
