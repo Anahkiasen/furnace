@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Furnace\Entities\Interfaces\Favoritable;
 use Gravatar;
 use Hash;
 use Illuminate\Auth\Authenticatable;
@@ -45,9 +46,30 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany(Rating::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class)->orderBy('favoritable_type');
+    }
+
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param Favoritable $favoritable
+     *
+     * @return boolean
+     */
+    public function hasFavorited(Favoritable $favoritable)
+    {
+        return $this->favorites()
+            ->where('favoritable_type', get_class($favoritable))
+            ->where('favoritable_id', $favoritable->id)
+            ->count();
+    }
 
     /**
      * @param string $size

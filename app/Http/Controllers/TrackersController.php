@@ -7,6 +7,7 @@ use View;
 
 /**
  * @Resource("trackers", only={"index"})
+ * @Middleware("csrf")
  */
 class TrackersController extends AbstractController
 {

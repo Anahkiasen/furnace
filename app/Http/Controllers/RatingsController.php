@@ -13,6 +13,7 @@ use View;
 /**
  * @Resource("ratings")
  * @Middleware("auth")
+ * @Middleware("csrf")
  */
 class RatingsController extends AbstractController
 {

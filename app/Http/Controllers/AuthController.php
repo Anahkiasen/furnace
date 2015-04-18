@@ -14,6 +14,9 @@ use Redirect;
 use URL;
 use View;
 
+/**
+ * @Middleware("csrf")
+ */
 class AuthController extends AbstractController
 {
     /**

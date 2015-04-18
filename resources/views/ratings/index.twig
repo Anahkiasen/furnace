@@ -1,5 +1,5 @@
 {% extends '_layouts/table.twig' %}
-{% from '_macros/table.twig' import progress, boolean %}
+{% from '_macros/table.twig' import progress, boolean, favorite %}
 {% set title = 'My ratings' %}
 
 {% block headers %}
@@ -14,6 +14,7 @@
 	<th>Tab</th>
 	<th>Rating</th>
 	<th>Edit</th>
+	<th>Favorite</th>
 	<th>Remove</th>
 {% endblock %}
 
@@ -31,6 +32,7 @@
 			<td>{{ progress(rating.tab, 3) }}</td>
 			<td>{{ progress(rating.note, 20) }}</td>
 			<td><a href="{{ URL.route('ratings.edit', rating.id) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+			<td>{{ favorite(current_user, rating.track) }}</td>
 			<td><a href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
 		</tr>
 	{% endfor %}

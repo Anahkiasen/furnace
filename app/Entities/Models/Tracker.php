@@ -1,7 +1,9 @@
 <?php
 namespace Furnace\Entities\Models;
 
-class Tracker extends AbstractModel
+use Furnace\Entities\Interfaces\Favoritable;
+
+class Tracker extends AbstractModel implements Favoritable
 {
     /**
      * @type array

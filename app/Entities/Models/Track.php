@@ -2,11 +2,12 @@
 namespace Furnace\Entities\Models;
 
 use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
+use Furnace\Entities\Interfaces\Favoritable;
 
 /**
  * @Bind("tracks")
  */
-class Track extends AbstractModel
+class Track extends AbstractModel implements Favoritable
 {
     /**
      * @type array

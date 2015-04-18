@@ -1,5 +1,5 @@
 {% extends '_layouts/table.twig' %}
-{% from '_macros/table.twig' import progress, boolean %}
+{% from '_macros/table.twig' import progress, boolean, favorite %}
 {% set title = 'Tracks' %}
 
 {% block headers %}
@@ -20,6 +20,9 @@
 	<th>Track</th>
 	<th>Tab</th>
 	<th>Rating</th>
+	{% if current_user %}
+		<th>Favorite</th>
+	{% endif %}
 	<th>View</th>
 {% endblock %}
 
@@ -56,6 +59,9 @@
 			<td>
 				{{ progress(track.rating, rating_scale) }}
 			</td>
+			{% if current_user %}
+				<td>{{ favorite(current_user, track) }}</td>
+			{% endif %}
 			<td>
 				<a href="{{ URL.route('tracks.show', track.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
 			</td>
