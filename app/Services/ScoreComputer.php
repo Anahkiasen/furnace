@@ -63,14 +63,14 @@ class ScoreComputer
         }
 
         $components = $this->applyWeights([
-            $track->ratings->average('tone'),
-            $track->ratings->average('audio'),
-            $track->ratings->average('tab'),
-            $track->ratings->average('normalized_volume'),
-            $track->ratings->average('presilence'),
-            $track->dd,
-            $track->riff_repeater,
-            round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
+            'tone'              => $track->ratings->average('tone'),
+            'audio'             => $track->ratings->average('audio'),
+            'tab'               => $track->ratings->average('tab'),
+            'normalized_volume' => $track->ratings->average('normalized_volume'),
+            'presilence'        => $track->ratings->average('presilence'),
+            'dd'                => $track->dd,
+            'rr'                => $track->riff_repeater,
+            'difficulty_levels' => round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
         ]);
 
         // Round up and ceil
