@@ -13,7 +13,11 @@ class Collection extends \Illuminate\Database\Eloquent\Collection
      */
     public function average($attribute, $precision = 1)
     {
-        $items   = $this->lists($attribute);
+        $items = $this->lists($attribute);
+        if (!$items) {
+            return;
+        }
+
         $average = array_sum($items) / count($items);
         $average = round($average, $precision);
 

@@ -75,6 +75,10 @@ class ScoreComputer
     protected function computeBlacksmithScore(Tracker $tracker)
     {
         $ratings = $tracker->tracks()->lists('score');
+        if (!$ratings) {
+            return 0;
+        }
+
         $ratings = array_sum($ratings) / count($ratings);
         $rating  = round($ratings, 1);
 

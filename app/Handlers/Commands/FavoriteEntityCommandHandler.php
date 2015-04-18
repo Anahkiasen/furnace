@@ -5,6 +5,7 @@ use Furnace\Entities\Interfaces\Favoritable;
 use Furnace\Entities\Models\Favorite;
 use Furnace\Entities\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use InvalidArgumentException;
 
 class FavoriteEntityCommandHandler
 {
@@ -33,7 +34,8 @@ class FavoriteEntityCommandHandler
      */
     public function handle(FavoriteEntityCommand $command)
     {
-        $type = sprintf('Furnace\Entities\Models\%s', ucfirst($command->type));
+        $type = str_replace('Furnace\Entities\Models\\', null, ucfirst($command->type));
+        $type = sprintf('Furnace\Entities\Models\%s', $type);
         if (!class_exists($type)) {
             throw new InvalidArgumentException;
         }
@@ -64,7 +66,7 @@ class FavoriteEntityCommandHandler
 
         // Toggle favorite
         if ($user->hasFavorited($entity)) {
-            $favorite = $this->repository->where($attributes)->delete();
+            $favorite = $this->repository->where($attributes)->delete() == 1;
         } else {
             $favorite = $this->repository->create($attributes);
         }

@@ -23,6 +23,8 @@ class SocializeUserCommandHandler
      * Handle the command.
      *
      * @param SocializeUserCommand $command
+     *
+     * @return User
      */
     public function handle(SocializeUserCommand $command)
     {
