@@ -30,17 +30,6 @@ class Tracker extends AbstractModel implements Favoritable
     //////////////////////////////////////////////////////////////////////
 
     /**
-     * @return float
-     */
-    public function getRatingAttribute()
-    {
-        $ratings = $this->tracks->lists('rating');
-        $ratings = array_sum($ratings) / count($ratings);
-
-        return round($ratings, 1);
-    }
-
-    /**
      * @return string[]
      */
     public function getArtistsAttribute()
