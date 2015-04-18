@@ -12,6 +12,16 @@ class ScoreComputer
     protected $weights;
 
     /**
+     * The standard number of difficulty levels.
+     */
+    const STANDARD_DIFFICULTY_LEVELS = 5;
+
+    /**
+     * @type int
+     */
+    public static $ratingScale = 20;
+
+    /**
      * ScoreComputer constructor.
      *
      * @param array $weights
@@ -67,21 +77,21 @@ class ScoreComputer
         $components = $this->applyWeights([
             'tone'              => $track->ratings->average('tone'),
             'audio'             => $track->ratings->average('audio'),
+            'tab'               => $track->ratings->average('tab'),
             'sync'              => $track->ratings->average('sync'),
             'techniques'        => $track->ratings->average('techniques'),
-            'tab'               => $track->ratings->average('tab'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
             'presilence'        => $track->ratings->average('presilence'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'platforms'         => count($track->platforms) / 4,
-            'difficulty_levels' => min(1, round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS)),
+            'difficulty_levels' => min(1, round($track->difficulty_levels / self::STANDARD_DIFFICULTY_LEVELS)),
         ]);
 
         // Round up and ceil
         $rating = array_sum($components);
         $rating = round($rating, 1);
-        $rating = min($rating, Track::$ratingScale);
+        $rating = min($rating, self::$ratingScale);
 
         return $rating;
     }

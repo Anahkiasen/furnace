@@ -28,15 +28,6 @@ class Track extends AbstractModel implements Favoritable
         'tracker_id',
     ];
 
-    /**
-     * @type int
-     */
-    public static $ratingScale = 20;
-
-    /**
-     * The standard number of difficulty levels.
-     */
-    const STANDARD_DIFFICULTY_LEVELS = 5;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////

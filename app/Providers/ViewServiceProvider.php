@@ -4,6 +4,7 @@ namespace Furnace\Providers;
 use Auth;
 use Furnace\Entities\Models\Track;
 use Furnace\Http\Composers\RatingsComposer;
+use Furnace\Services\ScoreComputer;
 use Illuminate\Support\ServiceProvider;
 use View;
 
@@ -19,7 +20,7 @@ class ViewServiceProvider extends ServiceProvider
         ]);
 
         View::composer('*', function ($view) {
-            $view->rating_scale = Track::$ratingScale;
+            $view->rating_scale = ScoreComputer::$ratingScale;
             $view->current_user = Auth::user();
             $view->menu         = [
                 'tracks.index'   => 'Tracks',
