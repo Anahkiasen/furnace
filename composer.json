@@ -29,7 +29,8 @@
     "symfony/var-dumper": "~2.6",
     "barryvdh/laravel-debugbar": "~2.0",
     "barryvdh/laravel-ide-helper": "~2.0",
-    "doctrine/dbal": "~2.5"
+    "doctrine/dbal": "~2.5",
+    "benconstable/phpspec-laravel": "~2.0"
   },
   "autoload": {
     "classmap": [
