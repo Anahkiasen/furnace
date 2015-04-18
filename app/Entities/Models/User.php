@@ -51,7 +51,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favorite::class)->orderBy('favoritable_type');
     }
 
     //////////////////////////////////////////////////////////////////////

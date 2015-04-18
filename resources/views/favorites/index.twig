@@ -1,0 +1,22 @@
+{% extends '_layouts/table.twig' %}
+{% set title = 'My favorites' %}
+
+{% block headers %}
+	<th>Artist</th>
+	<th>Title</th>
+	<th>Blacksmith</th>
+	<th>Favorite</th>
+{% endblock %}
+
+{% block rows %}
+	{% for favorite in current_user.favorites %}
+		<tr>
+			<td>{{ favorite.favoritable.artist }}</td>
+			<td>{{ favorite.favoritable.name }}</td>
+			<td>{{ favorite.favoritable.tracker.name }}</td>
+			<td>
+				<a ng-click="favorite($event)" href="{{ URL.route('api.favorites.store', ['track', favorite.favoritable_id]) }}"><i class="glyphicon glyphicon-heart{% if not current_user.hasFavorited(favorite.favoritable) %}-empty{% endif %}"></i></a>
+			</td>
+		</tr>
+	{% endfor %}
+{% endblock %}
