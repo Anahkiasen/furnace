@@ -9,6 +9,7 @@ use View;
 
 /**
  * @Resource("tracks", only={"index", "show"})
+ * @Middleware("csrf")
  */
 class TracksController extends AbstractController
 {

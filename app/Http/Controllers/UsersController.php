@@ -12,6 +12,7 @@ use View;
 
 /**
  * @Resource("users")
+ * @Middleware("csrf")
  */
 class UsersController extends AbstractController
 {

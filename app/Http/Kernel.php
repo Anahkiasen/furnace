@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Http;
 
+use Furnace\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -16,7 +17,6 @@ class Kernel extends HttpKernel
         'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
         'Illuminate\Session\Middleware\StartSession',
         'Illuminate\View\Middleware\ShareErrorsFromSession',
-        'Furnace\Http\Middleware\VerifyCsrfToken',
     ];
 
     /**
@@ -28,5 +28,6 @@ class Kernel extends HttpKernel
         'auth'       => 'Furnace\Http\Middleware\Authenticate',
         'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
         'guest'      => 'Furnace\Http\Middleware\RedirectIfAuthenticated',
+        'csrf'       => VerifyCsrfToken::class
     ];
 }
