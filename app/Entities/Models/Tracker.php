@@ -8,7 +8,10 @@ class Tracker extends AbstractModel implements Favoritable
     /**
      * @type array
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'score',
+    ];
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////

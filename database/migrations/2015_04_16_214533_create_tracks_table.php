@@ -21,6 +21,7 @@ class CreateTracksTable extends Migration
             $table->boolean('dd')->default(false);
             $table->boolean('riff_repeater')->default(false);
             $table->integer('difficulty_levels');
+            $table->integer('score');
             $table->integer('ignition_id')->unsigned();
             $table->integer('tracker_id')->unsigned()->index()->nullable();
             $table->timestamps();

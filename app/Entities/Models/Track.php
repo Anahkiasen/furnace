@@ -22,6 +22,7 @@ class Track extends AbstractModel implements Favoritable
         'dd',
         'riff_repeater',
         'difficulty_levels',
+        'score',
         'ignition_id',
         'tracker_id',
     ];
