@@ -62,6 +62,14 @@ class Track extends AbstractModel implements Favoritable
     //////////////////////////////////////////////////////////////////////
 
     /**
+     * @return string
+     */
+    public function getIdentifierAttribute()
+    {
+        return sprintf('%s - %s', $this->artist, $this->name);
+    }
+
+    /**
      * @return bool
      */
     public function getIsPlayableAttribute()
