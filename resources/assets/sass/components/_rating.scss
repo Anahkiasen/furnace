@@ -1,6 +1,14 @@
 .rating {
+	background: $color-gray;
+	margin-bottom: 2rem;
+	padding: 2rem;
+
+	// Avatar
+	//////////////////////////////////////////////////////////////////////
+
 	figure {
-		padding-right: 3rem;
+		width: 10%;
+		padding: 1rem 2rem 2rem 1rem;
 
 		figcaption {
 			margin-top: 0.5em;
@@ -15,6 +23,33 @@
 		}
 	}
 
+	// Header
+	//////////////////////////////////////////////////////////////////////
+
+	.media-heading,
+	table {
+		margin-bottom: 1rem;
+	}
+
+	.media-heading {
+		background: $color-blue-2;
+		padding: 1rem;
+		color: white;
+
+		a {
+			color: white;
+			font-style: italic;
+			text-shadow: 2px 2px 0 rgba(black, 0.15);
+		}
+	}
+
+	// Notes
+	//////////////////////////////////////////////////////////////////////
+
+	table {
+		background: white;
+	}
+
 	th {
 		text-align: center;
 	}
@@ -24,5 +59,16 @@
 			padding: 0.5em;
 			margin: 0;
 		}
+	}
+
+	// Comments
+	//////////////////////////////////////////////////////////////////////
+
+	blockquote {
+		background: white;
+		border-color: $color-gray-2;
+		color: $color-gray-3;
+		font-style: italic;
+		margin: 0;
 	}
 }
