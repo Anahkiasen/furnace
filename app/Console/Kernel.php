@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Console;
 
+use Furnace\Console\Commands\UpdateScores;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @type array
      */
     protected $commands = [
-        'Furnace\Console\Commands\Inspire',
+        UpdateScores::class
     ];
 
     /**
@@ -22,7 +23,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        // ...
     }
 }
