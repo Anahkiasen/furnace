@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => 'mysql',
+    'default' => app()->environment() === 'testing' ? 'sqlite' : 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ return [
 
         'sqlite' => [
             'driver'   => 'sqlite',
-            'database' => storage_path().'/database.sqlite',
+            'database' => database_path().'/testing.sqlite',
             'prefix'   => '',
         ],
 
