@@ -28,7 +28,7 @@
 
 {% block rows %}
 	{% for track in tracks %}
-		<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
+		<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.score >= (rating_scale * 0.9) %}success{% endif %}">
 			<td>{{ track.artist|raw }}</td>
 			<td>{{ track.name|raw }}</td>
 			<td>{{ track.tracker.name|raw }}</td>
@@ -57,7 +57,7 @@
 				{{ progress(track.ratings.average('tab'), 3) }}
 			</td>
 			<td>
-				{{ progress(track.rating, rating_scale) }}
+				{{ progress(track.score, rating_scale) }}
 			</td>
 			{% if current_user %}
 				<td>{{ favorite(current_user, track) }}</td>

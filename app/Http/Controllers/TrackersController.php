@@ -17,7 +17,7 @@ class TrackersController extends AbstractController
     public function index()
     {
         $trackers = Tracker::has('tracks')->with('tracks.ratings')->get();
-        $trackers = $trackers->sortByDesc('rating');
+        $trackers = $trackers->sortByDesc('score');
 
         return View::make('trackers/index', [
             'trackers' => $trackers,
