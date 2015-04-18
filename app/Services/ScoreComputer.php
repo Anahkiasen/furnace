@@ -32,19 +32,25 @@ class ScoreComputer
 
     /**
      * @param Track $track
+     * @param bool  $save
      *
      * @return int
      */
-    public function forTrack(Track $track)
+    public function forTrack(Track $track, $save = true)
     {
         // Update track's score
-        $track->score = $this->computeTrackScore($track);
-        $track->save();
+        $score        = $this->computeTrackScore($track);
+        $track->score = $score;
+        if ($save) {
+            $track->save();
+        }
 
         // Update Blacksmith's score
         if ($track->tracker) {
             $this->forBlacksmith($track->tracker);
         }
+
+        return $score;
     }
 
     //////////////////////////////////////////////////////////////////////
