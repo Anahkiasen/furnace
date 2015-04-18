@@ -20,3 +20,7 @@
 {% macro boolean(boolean) %}
 	{{ boolean ? '<i class="glyphicon glyphicon-ok"></i>' : '<i class="glyphicon glyphicon-remove"></i>' }}
 {% endmacro %}
+
+{% macro favorite(user, favoritable) %}
+	<a ng-click="favorite($event)" href="{{ URL.route('api.favorites.store', ['track', favoritable.id]) }}"><i class="glyphicon glyphicon-heart{% if not user.hasFavorited(favoritable) %}-empty{% endif %}"></i></a>
+{% endmacro %}
