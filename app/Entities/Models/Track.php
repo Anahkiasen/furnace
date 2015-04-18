@@ -96,7 +96,7 @@ class Track extends AbstractModel
         $rating = array_sum($notes);
         $rating = round($rating, 1);
 
-        return $rating;
+        return max($rating, static::$ratingScale);
     }
 
     /**

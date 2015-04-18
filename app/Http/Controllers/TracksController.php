@@ -27,18 +27,15 @@ class TracksController extends AbstractController
 
     /**
      * @Get("/", as="home")
-     *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $tracks             = Track::with('tracker', 'ratings')->get();
-        $tracks             = $tracks->sortByDesc('rating');
-        Track::$ratingScale = $tracks->max('rating');
+        $tracks = Track::with('tracker', 'ratings')->get();
+        $tracks = $tracks->sortByDesc('rating');
 
         return View::make('tracks/index', [
-            'tracks'       => $tracks,
-            'rating_scale' => Track::$ratingScale,
+            'tracks' => $tracks,
         ]);
     }
 
