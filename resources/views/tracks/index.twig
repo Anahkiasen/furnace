@@ -18,7 +18,6 @@
 	<th>In sync</th>
 	<th>Playable</th>
 	<th>Version</th>
-	<th>Last update</th>
 	<th>Tone</th>
 	<th>Track</th>
 	<th>Tab</th>
@@ -48,16 +47,15 @@
 				<span class="label label-success" {% if not track.platforms.xbox360 %}disabled{% endif %}>X</span>
 				<span class="label label-default" {% if not track.platforms.mac %}disabled{% endif %}>M</span>
 			</td>
-			<td>{{ boolean(track.dd) }}</td>
-			<td>{{ boolean(track.riff_repeater) }}</td>
-			<td>{{ track.difficulty_levels }}</td>
+			<td class="text-center">{{ boolean(track.dd) }}</td>
+			<td class="text-center">{{ boolean(track.riff_repeater) }}</td>
+			<td class="text-center">{{ track.difficulty_levels }}</td>
 			<td class="text-center">{{ boolean(track.ratings.average('normalized_volume')) }}</td>
 			<td class="text-center">{{ boolean(track.ratings.average('presilence')) }}</td>
 			<td class="text-center">{{ boolean(track.ratings.average('playable')) }}</td>
 			<td class="text-center">{{ boolean(track.ratings.average('sync')) }}</td>
 			<td class="text-center">{{ boolean(track.ratings.average('techniques')) }}</td>
 			<td>{{ track.version }}</td>
-			<td>{{ track.updated_at.toDateString() }}</td>
 			<td>
 				{{ progress(track.ratings.average('tone'), 3) }}
 			</td>
