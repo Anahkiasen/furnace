@@ -69,9 +69,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function hasFavorited(Favoritable $favoritable)
     {
-        return $this->favorites->filter(function (Favorite $favorite) use ($favoritable) {
-            return $favorite->favoritable_type === get_class($favoritable) && $favorite->favoritable_id === $favoritable->id;
-        })->count();
+        foreach ($this->favorites as $favorite) {
+            if ($favorite->favoritable_type === get_class($favoritable) && $favorite->favoritable_id === $favoritable->id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

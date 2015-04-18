@@ -49,8 +49,8 @@ class FavoriteEntityCommandHandlerSpec extends FurnaceObjectBehavior
         $user    = User::first();
 
         $command = new FavoriteEntityCommand($user, Track::class, $item->id);
-
-        $this->handle($command);
+        $first = $this->handle($command);
+        unset($user->favorites);
         $second = $this->handle($command);
 
         $second->shouldBe(true);
