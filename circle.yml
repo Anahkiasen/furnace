@@ -1,0 +1,22 @@
+machine:
+  php:
+    version: 5.5.15
+  ruby:
+    version: 2.1.3
+  environment:
+    APP_ENV: testing
+
+dependencies:
+  pre:
+    - pecl install xdebug
+    - echo "memory_limit = 1024M" > ~/.phpenv/versions/5.5.15/etc/conf.d/memory.ini
+  override:
+    - composer install --prefer-source --no-interaction
+
+test:
+  pre:
+    - touch app/database/codeception.sqlite
+    - php artisan db:remigrate --env="testing"
+  override:
+    - php artisan env
+    - vendor/bin/phpspec run -vvv --no-interaction --format="pretty"
