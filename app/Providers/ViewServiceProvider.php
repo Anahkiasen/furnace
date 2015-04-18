@@ -19,18 +19,18 @@ class ViewServiceProvider extends ServiceProvider
             RatingsComposer::class.'@composeCreate' => 'ratings/edit',
         ]);
 
-        View::composer('*', function ($view) {
-            $view->rating_scale  = ScoreComputer::RATING_SCALE;
-            $view->integer_scale = ScoreComputer::INTEGER_CRITERIA_SCALE;
-            $view->current_user  = Auth::user();
-            $view->menu          = [
+        View::share([
+            'rating_scale'  => ScoreComputer::RATING_SCALE,
+            'integer_scale' => ScoreComputer::INTEGER_CRITERIA_SCALE,
+            'current_user'  => Auth::user(),
+            'menu'          => [
                 'tracks.index'   => 'Tracks',
                 'trackers.index' => 'Blacksmiths',
                 'users.index'    => 'Users',
                 'ratings.create' => 'Rate a track',
                 'help.about'     => 'About',
-            ];
-        });
+            ],
+        ]);
     }
 
     /**
