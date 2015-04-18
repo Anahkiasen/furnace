@@ -33,5 +33,19 @@
 			Secondly, the user's ratings are gathered and averaged into a note. This note is merged with the main one to form a total score on a scale of {{ rating_scale }}.
 		</li>
 	</ol>
+	<p>The exact formula is the following:</p>
+	<pre>SUM(
+	AVERAGE(quality of tones)
+	AVERAGE(audio quality)
+	AVERAGE(quality of tab)
+	AVERAGE(normalized volume between tones and track) <small>(1 or 0)</small>
+	AVERAGE(long enough silence at beginning of track) <small>(1 or 0)</small>
+	dynamic difficulty? <small>(1 or 0)</small>
+	riff repeater? <small>(1 or 0)</small>
+	has been updated in last six months? <small>(1 or 0)</small>
+	number of difficulty levels / 8
+	number of parts
+)</pre>
+	<p>This is then rounded and capped at 20.</p>
 	<p>The code is open source, if you find a better way to compute scores, or have an idea on a criteria that is missing, all suggestions or pull requests are welcome.</p>
 {% endblock %}
