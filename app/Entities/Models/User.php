@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Gravatar;
 use Hash;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -47,6 +48,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param string $size
+     *
+     * @return string
+     */
+    public function avatar($size = 'default')
+    {
+        return Gravatar::get($this->email, $size);
+    }
 
     /**
      * @param string $password

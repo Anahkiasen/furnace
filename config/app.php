@@ -140,6 +140,7 @@ return [
         'Former\FormerServiceProvider',
         'Laravel\Socialite\SocialiteServiceProvider',
         'MathiasGrimm\LaravelDotEnvGen\DotEnvGenServiceProvider',
+        'Creativeorange\Gravatar\GravatarServiceProvider',
 
         // Application
         'Furnace\Providers\AppServiceProvider',
@@ -201,6 +202,7 @@ return [
 
         // Packages
         'Former' => 'Former\Facades\Former',
+        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
 
     ],
 
