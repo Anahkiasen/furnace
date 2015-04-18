@@ -31,7 +31,8 @@
     "barryvdh/laravel-ide-helper": "~2.0",
     "doctrine/dbal": "~2.5",
     "benconstable/phpspec-laravel": "~2.0",
-    "league/factory-muffin": "~2.1"
+    "league/factory-muffin": "~2.1",
+    "mockery/mockery": "0.9.*"
   },
   "autoload": {
     "classmap": [
