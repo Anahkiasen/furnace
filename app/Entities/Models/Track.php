@@ -96,13 +96,13 @@ class Track extends AbstractModel implements Favoritable
     }
 
     /**
-     * Get which plateforms the track supports.
+     * Get which platforms the track supports.
      *
      * @return array
      */
-    public function getPlateformsAttribute()
+    public function getPlatformsAttribute()
     {
-        return $this->recomposeJointArray('pateforms', ['pc', 'mac', 'xbox360', 'ps3']);
+        return $this->recomposeJointArray('platforms', ['pc', 'mac', 'xbox360', 'ps3']);
     }
 
     /**

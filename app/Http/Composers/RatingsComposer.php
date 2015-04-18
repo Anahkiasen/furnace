@@ -11,21 +11,21 @@ class RatingsComposer
      */
     public function composeCreate(View $view)
     {
-        $view->plateforms = $this->getPlateforms();
+        $view->platforms = $this->getPlatforms();
     }
 
     /**
      * @return array
      */
-    protected function getPlateforms()
+    protected function getPlatforms()
     {
         $options    = [];
-        $plateforms = Config::get('furnace.plateforms');
-        foreach ($plateforms as $plateform) {
-            $options[$plateform] = array_get([
+        $platforms = Config::get('furnace.platforms');
+        foreach ($platforms as $platform) {
+            $options[$platform] = array_get([
                 'ps' => 'Playstation',
                 'pc' => 'PC',
-            ], $plateform, ucfirst($plateform));
+            ], $platform, ucfirst($platform));
         }
 
         return $options;
