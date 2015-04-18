@@ -24,6 +24,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->menu         = [
                 'tracks.index'   => 'Tracks',
                 'trackers.index' => 'Blacksmiths',
+                'users.index'    => 'Users',
                 'ratings.create' => 'Rate a track',
                 'help.about'     => 'About',
             ];

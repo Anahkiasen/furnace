@@ -1,0 +1,16 @@
+{% extends '_layouts/table.twig' %}
+{% set title = 'Users' %}
+
+{% block headers %}
+	<th>Username</th>
+	<th>Ratings</th>
+{% endblock %}
+
+{% block rows %}
+	{% for user in users %}
+		<tr>
+			<td>{{ user.name }}</td>
+			<td>{{ user.ratings.count() }}</td>
+		</tr>
+	{% endfor %}
+{% endblock %}
