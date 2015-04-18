@@ -17,9 +17,14 @@ class ScoreComputer
     const STANDARD_DIFFICULTY_LEVELS = 5;
 
     /**
+     * The max score a multichoice criteria can have
+     */
+    const INTEGER_CRITERIA_SCALE = 3;
+
+    /**
      * @type int
      */
-    public static $ratingScale = 20;
+    const RATING_SCALE = 11;
 
     /**
      * ScoreComputer constructor.
@@ -75,9 +80,9 @@ class ScoreComputer
     protected function computeTrackScore(Track $track)
     {
         $components = $this->applyWeights([
-            'tone'              => $track->ratings->average('tone'),
-            'audio'             => $track->ratings->average('audio'),
-            'tab'               => $track->ratings->average('tab'),
+            'tone'              => $track->ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
+            'audio'             => $track->ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
+            'tab'               => $track->ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
             'sync'              => $track->ratings->average('sync'),
             'techniques'        => $track->ratings->average('techniques'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
@@ -85,13 +90,13 @@ class ScoreComputer
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'platforms'         => count($track->platforms) / 4,
-            'difficulty_levels' => min(1, round($track->difficulty_levels / self::STANDARD_DIFFICULTY_LEVELS)),
+            'difficulty_levels' => min(1, round($track->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS)),
         ]);
 
         // Round up and ceil
         $rating = array_sum($components);
         $rating = round($rating, 1);
-        $rating = min($rating, self::$ratingScale);
+        $rating = min($rating, static::RATING_SCALE);
 
         return $rating;
     }

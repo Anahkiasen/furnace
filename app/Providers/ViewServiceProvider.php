@@ -20,7 +20,7 @@ class ViewServiceProvider extends ServiceProvider
         ]);
 
         View::composer('*', function ($view) {
-            $view->rating_scale = ScoreComputer::$ratingScale;
+            $view->rating_scale = ScoreComputer::RATING_SCALE;
             $view->current_user = Auth::user();
             $view->menu         = [
                 'tracks.index'   => 'Tracks',
