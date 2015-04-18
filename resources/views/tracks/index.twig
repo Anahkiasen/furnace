@@ -1,70 +1,64 @@
-{% extends '_layouts/global.twig' %}
+{% extends '_layouts/table.twig' %}
 {% from '_macros/table.twig' import progress, boolean %}
 {% set title = 'Tracks' %}
-{% set body_classes = 'container--wide' %}
 
-{% block content %}
-	<table class="table table-striped table-hover" tablesorter>
-		<thead>
-		<tr>
-			<th>Artist</th>
-			<th>Title</th>
-			<th>Blacksmith</th>
-			<th>Tuning</th>
-			<th>Parts</th>
-			<th><abbr title="Dynamic Difficuly">DD</abbr></th>
-			<th><abbr title="Riff Repeater">RR</abbr></th>
-			<th><abbr title="Number of difficulty levels">Levels</abbr></th>
-			<th>Volume</th>
-			<th>Pre-silence</th>
-			<th>Playable</th>
-			<th>Version</th>
-			<th>Last update</th>
-			<th>Tone</th>
-			<th>Track</th>
-			<th>Tab</th>
-			<th>Rating</th>
-			<th>View</th>
+{% block headers %}
+	<th>Artist</th>
+	<th>Title</th>
+	<th>Blacksmith</th>
+	<th>Tuning</th>
+	<th>Parts</th>
+	<th><abbr title="Dynamic Difficuly">DD</abbr></th>
+	<th><abbr title="Riff Repeater">RR</abbr></th>
+	<th><abbr title="Number of difficulty levels">Levels</abbr></th>
+	<th>Volume</th>
+	<th>Pre-silence</th>
+	<th>Playable</th>
+	<th>Version</th>
+	<th>Last update</th>
+	<th>Tone</th>
+	<th>Track</th>
+	<th>Tab</th>
+	<th>Rating</th>
+	<th>View</th>
+{% endblock %}
+
+{% block rows %}
+	{% for track in tracks %}
+		<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
+			<td>{{ track.artist|raw }}</td>
+			<td>{{ track.name|raw }}</td>
+			<td>{{ track.tracker.name|raw }}</td>
+			<td>{{ track.tuning }}</td>
+			<td>
+				<span class="label label-warning" {% if not track.parts.lead %}disabled{% endif %}>L</span>
+				<span class="label label-success" {% if not track.parts.rhythm %}disabled{% endif %}>R</span>
+				<span class="label label-info" {% if not track.parts.bass %}disabled{% endif %}>B</span>
+				<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
+			</td>
+			<td>{{ boolean(track.dd) }}</td>
+			<td>{{ boolean(track.riff_repeater) }}</td>
+			<td>{{ track.difficulty_levels }}</td>
+			<td>{{ boolean(track.ratings.average('normalized_volume')) }}</td>
+			<td>{{ boolean(track.ratings.average('presilence')) }}</td>
+			<td>{{ boolean(track.ratings.average('playable')) }}</td>
+			<td>{{ track.version }}</td>
+			<td>{{ track.updated_at.toDateString() }}</td>
+			<td>
+				{{ progress(track.ratings.average('tone'), 3) }}
+			</td>
+			<td>
+				{{ progress(track.ratings.average('audio'), 3) }}
+			</td>
+			<td>
+				{{ progress(track.ratings.average('tab'), 3) }}
+			</td>
+			<td>
+				{{ progress(track.rating, rating_scale) }}
+			</td>
+			<td>
+				<a href="{{ URL.route('tracks.show', track.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
+			</td>
 		</tr>
-		</thead>
-		<tbody>
-		{% for track in tracks %}
-			<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.rating >= (rating_scale * 0.9) %}success{% endif %}">
-				<td>{{ track.artist|raw }}</td>
-				<td>{{ track.name|raw }}</td>
-				<td>{{ track.tracker.name|raw }}</td>
-				<td>{{ track.tuning }}</td>
-				<td>
-					<span class="label label-warning" {% if not track.parts.lead %}disabled{% endif %}>L</span>
-					<span class="label label-success" {% if not track.parts.rhythm %}disabled{% endif %}>R</span>
-					<span class="label label-info" {% if not track.parts.bass %}disabled{% endif %}>B</span>
-					<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
-				</td>
-				<td>{{ boolean(track.dd) }}</td>
-				<td>{{ boolean(track.riff_repeater) }}</td>
-				<td>{{ track.difficulty_levels }}</td>
-				<td>{{ boolean(track.ratings.average('normalized_volume')) }}</td>
-				<td>{{ boolean(track.ratings.average('presilence')) }}</td>
-				<td>{{ boolean(track.ratings.average('playable')) }}</td>
-				<td>{{ track.version }}</td>
-				<td>{{ track.updated_at.toDateString() }}</td>
-				<td>
-					{{ progress(track.ratings.average('tone'), 3) }}
-				</td>
-				<td>
-					{{ progress(track.ratings.average('audio'), 3) }}
-				</td>
-				<td>
-					{{ progress(track.ratings.average('tab'), 3) }}
-				</td>
-				<td>
-					{{ progress(track.rating, rating_scale) }}
-				</td>
-				<td>
-					<a href="{{ URL.route('tracks.show', track.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
-				</td>
-			</tr>
-		{% endfor %}
-		</tbody>
-	</table>
+	{% endfor %}
 {% endblock %}

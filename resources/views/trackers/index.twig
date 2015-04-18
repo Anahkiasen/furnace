@@ -1,27 +1,23 @@
-{% extends '_layouts/global.twig' %}
+{% extends '_layouts/table.twig' %}
 {% from '_macros/table.twig' import progress %}
 {% set title = 'Blacksmiths' %}
-{% set body_classes = 'container--wide' %}
 
-{% block content %}
-	<table class="table table-striped table-hover" tablesorter>
-		<thead>
+{% block headers %}
+	<th>Tracker</th>
+	<th>Artists</th>
+	<th>Rating</th>
+	<th>Tracks</th>
+{% endblock %}
+
+{% block rows %}
+	{% for tracker in trackers %}
 		<tr>
-			<th>Tracker</th>
-			<th>Artists</th>
-			<th>Rating</th>
-			<th>Tracks</th>
+			<td>
+				<a target="_blank" href='http://ignition.customsforge.com/search/browse?filters={"member":"{{ tracker.name }}"}&group=artist'>{{ tracker.name }}</a>
+			</td>
+			<td>{{ tracker.artists|join(', ')|raw }}</td>
+			<td>{{ progress(tracker.rating, trackers.max('rating')) }}</td>
+			<td>{{ tracker.tracks.count() }}</td>
 		</tr>
-		</thead>
-		<tbody>
-		{% for tracker in trackers %}
-			<tr>
-				<td><a target="_blank" href='http://ignition.customsforge.com/search/browse?filters={"member":"{{ tracker.name }}"}&group=artist'>{{ tracker.name }}</a></td>
-				<td>{{ tracker.artists|join(', ')|raw }}</td>
-				<td>{{ progress(tracker.rating, trackers.max('rating')) }}</td>
-				<td>{{ tracker.tracks.count() }}</td>
-			</tr>
-		{% endfor %}
-		</tbody>
-	</table>
+	{% endfor %}
 {% endblock %}
