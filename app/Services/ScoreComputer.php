@@ -62,7 +62,6 @@ class ScoreComputer
             return 0;
         }
 
-        $parts      = array_filter($track->parts);
         $components = $this->applyWeights([
             $track->ratings->average('tone'),
             $track->ratings->average('audio'),
@@ -72,8 +71,6 @@ class ScoreComputer
             $track->dd,
             $track->riff_repeater,
             round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
-            count($parts),
-            $track->updated_at->diffInMonths() < 6,
         ]);
 
         // Round up and ceil
