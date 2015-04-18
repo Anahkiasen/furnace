@@ -1,9 +1,25 @@
 .rating {
+	figure {
+		padding-right: 3rem;
+
+		figcaption {
+			margin-top: 0.5em;
+			font-weight: bold;
+			text-align: center;
+
+			time {
+				font-style: italic;
+				font-weight: normal;
+				font-size: 0.8em;
+			}
+		}
+	}
+
 	th {
 		text-align: center;
 	}
 
-	> tbody > tr {
+	.table > tbody > tr {
 		td {
 			padding: 0.5em;
 			margin: 0;
