@@ -2,6 +2,7 @@
 namespace Furnace\Http\Controllers;
 
 use Collective\Annotations\Routing\Annotations\Annotations\Get;
+use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;

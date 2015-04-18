@@ -12,6 +12,16 @@ class RatingObserver
     protected $scoreComputer;
 
     /**
+     * RatingObserver constructor.
+     *
+     * @param ScoreComputer $scoreComputer
+     */
+    public function __construct(ScoreComputer $scoreComputer)
+    {
+        $this->scoreComputer = $scoreComputer;
+    }
+
+    /**
      * @param Rating $rating
      */
     public function created(Rating $rating)
