@@ -1,4 +1,8 @@
 .table {
+	.danger td {
+		border-color: $color-red-2;
+	}
+
 	.success td {
 		background-color: rgba($color-green, 0.1) !important;
 
