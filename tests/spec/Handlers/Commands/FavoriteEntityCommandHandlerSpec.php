@@ -8,16 +8,19 @@ use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 use Furnace\Entities\Models\User;
 use Furnace\Handlers\Commands\FavoriteEntityCommandHandler;
-use PhpSpec\Laravel\LaravelObjectBehavior;
+use League\FactoryMuffin\Facade;
 use Prophecy\Argument;
+use spec\Furnace\FurnaceObjectBehavior;
 
 /**
  * @mixin FavoriteEntityCommandHandler
  */
-class FavoriteEntityCommandHandlerSpec extends LaravelObjectBehavior
+class FavoriteEntityCommandHandlerSpec extends FurnaceObjectBehavior
 {
     public function let()
     {
+        parent::let();
+
         $this->beConstructedWith(new Favorite());
     }
 
@@ -28,8 +31,7 @@ class FavoriteEntityCommandHandlerSpec extends LaravelObjectBehavior
 
     public function it_can_favorite_item()
     {
-        $tracker = Tracker::create([]);
-        $item    = Track::create(['tracker_id' => $tracker->id]);
+        $item = $this->getDummyTrack();
         $user    = User::first();
 
         $command  = new FavoriteEntityCommand($user, Track::class, $item->id);
@@ -43,8 +45,7 @@ class FavoriteEntityCommandHandlerSpec extends LaravelObjectBehavior
 
     public function it_can_toggle_favorite()
     {
-        $tracker = Tracker::create([]);
-        $item    = Track::create(['tracker_id' => $tracker->id]);
+        $item = $this->getDummyTrack();
         $user    = User::first();
 
         $command = new FavoriteEntityCommand($user, Track::class, $item->id);

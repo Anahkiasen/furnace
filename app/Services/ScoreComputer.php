@@ -27,7 +27,9 @@ class ScoreComputer
         $track->save();
 
         // Update Blacksmith's score
-        $this->forBlacksmith($track->tracker);
+        if ($track->tracker) {
+            $this->forBlacksmith($track->tracker);
+        }
     }
 
     //////////////////////////////////////////////////////////////////////

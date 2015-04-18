@@ -3,7 +3,7 @@ suites:
         namespace: Furnace
         psr4_prefix: Furnace
         src_path: app
-        spec_path: tests/phpspec
+        spec_path: tests
 extensions:
     - PhpSpec\Laravel\Extension\LaravelExtension
 laravel_extension:

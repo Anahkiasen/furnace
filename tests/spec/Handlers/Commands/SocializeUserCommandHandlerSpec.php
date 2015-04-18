@@ -7,14 +7,17 @@ use Furnace\Entities\Models\User;
 use Furnace\Handlers\Commands\SocializeUserCommandHandler;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\Furnace\FurnaceObjectBehavior;
 
 /**
  * @mixin SocializeUserCommandHandler
  */
-class SocializeUserCommandHandlerSpec extends ObjectBehavior
+class SocializeUserCommandHandlerSpec extends FurnaceObjectBehavior
 {
     public function let()
     {
+        parent::let();
+
         $this->beConstructedWith(new User());
     }
 

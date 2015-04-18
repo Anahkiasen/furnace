@@ -13,7 +13,7 @@ class CreateTrackersTable extends Migration
         Schema::create('trackers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->timestamps();
         });
     }

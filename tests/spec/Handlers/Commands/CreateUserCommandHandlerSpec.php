@@ -7,14 +7,17 @@ use Furnace\Entities\Models\User;
 use Furnace\Handlers\Commands\CreateUserCommandHandler;
 use PhpSpec\Laravel\LaravelObjectBehavior;
 use Prophecy\Argument;
+use spec\Furnace\FurnaceObjectBehavior;
 
 /**
  * @mixin CreateUserCommandHandler
  */
-class CreateUserCommandHandlerSpec extends LaravelObjectBehavior
+class CreateUserCommandHandlerSpec extends FurnaceObjectBehavior
 {
     public function let()
     {
+        parent::let();
+
         $this->beConstructedWith(new User());
     }
 

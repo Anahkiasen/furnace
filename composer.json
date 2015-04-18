@@ -30,7 +30,8 @@
     "barryvdh/laravel-debugbar": "~2.0",
     "barryvdh/laravel-ide-helper": "~2.0",
     "doctrine/dbal": "~2.5",
-    "benconstable/phpspec-laravel": "~2.0"
+    "benconstable/phpspec-laravel": "~2.0",
+    "league/factory-muffin": "~2.1"
   },
   "autoload": {
     "classmap": [
@@ -38,6 +39,11 @@
     ],
     "psr-4": {
       "Furnace\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "spec\\Furnace\\": "tests/spec"
     }
   },
   "scripts": {
