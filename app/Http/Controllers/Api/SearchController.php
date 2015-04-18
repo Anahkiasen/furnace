@@ -4,6 +4,7 @@ namespace Furnace\Http\Controllers\Api;
 use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Furnace\Http\Controllers\AbstractController;
 use Furnace\Services\Ignition;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 
 class SearchController extends AbstractController
@@ -31,15 +32,19 @@ class SearchController extends AbstractController
     public function search(Request $request)
     {
         $tracks  = [];
-        $results = $this->ignition->search($request->get('q'));
-        foreach ($results as $result) {
-            $tracks[] = [
-                'id'     => $result[0],
-                'artist' => $result[1],
-                'title'  => $result[2],
-                'user'   => $result[6],
-                'label'  => sprintf('%s - %s by %s', $result[1], $result[2], $result[6]),
-            ];
+        try {
+            $results = $this->ignition->search($request->get('q'));
+            foreach ($results as $result) {
+                $tracks[] = [
+                    'id'     => $result[0],
+                    'artist' => $result[1],
+                    'title'  => $result[2],
+                    'user'   => $result[6],
+                    'label'  => sprintf('%s - %s by %s', $result[1], $result[2], $result[6]),
+                ];
+            }
+        } catch (RequestException $exception) {
+            return [];
         }
 
         return $tracks;
