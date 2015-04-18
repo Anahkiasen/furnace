@@ -8,6 +8,7 @@ use Furnace\Entities\Models\Rating;
 use Furnace\Http\Requests\UpsertRating;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Redirect;
+use Response;
 use View;
 
 /**
@@ -97,5 +98,18 @@ class RatingsController extends AbstractController
         ]);
 
         return Redirect::route('ratings.index');
+    }
+
+    /**
+     * @param Rating $rating
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
+     */
+    public function destroy(Rating $rating)
+    {
+        $rating->delete();
+
+        return Response::make([], 204);
     }
 }
