@@ -60,9 +60,9 @@
 				{{ progress(track.score, rating_scale) }}
 			</td>
 			{% if current_user %}
-				<td>{{ favorite(current_user, track) }}</td>
+				<td class="text-center">{{ favorite(current_user, track) }}</td>
 			{% endif %}
-			<td>
+			<td class="text-center">
 				<a href="{{ URL.route('tracks.show', track.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
 			</td>
 		</tr>

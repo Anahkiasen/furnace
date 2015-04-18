@@ -20,9 +20,9 @@
 			</td>
 			<td>{{ tracker.artists|join(', ')|raw }}</td>
 			<td>{{ progress(tracker.rating, trackers.max('score')) }}</td>
-			<td>{{ tracker.tracks.count() }}</td>
+			<td class="text-center">{{ tracker.tracks.count() }}</td>
 			{% if current_user %}
-				<td>{{ favorite(current_user, tracker) }}</td>
+				<td class="text-center">{{ favorite(current_user, tracker) }}</td>
 			{% endif %}
 		</tr>
 	{% endfor %}
