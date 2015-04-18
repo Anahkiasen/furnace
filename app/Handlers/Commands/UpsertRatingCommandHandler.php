@@ -33,7 +33,6 @@ class UpsertRatingCommandHandler
     public function handle(UpsertRatingCommand $command)
     {
         $track = $this->dispatchFromArray(UpsertTrackCommand::class, [
-            'track'    => $command->attributes->get('track_id'),
             'ignition' => $command->attributes->get('ignition_id'),
         ]);
 

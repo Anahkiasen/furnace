@@ -5,22 +5,15 @@ use Furnace\Commands\Command;
 class UpsertTrackCommand
 {
     /**
-     * @type integer|null
+     * @type integer
      */
     public $ignition;
 
     /**
-     * @type integer|null
+     * @param integer $ignition
      */
-    public $track;
-
-    /**
-     * @param integer|null $track
-     * @param integer|null $ignition
-     */
-    public function __construct($track = null, $ignition = null)
+    public function __construct($ignition)
     {
-        $this->track    = $track;
         $this->ignition = $ignition;
     }
 }

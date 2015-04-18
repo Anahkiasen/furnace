@@ -6,13 +6,12 @@
 {% block content %}
 	{% autoescape false %}
 		{{ Former.open().route(endpoint, rating.id).populate(rating) }}
-		<fieldset>
-			<legend>CDLC</legend>
-			{{ Former.select('track_id', 'CDLC').options(tracks).setAttribute('selectize', '').help('If you can\t find the one you want here, fill the field below') }}
-			{% if not rating.track_id %}
-				{{ Former.text('ignition_id', 'Track #').help("<a target=\"_blank\" href=\"#{URL.route('help.identifier')}\">Where can I find this?</a>") }}
-			{% endif %}
-		</fieldset>
+		{% if not rating %}
+			<fieldset>
+				<legend>CDLC</legend>
+				{{ Former.select('ignition_id', 'CDLC').selectize().help('Search for a CDLC here and pick the one in the results') }}
+			</fieldset>
+		{% endif %}
 
 		<fieldset>
 			<legend>Experience</legend>

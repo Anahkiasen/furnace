@@ -35,10 +35,6 @@ class UpsertTrackCommandHandler
      */
     public function handle(UpsertTrackCommand $command)
     {
-        if ($command->track) {
-            return $this->repository->findOrFail($command->track);
-        }
-
         // Try to find an existing track with that ignition ID
         $track = $this->repository->where('ignition_id', $command->ignition)->first();
         if ($track) {

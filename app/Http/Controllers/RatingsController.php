@@ -49,7 +49,6 @@ class RatingsController extends AbstractController
         $this->dispatchFromArray(UpsertRatingCommand::class, [
             'user'       => $user,
             'attributes' => $request->only([
-                'track_id',
                 'ignition_id',
                 'presilence',
                 'normalized_volume',
@@ -89,7 +88,6 @@ class RatingsController extends AbstractController
             'user'       => $user,
             'rating'     => $rating,
             'attributes' => $request->only([
-                'track_id',
                 'ignition_id',
                 'presilence',
                 'normalized_volume',
