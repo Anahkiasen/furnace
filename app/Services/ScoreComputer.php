@@ -74,6 +74,7 @@ class ScoreComputer
             'presilence'        => $track->ratings->average('presilence'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
+            'platforms'         => count($track->platforms) / 4,
             'difficulty_levels' => round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
         ]);
 
