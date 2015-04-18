@@ -75,7 +75,7 @@ class ScoreComputer
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'platforms'         => count($track->platforms) / 4,
-            'difficulty_levels' => round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
+            'difficulty_levels' => min(1, round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS)),
         ]);
 
         // Round up and ceil
