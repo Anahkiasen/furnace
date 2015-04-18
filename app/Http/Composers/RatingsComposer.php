@@ -22,7 +22,10 @@ class RatingsComposer
         $options    = [];
         $plateforms = Config::get('furnace.plateforms');
         foreach ($plateforms as $plateform) {
-            $options[$plateform] = ucfirst($plateform);
+            $options[$plateform] = array_get([
+                'ps' => 'Playstation',
+                'pc' => 'PC',
+            ], $plateform, ucfirst($plateform));
         }
 
         return $options;
