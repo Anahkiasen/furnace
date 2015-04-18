@@ -14,6 +14,8 @@
 	<th>Volume</th>
 	<th>Pre-silence</th>
 	<th>Playable</th>
+	<th>In sync</th>
+	<th>Playable</th>
 	<th>Version</th>
 	<th>Last update</th>
 	<th>Tone</th>
@@ -42,9 +44,11 @@
 			<td>{{ boolean(track.dd) }}</td>
 			<td>{{ boolean(track.riff_repeater) }}</td>
 			<td>{{ track.difficulty_levels }}</td>
-			<td>{{ boolean(track.ratings.average('normalized_volume')) }}</td>
-			<td>{{ boolean(track.ratings.average('presilence')) }}</td>
-			<td>{{ boolean(track.ratings.average('playable')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('normalized_volume')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('presilence')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('playable')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('sync')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('techniques')) }}</td>
 			<td>{{ track.version }}</td>
 			<td>{{ track.updated_at.toDateString() }}</td>
 			<td>

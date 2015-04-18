@@ -4,7 +4,7 @@ return [
 
     // The plateforms a CDLC can be used on
     'plateforms' => ['xbox', 'ps', 'pc', 'mac'],
-    
+
     // The weights of the score criterias
     'weights'    => [
         'tone'              => 1,
