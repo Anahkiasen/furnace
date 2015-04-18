@@ -8,6 +8,7 @@
 	<th>Blacksmith</th>
 	<th>Tuning</th>
 	<th>Parts</th>
+	<th>Platforms</th>
 	<th><abbr title="Dynamic Difficuly">DD</abbr></th>
 	<th><abbr title="Riff Repeater">RR</abbr></th>
 	<th><abbr title="Number of difficulty levels">Levels</abbr></th>
@@ -40,6 +41,12 @@
 				<span class="label label-success" {% if not track.parts.rhythm %}disabled{% endif %}>R</span>
 				<span class="label label-info" {% if not track.parts.bass %}disabled{% endif %}>B</span>
 				<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
+			</td>
+			<td>
+				<span class="label label-default" {% if not track.platforms.pc %}disabled{% endif %}>PC</span>
+				<span class="label label-info" {% if not track.platforms.ps3 %}disabled{% endif %}>PS</span>
+				<span class="label label-success" {% if not track.platforms.xbox360 %}disabled{% endif %}>X</span>
+				<span class="label label-default" {% if not track.platforms.mac %}disabled{% endif %}>M</span>
 			</td>
 			<td>{{ boolean(track.dd) }}</td>
 			<td>{{ boolean(track.riff_repeater) }}</td>
