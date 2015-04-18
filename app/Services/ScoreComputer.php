@@ -58,10 +58,6 @@ class ScoreComputer
      */
     protected function computeTrackScore(Track $track)
     {
-        if (!$track->isPlayable) {
-            return 0;
-        }
-
         $components = $this->applyWeights([
             'tone'              => $track->ratings->average('tone'),
             'audio'             => $track->ratings->average('audio'),
