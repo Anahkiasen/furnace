@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Entities\Models;
 
+use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
 use Furnace\Entities\Interfaces\Favoritable;
 use Gravatar;
 use Hash;
@@ -10,6 +11,9 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @Bind("users")
+ */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;

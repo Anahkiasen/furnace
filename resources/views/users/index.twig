@@ -4,6 +4,7 @@
 {% block headers %}
 	<th>Username</th>
 	<th>Ratings</th>
+	<th>View</th>
 {% endblock %}
 
 {% block rows %}
@@ -11,6 +12,9 @@
 		<tr>
 			<td>{{ user.name }}</td>
 			<td>{{ user.ratings.count() }}</td>
+			<td class="text-center">
+				<a href="{{ URL.route('users.show', user.id) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
+			</td>
 		</tr>
 	{% endfor %}
 {% endblock %}

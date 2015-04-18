@@ -53,4 +53,16 @@ class UsersController extends AbstractController
 
         return Redirect::home();
     }
+
+    /**
+     * @param User $user
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show(User $user)
+    {
+        return View::make('users/show', [
+           'user' => $user,
+        ]);
+    }
 }

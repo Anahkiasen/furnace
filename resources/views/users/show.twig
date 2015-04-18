@@ -1,0 +1,8 @@
+{% extends '_layouts/global.twig' %}
+{% set title = "Recent reviews by #{user.name}" %}
+
+{% block content %}
+	{% for rating in user.ratings %}
+		{% include '_partials/rating.twig' %}
+	{% endfor %}
+{% endblock %}
