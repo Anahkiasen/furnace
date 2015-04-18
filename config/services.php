@@ -33,12 +33,12 @@ return [
     'facebook' => [
         'client_id'     => getenv('FACEBOOK_ID'),
         'client_secret' => getenv('FACEBOOK_SECRET'),
-        'redirect'      => 'http://furnace.dev/auth/socialize/facebook/callback',
+        'redirect'      => 'http://furnace.autopergamene.eu/auth/socialize/facebook/callback',
     ],
     'twitter'  => [
         'client_id'     => getenv('TWITTER_ID'),
         'client_secret' => getenv('TWITTER_SECRET'),
-        'redirect'      => 'http://furnace.dev/auth/socialize/twitter/callback',
+        'redirect'      => 'http://furnace.autopergamene.eu/auth/socialize/twitter/callback',
     ],
 
 ];
