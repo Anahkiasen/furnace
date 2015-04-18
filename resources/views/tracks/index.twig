@@ -57,16 +57,16 @@
 			<td class="text-center">{{ boolean(track.ratings.average('techniques')) }}</td>
 			<td>{{ track.version }}</td>
 			<td>
-				{{ progress(track.ratings.average('tone'), 3) }}
+				{{ progress(track.ratings.average('tone'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('audio'), 3) }}
+				{{ progress(track.ratings.average('audio'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('tab'), 3) }}
+				{{ progress(track.ratings.average('tab'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.score, rating_scale) }}
+				{{ progress(track.score, rating_scale, true) }}
 			</td>
 			{% if current_user %}
 				<td class="text-center">{{ favorite(current_user, track) }}</td>
