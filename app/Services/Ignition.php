@@ -20,6 +20,11 @@ class Ignition
     protected $cache;
 
     /**
+     * @type bool
+     */
+    protected $authenticated = false;
+
+    /**
      * Ignition constructor.
      *
      * @param Client     $client
@@ -29,8 +34,6 @@ class Ignition
     {
         $this->client = $client;
         $this->cache  = $cache;
-
-        $this->authenticate();
     }
 
     /**
@@ -43,6 +46,8 @@ class Ignition
     public function search($query)
     {
         return $this->cache->remember($query, 60, function () use ($query) {
+            $this->authenticate();
+
             $response = $this->client->post('http://ignition.customsforge.com/cfss?u=32331', [
                 'body' => [
                     'draw'                       => '2',
@@ -268,6 +273,8 @@ class Ignition
         // Fetch page contents
         $page = 'http://customsforge.com/page/customsforge_rs_2014_cdlc.html/_/pc-enabled-rs-2014-cdlc/pieces-r'.$track;
         $page = $this->cache->sear($page, function () use ($page) {
+            $this->authenticate();
+
             return $this->client->get($page)->getBody()->getContents();
         });
 
@@ -293,6 +300,8 @@ class Ignition
     protected function getApiInformations($track)
     {
         return $this->cache->sear($track, function () use ($track) {
+            $this->authenticate();
+
             return $this->client->get('http://ignition.customsforge.com/search/get_cdlc?id='.$track)->json();
         });
     }
@@ -306,6 +315,11 @@ class Ignition
      */
     protected function authenticate()
     {
+        if (!$this->authenticated) {
+            return;
+        }
+
+        $this->authenticated = true;
         $this->client->post('http://customsforge.com/index.php?app=core&module=global&section=login&do=process', [
             'body' => [
                 'ips_username' => env('IGNITION_USERNAME'),
