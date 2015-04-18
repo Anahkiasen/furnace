@@ -236,6 +236,7 @@ class Ignition
                 'artist',
                 'album',
                 'parts',
+                'platforms',
                 'tuning',
                 'difficulty_levels',
                 'riff_repeater',
