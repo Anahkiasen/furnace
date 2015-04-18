@@ -17,9 +17,7 @@
 		{% block content %}{% endblock %}
 	</main>
 
-	<footer class="layout-footer">
-		&copy;{{ "now"|date('Y') }} - Maxime Fabre - <a href="https://github.com/Anahkiasen/furnace">View sources</a>
-	</footer>
+	{% include '_layouts/_partials/footer.twig' %}
 
 	<script src="{{ URL.asset('builds/js/scripts.js') }}"></script>
 </body>
