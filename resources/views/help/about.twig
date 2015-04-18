@@ -2,11 +2,30 @@
 {% set title = 'About furnace' %}
 
 {% block content %}
+	<h3>What is furnace?</h3>
 	<p>
-		Furnace is made by <strong>Maxime Fabre</strong>. Data for the various tracks is grabbed from <a href="http://ignition.customsforge.com/" target="_blank">Ignition</a> – this just builds upon their already amazing work.
+		Furnace is made by <strong>Maxime Fabre</strong>. Data for the various tracks is grabbed from <a href="http://ignition.customsforge.com/" target="_blank">Ignition</a> – this just builds upon their already amazing work.<br>
+		This application in no way aims to replace Ignition, think of it as a complementary tool.
 	</p>
 
+	<h3>How can I contribute?</h3>
 	<p>
-		Sources can be found <a href="https://github.com/Anahkiasen/furnace" target="_blank">here</a>. All bug reports and feature requests should be made there.
+		Sources can be found <a href="https://github.com/Anahkiasen/furnace" target="_blank">here</a>.<br>
+		All bug reports and feature requests should be <a href="https://github.com/Anahkiasen/furnace/issues">made there</a>.
 	</p>
+
+	<h3>How are the scores computed?</h3>
+	<p>Two things are taken into account when computing each CDLC's score:</p>
+	<ol>
+		<li>
+			First, the objective informations of the tracks is gathered and analyzed. How many parts are present? Does it have dynamic difficulty? On how many plateforms is it available, etc.
+			The point is to emphasis and reward the work and time that was put into the track.<br>
+			You may be opiniated and think nobody needs DD and the Riff Repeater or that only PC is important, but you <em>will</em>
+			get penalized for it – the best CDLC in the world isn't perfect if beginners can't pick it up and try it or that people can't even install it on their plateform without it crashing.
+		</li>
+		<li>
+			Secondly, the user's ratings are gathered and averaged into a note. This note is merged with the main one to form a total score on a scale of {{ rating_scale }}.
+		</li>
+	</ol>
+	<p>The code is open source, if you find a better way to compute scores, or have an idea on a criteria that is missing, all suggestions or pull requests are welcome.</p>
 {% endblock %}
