@@ -61,6 +61,8 @@ class ScoreComputer
         $components = $this->applyWeights([
             'tone'              => $track->ratings->average('tone'),
             'audio'             => $track->ratings->average('audio'),
+            'sync'              => $track->ratings->average('sync'),
+            'techniques'        => $track->ratings->average('techniques'),
             'tab'               => $track->ratings->average('tab'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
             'presilence'        => $track->ratings->average('presilence'),

@@ -23,10 +23,16 @@
 		</fieldset>
 
 		<fieldset>
-			<legend>Ratings</legend>
+			<legend>Audio</legend>
 			{{ Former.select('tone', 'Tones quality').options(ratings).help('The quality of the custom tones used in the track') }}
 			{{ Former.select('audio', 'Audio quality').options(ratings).help('The audio quality of the track itself') }}
-			{{ Former.select('tab', 'Tab quality').options(ratings).help('The quality of the notes highway: are the correct techniques used, is the tablature correct, etc') }}
+		</fieldset>
+
+		<fieldset>
+			<legend>Gameplay</legend>
+			{{ Former.boolean('sync', 'Track/tab sync').help('Is the tablature properly in sync with the track and the beat map?') }}
+			{{ Former.boolean('techniques', 'Techniques').help('Are the proper techniques used in the tablature?') }}
+			{{ Former.select('tab', 'Tablature quality').options(ratings).help('The quality of the tablature itself (correctness, etc)') }}
 		</fieldset>
 
 		<fieldset>
