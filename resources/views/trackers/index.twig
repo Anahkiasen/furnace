@@ -1,5 +1,5 @@
 {% extends '_layouts/table.twig' %}
-{% from '_macros/table.twig' import progress %}
+{% from '_macros/table.twig' import progress, favorite %}
 {% set title = 'Blacksmiths' %}
 
 {% block headers %}
@@ -7,6 +7,9 @@
 	<th>Artists</th>
 	<th>Rating</th>
 	<th>Tracks</th>
+	{% if current_user %}
+		<th>Favorite</th>
+	{% endif %}
 {% endblock %}
 
 {% block rows %}
@@ -18,6 +21,9 @@
 			<td>{{ tracker.artists|join(', ')|raw }}</td>
 			<td>{{ progress(tracker.rating, trackers.max('rating')) }}</td>
 			<td>{{ tracker.tracks.count() }}</td>
+			{% if current_user %}
+				<td>{{ favorite(current_user, tracker) }}</td>
+			{% endif %}
 		</tr>
 	{% endfor %}
 {% endblock %}
