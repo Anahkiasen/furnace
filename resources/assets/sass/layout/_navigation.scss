@@ -1,8 +1,17 @@
 .navbar-default {
 	border-radius: 0;
 
-	.navbar-brand em {
-		opacity: 0.55;
+	.navbar-brand {
+		.logo {
+			width: 0.75em;
+			display: inline-block;
+			margin-right: 0.75rem;
+			position: relative;
+			bottom: 3px;
+		}
+		em {
+			opacity: 0.55;
+		}
 	}
 
 	.dropdown {
