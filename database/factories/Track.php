@@ -9,6 +9,7 @@ Facade::define(Track::class, [
     'album'             => 'word',
     'name'              => 'word',
     'parts'             => 'lead',
+    'platforms'         => 'pc,mac',
     'tuning'            => 'estandard',
     'version'           => '1.0',
     'dd'                => 'boolean',
