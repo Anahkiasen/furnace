@@ -34,7 +34,6 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
         'tracker_id',
     ];
 
-
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
     //////////////////////////////////////////////////////////////////////
@@ -64,6 +63,10 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      */
     public function getIdentifierAttribute()
     {
+        if (!$this->tracker) {
+            return sprintf('%s - %s', $this->artist, $this->name);
+        }
+
         return sprintf('%s - %s (%s)', $this->artist, $this->name, $this->tracker->name);
     }
 
