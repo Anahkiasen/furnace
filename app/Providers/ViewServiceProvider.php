@@ -3,6 +3,7 @@ namespace Furnace\Providers;
 
 use Auth;
 use Furnace\Entities\Models\Track;
+use Furnace\Http\Composers\HelpComposer;
 use Furnace\Http\Composers\RatingsComposer;
 use Furnace\Services\ScoreComputer;
 use Illuminate\Support\ServiceProvider;
@@ -17,6 +18,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composers([
             RatingsComposer::class.'@composeCreate' => 'ratings/edit',
+            HelpComposer::class                     => 'help/about',
         ]);
 
         View::share([
