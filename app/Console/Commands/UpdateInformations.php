@@ -38,8 +38,7 @@ class UpdateInformations extends AbstractCommand
      */
     public function handle()
     {
-        $tracks = Track::all();
-        $this->progressIterator($tracks, function (Track $track) {
+        $this->onTracks(function (Track $track) {
             $meta = $this->ignition->complete($track->toArray());
 
             $track->fill($meta);

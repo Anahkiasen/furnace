@@ -38,8 +38,7 @@ class UpdateScores extends AbstractCommand
      */
     public function handle()
     {
-        $tracks = Track::all();
-        $this->progressIterator($tracks, function (Track $track) {
+        $this->onTracks(function (Track $track) {
             $this->scoresComputer->forTrack($track);
         });
     }
