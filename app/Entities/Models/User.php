@@ -2,6 +2,8 @@
 namespace Furnace\Entities\Models;
 
 use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
 use Gravatar;
 use Hash;
@@ -14,9 +16,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @Bind("users")
  */
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, SluggableInterface
 {
-    use Authenticatable, CanResetPassword;
+    use Authenticatable, CanResetPassword, SluggableTrait;
+
+    /**
+     * @type array
+     */
+    protected $sluggable = [];
 
     /**
      * The attributes that are mass assignable.
@@ -86,6 +93,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function avatar($size = 'default')
     {
         return Gravatar::get($this->email, $size);
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdentifierAttribute()
+    {
+        return $this->name;
     }
 
     /**

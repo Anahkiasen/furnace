@@ -2,13 +2,22 @@
 namespace Furnace\Entities\Models;
 
 use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
 
 /**
  * @Bind("tracks")
  */
-class Track extends AbstractModel implements Favoritable
+class Track extends AbstractModel implements Favoritable, SluggableInterface
 {
+    use SluggableTrait;
+
+    /**
+     * @type array
+     */
+    protected $sluggable = [];
+
     /**
      * @type array
      */
@@ -58,7 +67,7 @@ class Track extends AbstractModel implements Favoritable
      */
     public function getIdentifierAttribute()
     {
-        return sprintf('%s - %s', $this->artist, $this->name);
+        return sprintf('%s - %s (%s)', $this->artist, $this->name, $this->tracker->name);
     }
 
     /**
