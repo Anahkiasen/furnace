@@ -24,7 +24,6 @@ class ViewServiceProvider extends ServiceProvider
         View::share([
             'rating_scale'  => ScoreComputer::RATING_SCALE,
             'integer_scale' => ScoreComputer::INTEGER_CRITERIA_SCALE,
-            'current_user'  => Auth::user(),
             'menu'          => [
                 'tracks.index'   => 'Tracks',
                 'trackers.index' => 'Blacksmiths',
@@ -33,6 +32,10 @@ class ViewServiceProvider extends ServiceProvider
                 'help.about'     => 'About',
             ],
         ]);
+
+        View::composer('*', function ($view) {
+            $view->current_user = Auth::user();
+        });
     }
 
     /**
