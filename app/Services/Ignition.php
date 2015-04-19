@@ -315,7 +315,7 @@ class Ignition
      */
     protected function authenticate()
     {
-        if (!$this->authenticated) {
+        if ($this->authenticated) {
             return;
         }
 
