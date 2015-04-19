@@ -5,6 +5,13 @@ return [
     // The platforms a CDLC can be used on
     'platforms' => ['xbox360', 'ps3', 'pc', 'mac'],
 
+    'difficulties' => [
+        'Easy',
+        'Average',
+        'Hard',
+        'Master',
+    ],
+
     // The weights of the score criterias
     'weights'   => [
         'tone'              => 1,

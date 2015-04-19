@@ -39,6 +39,7 @@
 			<legend>Notes</legend>
 			<p class="alert alert-warning">Do not rate the music itself, the point is to rate the CDLC, your musical tastes should not be taken into account.</p>
 			{{ Former.select('platform').options(platforms) }}
+			{{ Former.select('difficulty').options(difficulties).help('How hard did you find the track?') }}
 			{{ Former.textarea('comments', 'Additional comments').rows(15).placeholder('Leaving feedback and explaining you ratings is important. The track will not get better if you never tell what is wrong.') }}
 		</fieldset>
 

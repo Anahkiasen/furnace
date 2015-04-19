@@ -12,13 +12,19 @@ class Rating extends AbstractModel
      * @type array
      */
     protected $fillable = [
-        'comments',
         'presilence',
         'normalized_volume',
         'playable',
         'tone',
         'audio',
+        'sync',
+        'techniques',
         'tab',
+        'difficulty',
+        'comments',
+        'track_id',
+        'user_id',
+        'platform',
         'track_id',
         'user_id',
     ];

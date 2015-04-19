@@ -12,7 +12,6 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('comments');
 
             // Experience
             $table->boolean('presilence')->default(false);
@@ -27,6 +26,11 @@ class CreateRatingsTable extends Migration
             $table->boolean('sync')->default(false);
             $table->boolean('techniques')->default(false);
             $table->integer('tab')->default(0);
+
+            // Feedback
+            $table->integer('difficulty');
+            $table->text('comments');
+
 
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();

@@ -11,7 +11,8 @@ class RatingsComposer
      */
     public function composeCreate(View $view)
     {
-        $view->platforms = $this->getPlatforms();
+        $view->platforms    = $this->getPlatforms();
+        $view->difficulties = Config::get('furnace.difficulties');
     }
 
     /**
@@ -19,7 +20,7 @@ class RatingsComposer
      */
     protected function getPlatforms()
     {
-        $options    = [];
+        $options   = [];
         $platforms = Config::get('furnace.platforms');
         foreach ($platforms as $platform) {
             $options[$platform] = array_get([
