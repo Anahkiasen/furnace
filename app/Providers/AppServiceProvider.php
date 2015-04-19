@@ -2,9 +2,11 @@
 namespace Furnace\Providers;
 
 use Arrounded\Macros\FormerBuilder;
+use Furnace\Collection;
 use Furnace\Services\ScoreComputer;
 use Illuminate\Support\ServiceProvider;
 use Laracasts\Generators\GeneratorsServiceProvider;
+use League\Csv\Reader;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,10 +20,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
             $this->app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
         }
-
-        $this->app->singleton(ScoreComputer::class, function ($app) {
-           return new ScoreComputer($app['config']['furnace.weights']);
-        });
     }
 
     /**

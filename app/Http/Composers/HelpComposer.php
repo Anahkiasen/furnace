@@ -2,16 +2,30 @@
 namespace Furnace\Http\Composers;
 
 use Config;
+use Furnace\Services\ScoreComputer;
 use Illuminate\View\View;
 
 class HelpComposer
 {
     /**
+     * @type ScoreComputer
+     */
+    private $scoreComputer;
+
+    /**
+     * HelpComposer constructor.
+     */
+    public function __construct(ScoreComputer $scoreComputer)
+    {
+        $this->scoreComputer = $scoreComputer;
+    }
+
+    /**
      * @param View $view
      */
     public function compose(View $view)
     {
-        $weights   = Config::get('furnace.weights');
+        $weights   = $this->scoreComputer->getWeights();
         $criterias = [
             'tone'              => ['Tones quality'],
             'audio'             => ['Audio quality'],

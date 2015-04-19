@@ -37,6 +37,22 @@ class ScoreComputer
     }
 
     /**
+     * @return array
+     */
+    public function getWeights()
+    {
+        return $this->weights;
+    }
+
+    /**
+     * @param array $weights
+     */
+    public function setWeights($weights)
+    {
+        $this->weights = $weights;
+    }
+
+    /**
      * @param Tracker $tracker
      */
     public function forBlacksmith(Tracker $tracker)
@@ -87,7 +103,7 @@ class ScoreComputer
             'techniques'        => $track->ratings->average('techniques'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
             'presilence'        => $track->ratings->average('presilence'),
-            'playable'         => $track->ratings->average('playable'),
+            'playable'          => $track->ratings->average('playable'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'has_pc'            => $track->platforms['pc'],
