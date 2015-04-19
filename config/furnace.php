@@ -14,6 +14,7 @@ return [
         'tab'               => 1,
         'normalized_volume' => 1,
         'presilence'        => 1,
+        'playlable'         => 1,
         'dd'                => 1,
         'rr'                => 1,
         'difficulty_levels' => 1,

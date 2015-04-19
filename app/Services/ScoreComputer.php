@@ -24,7 +24,7 @@ class ScoreComputer
     /**
      * @type int
      */
-    const RATING_SCALE = 11;
+    const RATING_SCALE = 12;
 
     /**
      * ScoreComputer constructor.
@@ -87,6 +87,7 @@ class ScoreComputer
             'techniques'        => $track->ratings->average('techniques'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
             'presilence'        => $track->ratings->average('presilence'),
+            'playlable'         => $track->ratings->average('playlable'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'platforms'         => count($track->platforms) / 4,
