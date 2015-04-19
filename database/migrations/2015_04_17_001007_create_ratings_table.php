@@ -28,7 +28,7 @@ class CreateRatingsTable extends Migration
             $table->integer('tab')->default(0);
 
             // Feedback
-            $table->integer('difficulty');
+            $table->integer('difficulty')->default(0);
             $table->text('comments');
 
 
