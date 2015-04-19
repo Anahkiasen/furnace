@@ -1,0 +1,14 @@
+criteria,firekorn,forgeon,average
+tone,0.3,0.5,0.4
+audio,0.5,0.5,0.5
+sync,1,1,1
+techniques,0.7,1,0.85
+tab,1,0.8,0.9
+normalized_volume,0.2,0.8,0.5
+presilence,0.5,0.3,0.4
+playable,1,1,1
+dd,,0.8,0.8
+rr,,1,1
+difficulty_levels,,0.5,0.5
+has_pc,,1,1
+platforms,,0.3,0.3
