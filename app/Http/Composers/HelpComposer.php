@@ -50,6 +50,10 @@ class HelpComposer
             ];
         }
 
+        $criterias = array_sort($criterias, function ($criteria) {
+           return $criteria['weight'] * -1;
+        });
+
         $view->criterias = $criterias;
     }
 }
