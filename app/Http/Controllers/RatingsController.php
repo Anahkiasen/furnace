@@ -26,9 +26,13 @@ class RatingsController extends AbstractController
         'presilence',
         'normalized_volume',
         'playable',
+        'sync',
+        'techniques',
+        'difficulty',
         'tone',
         'audio',
         'tab',
+        'platform',
         'comments',
     ];
 

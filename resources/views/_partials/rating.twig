@@ -10,7 +10,7 @@
 		</figcaption>
 	</figure>
 	<div class="media-body">
-		<h4 class="media-heading">Rated <a href="{{ URL.route('tracks.show', rating.track_id) }}">{{ rating.track.identifier }}</a></h4>
+		<h4 class="media-heading">Rated <a href="{{ URL.route('tracks.show', rating.track_id) }}">{{ rating.track.identifier|raw }}</a></h4>
 		<table class="table table-bordered table-condensed">
 			<thead>
 			<tr>
