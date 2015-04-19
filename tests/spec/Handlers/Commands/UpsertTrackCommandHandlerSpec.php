@@ -24,7 +24,7 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
         parent::let();
 
         $this->beConstructedWith(
-          app(Ignition::class),
+            app(Ignition::class),
             new Track()
         );
     }
@@ -66,6 +66,7 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
         $ignition->complete(['ignition_id' => $this->ignitionKey])->willReturn([
             'name'              => 'Stairway to Heaven',
             'parts'             => 'lead',
+            'platforms'         => 'pc,mac',
             'tuning'            => 'estandard',
             'version'           => '1.0',
             'difficulty_levels' => 8,

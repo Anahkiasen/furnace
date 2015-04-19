@@ -17,22 +17,29 @@
 
 		<fieldset>
 			<legend>Experience</legend>
-			{{ Former.boolean('presilence', 'Pre-silence').help('Was the silence at the start of the track long enough?') }}
-			{{ Former.boolean('normalized_volume', 'Tones/track volume').help('Was the volume of the tones correct compared to the track\'s?') }}
-			{{ Former.boolean('playable', 'Playable').help('Do you consider the track playable?') }}
+			{{ Former.boolean('presilence', 'Pre-silence').help('Was the silence at the start of the track long enough? Only check No in extreme cases (not enough time to put your hands on the guitar)') }}
+			{{ Former.boolean('normalized_volume', 'Tones/track volume').help('Was the volume of the tones correct compared to the track\'s? Only check No in extreme cases (cannot even hear the track)') }}
+			{{ Former.boolean('playable', 'Playable').help('Does the track crash? If not do you consider it playable?') }}
 		</fieldset>
 
 		<fieldset>
-			<legend>Ratings</legend>
+			<legend>Audio</legend>
 			{{ Former.select('tone', 'Tones quality').options(ratings).help('The quality of the custom tones used in the track') }}
 			{{ Former.select('audio', 'Audio quality').options(ratings).help('The audio quality of the track itself') }}
-			{{ Former.select('tab', 'Tab quality').options(ratings).help('The quality of the notes highway: are the correct techniques used, is the tablature correct, etc') }}
+		</fieldset>
+
+		<fieldset>
+			<legend>Gameplay</legend>
+			{{ Former.boolean('sync', 'Track/tab sync').help('Is the tablature properly in sync with the track and the beat map?') }}
+			{{ Former.boolean('techniques', 'Techniques').help('Are the proper techniques used in the tablature?') }}
+			{{ Former.select('tab', 'Tablature quality').options(ratings).help('The quality of the tablature itself (correctness, etc)') }}
 		</fieldset>
 
 		<fieldset>
 			<legend>Notes</legend>
 			<p class="alert alert-warning">Do not rate the music itself, the point is to rate the CDLC, your musical tastes should not be taken into account.</p>
-			{{ Former.select('plateform').options(plateforms) }}
+			{{ Former.select('platform').options(platforms) }}
+			{{ Former.select('difficulty').options(difficulties).help('How hard did you find the track?') }}
 			{{ Former.textarea('comments', 'Additional comments').rows(15).placeholder('Leaving feedback and explaining you ratings is important. The track will not get better if you never tell what is wrong.') }}
 		</fieldset>
 

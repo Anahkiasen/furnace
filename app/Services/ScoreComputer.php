@@ -7,6 +7,52 @@ use Furnace\Entities\Models\Tracker;
 class ScoreComputer
 {
     /**
+     * @type array
+     */
+    protected $weights;
+
+    /**
+     * The standard number of difficulty levels.
+     */
+    const STANDARD_DIFFICULTY_LEVELS = 5;
+
+    /**
+     * The max score a multichoice criteria can have
+     */
+    const INTEGER_CRITERIA_SCALE = 3;
+
+    /**
+     * @type int
+     */
+    const RATING_SCALE = 12;
+
+    /**
+     * ScoreComputer constructor.
+     *
+     * @param array $weights
+     */
+    public function __construct(array $weights)
+    {
+        $this->weights = $weights;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWeights()
+    {
+        return $this->weights;
+    }
+
+    /**
+     * @param array $weights
+     */
+    public function setWeights($weights)
+    {
+        $this->weights = $weights;
+    }
+
+    /**
      * @param Tracker $tracker
      */
     public function forBlacksmith(Tracker $tracker)
@@ -17,19 +63,25 @@ class ScoreComputer
 
     /**
      * @param Track $track
+     * @param bool  $save
      *
      * @return int
      */
-    public function forTrack(Track $track)
+    public function forTrack(Track $track, $save = true)
     {
         // Update track's score
-        $track->score = $this->computeTrackScore($track);
-        $track->save();
+        $score        = $this->computeTrackScore($track);
+        $track->score = $score;
+        if ($save) {
+            $track->save();
+        }
 
         // Update Blacksmith's score
         if ($track->tracker) {
             $this->forBlacksmith($track->tracker);
         }
+
+        return $score;
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -43,28 +95,26 @@ class ScoreComputer
      */
     protected function computeTrackScore(Track $track)
     {
-        if (!$track->isPlayable) {
-            return 0;
-        }
-
-        $parts = array_filter($track->parts);
-        $notes = [
-            $track->ratings->average('tone'),
-            $track->ratings->average('audio'),
-            $track->ratings->average('tab'),
-            $track->ratings->average('normalized_volume'),
-            $track->ratings->average('presilence'),
-            $track->dd,
-            $track->riff_repeater,
-            round($track->difficulty_levels / Track::STANDARD_DIFFICULTY_LEVELS),
-            count($parts),
-            $track->updated_at->diffInMonths() < 6,
-        ];
+        $components = $this->applyWeights([
+            'tone'              => $track->ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
+            'audio'             => $track->ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
+            'tab'               => $track->ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
+            'sync'              => $track->ratings->average('sync'),
+            'techniques'        => $track->ratings->average('techniques'),
+            'normalized_volume' => $track->ratings->average('normalized_volume'),
+            'presilence'        => $track->ratings->average('presilence'),
+            'playable'          => $track->ratings->average('playable'),
+            'dd'                => $track->dd,
+            'rr'                => $track->riff_repeater,
+            'has_pc'            => $track->platforms['pc'],
+            'platforms'         => count($track->platforms) / 4,
+            'difficulty_levels' => min(1, round($track->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS)),
+        ]);
 
         // Round up and ceil
-        $rating = array_sum($notes);
+        $rating = array_sum($components);
         $rating = round($rating, 1);
-        $rating = min($rating, Track::$ratingScale);
+        $rating = min($rating, static::RATING_SCALE);
 
         return $rating;
     }
@@ -85,5 +135,23 @@ class ScoreComputer
         $rating  = round($ratings, 1);
 
         return $rating;
+    }
+
+    /**
+     * Apply weights to the formula's components
+     *
+     * @param array $components
+     *
+     * @return array
+     */
+    private function applyWeights($components)
+    {
+        foreach ($this->weights as $name => $weight) {
+            if (array_key_exists($name, $components)) {
+                $components[$name] = $components[$name] * $weight;
+            }
+        }
+
+        return $components;
     }
 }

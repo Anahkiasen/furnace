@@ -14,10 +14,13 @@
 		<table class="table table-bordered table-condensed">
 			<thead>
 			<tr>
-				<th>Plateform</th>
+				<th>Platform</th>
 				<th>Presilence</th>
 				<th>Volume</th>
 				<th>Playable</th>
+				<th>In sync</th>
+				<th>Techniques</th>
+				<th>Difficulty</th>
 				<th>Tone</th>
 				<th>Audio</th>
 				<th>Tab</th>
@@ -25,14 +28,17 @@
 			</tr>
 			</thead>
 			<tr class="text-center">
-				<td>{{ rating.plateform|title }}</td>
+				<td>{{ rating.platform|title }}</td>
 				<td>{{ boolean(rating.presilence) }}</td>
 				<td>{{ boolean(rating.normalized_volume) }}</td>
 				<td>{{ boolean(rating.playable) }}</td>
-				<td>{{ progress(rating.tone) }}</td>
-				<td>{{ progress(rating.audio) }}</td>
-				<td>{{ progress(rating.tab) }}</td>
-				<td>{{ progress(rating.note, rating_scale) }}</td>
+				<td>{{ boolean(rating.sync) }}</td>
+				<td>{{ boolean(rating.techniques) }}</td>
+				<td>{{ Config.get("furnace.difficulties.#{rating.difficulty}") }}</td>
+				<td>{{ progress(rating.tone, integer_scale) }}</td>
+				<td>{{ progress(rating.audio, integer_scale) }}</td>
+				<td>{{ progress(rating.tab, integer_scale) }}</td>
+				<td>{{ progress(rating.note, rating_scale, true) }}</td>
 			</tr>
 		</table>
 		<blockquote>{{ rating.comments|default('This user did not leave any additional comments.') }}</blockquote>

@@ -24,18 +24,10 @@ class TrackObserver
     /**
      * @param Track $track
      */
-    public function created(Track $track)
-    {
-        $this->scoreComputer->forTrack($track);
-    }
-
-    /**
-     * @param Track $track
-     */
-    public function updated(Track $track)
+    public function saving(Track $track)
     {
         if (!$track->isDirty('score')) {
-            $this->scoreComputer->forTrack($track);
+            $track->score = $this->scoreComputer->forTrack($track, false);
         }
     }
 }

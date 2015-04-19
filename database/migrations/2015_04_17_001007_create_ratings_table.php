@@ -12,16 +12,29 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('comments');
+
+            // Experience
             $table->boolean('presilence')->default(false);
             $table->boolean('normalized_volume')->default(false);
             $table->boolean('playable')->default(false);
+
+            // Audio
             $table->integer('tone')->default(0);
             $table->integer('audio')->default(0);
+
+            // Gameplay
+            $table->boolean('sync')->default(false);
+            $table->boolean('techniques')->default(false);
             $table->integer('tab')->default(0);
+
+            // Feedback
+            $table->integer('difficulty')->default(0);
+            $table->text('comments');
+
+
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
-            $table->enum('plateform', Config::get('furnace.plateforms'))->default('pc');
+            $table->enum('platform', Config::get('furnace.platforms'))->default('pc');
             $table->timestamps();
 
             $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade');

@@ -22,20 +22,12 @@ class Track extends AbstractModel implements Favoritable
         'dd',
         'riff_repeater',
         'difficulty_levels',
+        'platforms',
         'score',
         'ignition_id',
         'tracker_id',
     ];
 
-    /**
-     * @type int
-     */
-    public static $ratingScale = 20;
-
-    /**
-     * The standard number of difficulty levels.
-     */
-    const STANDARD_DIFFICULTY_LEVELS = 8;
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
@@ -92,14 +84,17 @@ class Track extends AbstractModel implements Favoritable
      */
     public function getPartsAttribute()
     {
-        $parts = explode(',', $this->attributes['parts']);
+        return $this->recomposeJointArray('parts', ['lead', 'rhythm', 'bass', 'vocals']);
+    }
 
-        return [
-            'lead'   => array_search('lead', $parts, true) !== false,
-            'rhythm' => array_search('rhythm', $parts, true) !== false,
-            'bass'   => array_search('bass', $parts, true) !== false,
-            'vocals' => array_search('vocals', $parts, true) !== false,
-        ];
+    /**
+     * Get which platforms the track supports.
+     *
+     * @return array
+     */
+    public function getPlatformsAttribute()
+    {
+        return $this->recomposeJointArray('platforms', ['pc', 'mac', 'xbox360', 'ps3']);
     }
 
     /**
@@ -122,5 +117,22 @@ class Track extends AbstractModel implements Favoritable
         ];
 
         return array_get($tunings, $tuning, $tuning);
+    }
+
+    /**
+     * @param string   $attribute
+     * @param string[] $parts
+     *
+     * @return array
+     */
+    protected function recomposeJointArray($attribute, $parts)
+    {
+        $recomposed = [];
+        $attribute  = explode(',', $this->attributes[$attribute]);
+        foreach ($parts as $part) {
+            $recomposed[$part] = array_search($part, $attribute, true) !== false;
+        }
+
+        return $recomposed;
     }
 }

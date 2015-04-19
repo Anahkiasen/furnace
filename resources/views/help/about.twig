@@ -1,51 +1,54 @@
 {% extends '_layouts/global.twig' %}
+{% from '_macros/table.twig' import progress %}
 {% set title = 'About furnace' %}
 
 {% block content %}
 	<h3>What is furnace?</h3>
 	<p>
-		Furnace is made by <strong>Maxime Fabre</strong>. Data for the various tracks is grabbed from <a href="http://ignition.customsforge.com/" target="_blank">Ignition</a> – this just builds upon their already amazing work.<br>
-		This application in no way aims to replace Ignition, think of it as a complementary tool.
+		Furnace is made by <strong>Maxime Fabre</strong>. Data for the various tracks is grabbed from
+		<a href="http://ignition.customsforge.com/" target="_blank">Ignition</a> – this just builds upon their already amazing work.<br> This application in no way aims to replace Ignition, think of it as a complementary tool.
 	</p>
 
 	<h3>What? Why?</h3>
 	<p>
-		Currently Ignition doesn't offer any rating or proper feedback system. When getting into CDLCs, the single only way to discover tracks is to sort by total number of downloads.
-		However that index is not representative at all of the underlying quality of work: a track may have been downloaded 10 times and have 10 people saying it crashes and is missing notes, while a track can be perfect but only have been downloaded one time because... well it's gonna be at the bottom of the table.
+		Currently Ignition doesn't offer any rating or proper feedback system. When getting into CDLCs, the single only way to discover tracks is to sort by total number of downloads. However that index is not representative at all of the underlying quality of work: a track may have been downloaded 10 times and have 10 people saying it crashes and is missing notes, while a track can be perfect but only have been downloaded one time because... well it's gonna be at the bottom of the table.
 	</p>
 
 	<h3>How can I contribute?</h3>
 	<p>
-		Sources can be found <a href="https://github.com/Anahkiasen/furnace" target="_blank">here</a>.<br>
-		All bug reports and feature requests should be <a href="https://github.com/Anahkiasen/furnace/issues">made there</a>.
+		Sources can be found
+		<a href="https://github.com/Anahkiasen/furnace" target="_blank">here</a>.<br> All bug reports and feature requests should be
+		<a href="https://github.com/Anahkiasen/furnace/issues">made there</a>.
 	</p>
 
 	<h3>How are the scores computed?</h3>
 	<p>Two things are taken into account when computing each CDLC's score:</p>
 	<ol>
 		<li>
-			First, the objective informations of the tracks is gathered and analyzed. How many parts are present? Does it have dynamic difficulty? On how many plateforms is it available, etc.
-			The point is to emphasis and reward the work and time that was put into the track.<br>
-			You may be opiniated and think nobody needs DD and the Riff Repeater or that only PC is important, but you <em>will</em>
-			get penalized for it – the best CDLC in the world isn't perfect if beginners can't pick it up and try it or that people can't even install it on their plateform without it crashing.
+			First, the objective informations of the tracks is gathered and analyzed. How many parts are present? Does it have dynamic difficulty? On how many platforms is it available, etc. The point is to emphasis and reward the work and time that was put into the track.<br> You may be opiniated and think nobody needs DD and the Riff Repeater or that only PC is important, but you
+			<em>will</em> get penalized for it – the best CDLC in the world isn't perfect if beginners can't pick it up and try it or that people can't even install it on their platform without it crashing.
 		</li>
 		<li>
 			Secondly, the user's ratings are gathered and averaged into a note. This note is merged with the main one to form a total score on a scale of {{ rating_scale }}.
 		</li>
 	</ol>
 	<p>The exact formula is the following:</p>
-	<pre>SUM(
-	AVERAGE(quality of tones)
-	AVERAGE(audio quality)
-	AVERAGE(quality of tab)
-	AVERAGE(normalized volume between tones and track) <small>(1 or 0)</small>
-	AVERAGE(long enough silence at beginning of track) <small>(1 or 0)</small>
-	dynamic difficulty? <small>(1 or 0)</small>
-	riff repeater? <small>(1 or 0)</small>
-	has been updated in last six months? <small>(1 or 0)</small>
-	number of difficulty levels / 8
-	number of parts
-)</pre>
-	<p>This is then rounded and capped at 20.</p>
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+			<th>Criteria</th>
+			<th>Notes</th>
+			<th>Weight</th>
+		</tr>
+		</thead>
+		{% for criteria in criterias %}
+			<tr>
+				<td class="success">{{ criteria.label }}</td>
+				<td>{{ criteria.notes }}</td>
+				<td class="text-center">{{ progress(criteria.weight, 1) }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<p>This is then rounded and capped at {{ rating_scale }}.</p>
 	<p>The code is open source, if you find a better way to compute scores, or have an idea on a criteria that is missing, all suggestions or pull requests are welcome.</p>
 {% endblock %}

@@ -2,8 +2,11 @@
 namespace Furnace\Providers;
 
 use Arrounded\Macros\FormerBuilder;
+use Furnace\Collection;
+use Furnace\Services\ScoreComputer;
 use Illuminate\Support\ServiceProvider;
 use Laracasts\Generators\GeneratorsServiceProvider;
+use League\Csv\Reader;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,38 @@
 .table {
-	.danger td {
+
+	th {
+		&:active, &:focus {
+			outline: 0;
+		}
+
+		&.tablesorter-headerAsc,
+		&.tablesorter-headerDesc, {
+			background-color: $color-green;
+			color: white;
+
+			&:hover {
+				background-color: lighten($color-green, 5);
+			}
+		}
+
+		&.tablesorter-headerAsc .tablesorter-header-inner:before {
+			content: '\25B2';
+			margin-right: 0.5rem;
+		}
+
+		&.tablesorter-headerDesc .tablesorter-header-inner:before {
+			content: '\25BC';
+			margin-right: 0.5rem;
+		}
+	}
+
+	.danger td,
+	td.danger {
 		border-color: $color-red-2;
 	}
 
-	.success td {
+	.success td,
+	td.success {
 		background-color: rgba($color-green, 0.1) !important;
 
 		&, a {

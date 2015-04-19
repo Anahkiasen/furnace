@@ -1,4 +1,4 @@
-{% macro progress(progress, max = 3) %}
+{% macro progress(progress, max, percentage = false) %}
 	{% set value = ((progress / max) * 100)|round %}
 	{% if value <= 25 %}
 		{% set style = 'danger' %}
@@ -12,7 +12,7 @@
 
 	<div class="progress">
 		<div class="progress-bar {% if style %}progress-bar-{{ style }}{% endif %}" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;">
-			{{ progress }}/{{ max }}
+			{{ percentage ? "#{value|round}%" : "#{progress}/#{max}" }}
 		</div>
 	</div>
 {% endmacro %}

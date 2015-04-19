@@ -3,10 +3,8 @@ namespace Furnace\Console\Commands;
 
 use Furnace\Entities\Models\Track;
 use Furnace\Services\ScoreComputer;
-use Illuminate\Console\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 
-class UpdateScores extends Command
+class UpdateScores extends AbstractCommand
 {
     /**
      * @type string
@@ -40,14 +38,9 @@ class UpdateScores extends Command
      */
     public function handle()
     {
-        $tracks   = Track::all();
-        $progress = new ProgressBar($this->output, count($tracks));
-        $progress->start();
-        foreach ($tracks as $track) {
+        $tracks = Track::all();
+        $this->progressIterator($tracks, function (Track $track) {
             $this->scoresComputer->forTrack($track);
-            $progress->advance();
-        }
-
-        $progress->finish();
+        });
     }
 }

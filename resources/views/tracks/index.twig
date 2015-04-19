@@ -8,14 +8,16 @@
 	<th>Blacksmith</th>
 	<th>Tuning</th>
 	<th>Parts</th>
+	<th>Platforms</th>
 	<th><abbr title="Dynamic Difficuly">DD</abbr></th>
 	<th><abbr title="Riff Repeater">RR</abbr></th>
 	<th><abbr title="Number of difficulty levels">Levels</abbr></th>
 	<th>Volume</th>
 	<th>Pre-silence</th>
 	<th>Playable</th>
+	<th>In sync</th>
+	<th>Techniques</th>
 	<th>Version</th>
-	<th>Last update</th>
 	<th>Tone</th>
 	<th>Track</th>
 	<th>Tab</th>
@@ -39,25 +41,32 @@
 				<span class="label label-info" {% if not track.parts.bass %}disabled{% endif %}>B</span>
 				<span class="label label-danger" {% if not track.parts.vocals %}disabled{% endif %}>V</span>
 			</td>
-			<td>{{ boolean(track.dd) }}</td>
-			<td>{{ boolean(track.riff_repeater) }}</td>
-			<td>{{ track.difficulty_levels }}</td>
-			<td>{{ boolean(track.ratings.average('normalized_volume')) }}</td>
-			<td>{{ boolean(track.ratings.average('presilence')) }}</td>
-			<td>{{ boolean(track.ratings.average('playable')) }}</td>
+			<td>
+				<span class="label label-default" {% if not track.platforms.pc %}disabled{% endif %}>PC</span>
+				<span class="label label-info" {% if not track.platforms.ps3 %}disabled{% endif %}>PS</span>
+				<span class="label label-success" {% if not track.platforms.xbox360 %}disabled{% endif %}>X</span>
+				<span class="label label-default" {% if not track.platforms.mac %}disabled{% endif %}>M</span>
+			</td>
+			<td class="text-center">{{ boolean(track.dd) }}</td>
+			<td class="text-center">{{ boolean(track.riff_repeater) }}</td>
+			<td class="text-center">{{ track.difficulty_levels }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('normalized_volume')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('presilence')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('playable')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('sync')) }}</td>
+			<td class="text-center">{{ boolean(track.ratings.average('techniques')) }}</td>
 			<td>{{ track.version }}</td>
-			<td>{{ track.updated_at.toDateString() }}</td>
 			<td>
-				{{ progress(track.ratings.average('tone'), 3) }}
+				{{ progress(track.ratings.average('tone'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('audio'), 3) }}
+				{{ progress(track.ratings.average('audio'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('tab'), 3) }}
+				{{ progress(track.ratings.average('tab'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.score, rating_scale) }}
+				{{ progress(track.score, rating_scale, true) }}
 			</td>
 			{% if current_user %}
 				<td class="text-center">{{ favorite(current_user, track) }}</td>
