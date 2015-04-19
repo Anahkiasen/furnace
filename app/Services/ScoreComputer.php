@@ -87,7 +87,7 @@ class ScoreComputer
             'techniques'        => $track->ratings->average('techniques'),
             'normalized_volume' => $track->ratings->average('normalized_volume'),
             'presilence'        => $track->ratings->average('presilence'),
-            'playlable'         => $track->ratings->average('playlable'),
+            'playable'         => $track->ratings->average('playable'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'has_pc'            => $track->platforms['pc'],

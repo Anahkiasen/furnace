@@ -20,7 +20,7 @@ class HelpComposer
             'tab'               => ['Tab quality'],
             'normalized_volume' => ['Normalized volume', '1 or 0'],
             'presilence'        => ['Pre-silence', '1 or 0'],
-            'playlable'         => ['Playable', '1 or 0'],
+            'playable'          => ['Playable', '1 or 0'],
             'dd'                => ['Dynamic difficulty', '1 or 0'],
             'rr'                => ['Riff Repeater', '1 or 0'],
             'has_pc'            => ['PC version available', '1 or 0'],
