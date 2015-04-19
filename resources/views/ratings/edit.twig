@@ -17,8 +17,8 @@
 
 		<fieldset>
 			<legend>Experience</legend>
-			{{ Former.boolean('presilence', 'Pre-silence').help('Was the silence at the start of the track long enough?') }}
-			{{ Former.boolean('normalized_volume', 'Tones/track volume').help('Was the volume of the tones correct compared to the track\'s?') }}
+			{{ Former.boolean('presilence', 'Pre-silence').help('Was the silence at the start of the track long enough? Only check No in extreme cases (not enough time to put your hands on the guitar)') }}
+			{{ Former.boolean('normalized_volume', 'Tones/track volume').help('Was the volume of the tones correct compared to the track\'s? Only check No in extreme cases (cannot even hear the track)') }}
 			{{ Former.boolean('playable', 'Playable').help('Does the track crash? If not do you consider it playable?') }}
 		</fieldset>
 
