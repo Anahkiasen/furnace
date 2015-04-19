@@ -20,7 +20,8 @@
     "anahkiasen/arrounded": "0.6.*",
     "laravel/socialite": "~2.0",
     "mathiasgrimm/laravel-dot-env-gen": "0.8.*",
-    "creativeorange/gravatar": "~1.0"
+    "creativeorange/gravatar": "~1.0",
+    "cviebrock/eloquent-sluggable": ">=3.0.0-alpha"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

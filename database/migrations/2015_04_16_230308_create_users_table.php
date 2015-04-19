@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->nullable();
+            $table->string('slug')->nullable();
             $table->string('password')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('twitter_id')->nullable();

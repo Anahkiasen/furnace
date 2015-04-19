@@ -141,6 +141,7 @@ return [
         'Laravel\Socialite\SocialiteServiceProvider',
         'MathiasGrimm\LaravelDotEnvGen\DotEnvGenServiceProvider',
         'Creativeorange\Gravatar\GravatarServiceProvider',
+        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
         // Application
         'Furnace\Providers\AppServiceProvider',

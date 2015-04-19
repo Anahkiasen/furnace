@@ -3,6 +3,7 @@ namespace Furnace\Console;
 
 use Furnace\Console\Commands\UpdateInformations;
 use Furnace\Console\Commands\UpdateScores;
+use Furnace\Console\Commands\UpdateSlugs;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         UpdateScores::class,
         UpdateInformations::class,
+        UpdateSlugs::class,
     ];
 
     /**
