@@ -6,9 +6,6 @@ use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
 
-/**
- * @Bind("tracks")
- */
 class Track extends AbstractModel implements Favoritable, SluggableInterface
 {
     use SluggableTrait;
