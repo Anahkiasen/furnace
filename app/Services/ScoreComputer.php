@@ -90,6 +90,7 @@ class ScoreComputer
             'playlable'         => $track->ratings->average('playlable'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
+            'has_pc'            => $track->platforms['pc'],
             'platforms'         => count($track->platforms) / 4,
             'difficulty_levels' => min(1, round($track->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS)),
         ]);

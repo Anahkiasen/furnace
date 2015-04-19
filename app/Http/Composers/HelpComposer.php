@@ -23,6 +23,7 @@ class HelpComposer
             'playlable'         => ['Playable'],
             'dd'                => ['Dynamic difficulty'],
             'rr'                => ['Riff Repeater'],
+            'has_pc'            => ['PC version available'],
             'difficulty_levels' => ['Difficulty levels', 'Ratio to 5'],
             'platforms'         => ['Platforms', 'Grants extra points'],
         ];
