@@ -5,12 +5,12 @@
 	<figure class="media-left">
 		<img class="img-circle" src="{{ user.avatar() }}" alt="" />
 		<figcaption>
-			{{ user.name }}<br>
+			<a href="{{ URL.route('users.show', user.slug) }}">{{ user.name }}</a><br>
 			<time datetime="{{ rating.created_at }}">{{ rating.created_at.diffForHumans() }}</time>
 		</figcaption>
 	</figure>
 	<div class="media-body">
-		<h4 class="media-heading">Rated <a href="{{ URL.route('tracks.show', rating.track_id) }}">{{ rating.track.identifier|raw }}</a></h4>
+		<h4 class="media-heading">Rated <a href="{{ URL.route('tracks.show', rating.track.slug) }}">{{ rating.track.identifier|raw }}</a></h4>
 		<table class="table table-bordered table-condensed">
 			<thead>
 			<tr>
