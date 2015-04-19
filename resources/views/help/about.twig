@@ -1,4 +1,5 @@
 {% extends '_layouts/global.twig' %}
+{% from '_macros/table.twig' import progress %}
 {% set title = 'About furnace' %}
 
 {% block content %}
@@ -44,7 +45,7 @@
 			<tr>
 				<td>{{ criteria.label }}</td>
 				<td>{{ criteria.notes }}</td>
-				<td class="text-center">{{ criteria.weight }}</td>
+				<td class="text-center">{{ progress(criteria.weight, 1) }}</td>
 			</tr>
 		{% endfor %}
 	</table>

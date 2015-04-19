@@ -25,7 +25,7 @@ class HelpComposer
             'rr'                => ['Riff Repeater'],
             'has_pc'            => ['PC version available'],
             'difficulty_levels' => ['Difficulty levels', 'Ratio to 5'],
-            'platforms'         => ['Platforms', 'Grants extra points'],
+            'platforms'         => ['Platforms', 'Ratio to 4, grants extra points'],
         ];
 
         foreach ($criterias as $key => &$criteria) {
