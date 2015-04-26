@@ -48,9 +48,12 @@ class UsersController extends AbstractController
         $tracks = Track::limit(5)->find($tracks);
 
         // Get most similar tracks
-        $recommendations = $this->executeQuery(SimilarTracksQuery::class, [
-           'tracks' => $tracks->lists('id'),
-        ]);
+        $recommendations = [];
+        if ($tracks->count()) {
+            $recommendations = $this->executeQuery(SimilarTracksQuery::class, [
+               'tracks' => $tracks->lists('id'),
+            ]);
+        }
 
         return View::make('users/recommendations', [
             'tracks' => $recommendations,

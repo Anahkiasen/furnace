@@ -20,6 +20,7 @@ class SimilarTracksQuery extends AbstractQuery
                 'fields'        => [
                     'artist',
                     'tracker',
+                    'tags',
                 ],
                 'ids'           => $this->getData('tracks'),
                 'min_term_freq' => 1,
