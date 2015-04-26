@@ -43,6 +43,14 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function artist()
+    {
+        return $this->belongsTo(Artist::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function tracker()
     {
         return $this->belongsTo(Tracker::class);

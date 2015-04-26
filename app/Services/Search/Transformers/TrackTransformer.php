@@ -13,9 +13,8 @@ class TrackTransformer extends TransformerAbstract
      */
     public function transform(Track $track)
     {
-        return [
+        $transformed = [
             'id'                => $track->id,
-            'artist'            => $track->artist,
             'album'             => $track->album,
             'name'              => $track->name,
             'slug'              => $track->slug,
@@ -29,5 +28,14 @@ class TrackTransformer extends TransformerAbstract
             'score'             => (int) $track->score,
             'tracker'           => $track->tracker->name,
         ];
+
+        if ($track->artist) {
+            $transformed = array_merge($transformed, [
+                'artist' => $track->artist->name,
+                'tags'   => $track->artist->tags,
+            ]);
+        }
+
+        return $transformed;
     }
 }

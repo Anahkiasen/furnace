@@ -64,7 +64,7 @@ class Lastfm
         });
 
         // Extract tags from response
-        $tags = Arr::get($response, 'toptags.tag');
+        $tags = (array) Arr::get($response, 'toptags.tag');
         $tags = array_column($tags, 'name');
         $tags = array_slice($tags, 0, 3);
 

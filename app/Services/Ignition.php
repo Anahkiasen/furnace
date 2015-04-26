@@ -236,9 +236,10 @@ class Ignition
 
         // Create Artist
         $artist = Arr::get($meta, 'artist');
+        $artist = $this->decode($artist);
         $artist = Artist::firstOrCreate(['name' => $artist]);
 
-        return array_merge(
+        $track = array_merge(
             array_only($track, [
                 'ignition_id',
             ]),
@@ -260,6 +261,11 @@ class Ignition
                 'updated_at' => array_get($meta, 'updated'),
             ]
         );
+
+        // Decode unicode sequences
+        $track = array_map([$this, 'decode'], $track);
+
+        return $track;
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -334,4 +340,15 @@ class Ignition
             ],
         ]);
     }
+
+    /**
+     * @param $artist
+     *
+     * @return string
+     */protected function decode($artist)
+{
+    $artist = mb_convert_encoding($artist, 'UTF-8', 'HTML-ENTITIES');
+
+    return $artist;
+}
 }
