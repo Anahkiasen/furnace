@@ -1,7 +1,6 @@
 <?php namespace Furnace\Console\Commands;
 
 use Furnace\Entities\Models\Track;
-use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
 
 class ReindexDocuments extends AbstractCommand

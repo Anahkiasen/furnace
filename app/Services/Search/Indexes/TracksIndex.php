@@ -20,18 +20,38 @@ class TracksIndex extends AbstractIndex
     {
         return [
             'tracks' => [
+                '_id'        => [
+                    'path' => 'id',
+                ],
                 'properties' => [
+                    'id'                => ['type' => 'integer'],
                     'artist'            => ['type' => 'string'],
                     'album'             => ['type' => 'string'],
                     'name'              => ['type' => 'string'],
                     'slug'              => ['type' => 'string'],
-                    'parts'             => ['type' => 'string'],
+                    'parts'             => [
+                        'type'       => 'object',
+                        'properties' => [
+                            'lead'   => ['type' => 'boolean'],
+                            'rhythm' => ['type' => 'boolean'],
+                            'bass'   => ['type' => 'boolean'],
+                            'vocals' => ['type' => 'boolean'],
+                        ],
+                    ],
                     'tuning'            => ['type' => 'string'],
                     'version'           => ['type' => 'string'],
                     'dd'                => ['type' => 'boolean'],
                     'riff_repeater'     => ['type' => 'boolean'],
                     'difficulty_levels' => ['type' => 'integer'],
-                    'platforms'         => ['type' => 'string'],
+                    'platforms'         => [
+                        'type'       => 'object',
+                        'properties' => [
+                            'pc'      => ['type' => 'boolean'],
+                            'mac'     => ['type' => 'boolean'],
+                            'xbox360' => ['type' => 'boolean'],
+                            'ps3'     => ['type' => 'boolean'],
+                        ],
+                    ],
                     'score'             => ['type' => 'integer'],
                 ],
             ]

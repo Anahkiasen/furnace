@@ -14,6 +14,7 @@ class TrackTransformer extends TransformerAbstract
     public function transform(Track $track)
     {
         return [
+            'id'                => $track->id,
             'artist'            => $track->artist,
             'album'             => $track->album,
             'name'              => $track->name,
