@@ -3,6 +3,7 @@ namespace Furnace\Providers;
 
 use ElasticSearcher\ElasticSearcher;
 use ElasticSearcher\Environment;
+use Furnace\Services\Search\Indexes\TracksIndex;
 use Illuminate\Support\ServiceProvider;
 
 class SearchServiceProvider extends ServiceProvider
@@ -24,15 +25,17 @@ class SearchServiceProvider extends ServiceProvider
         $this->app->singleton(Environment::class, function () {
             return new Environment([
                 'hosts' => [
-                  'localhost:9200',
+                    'localhost:9200',
                 ],
             ]);
         });
 
         // Register ElasticSearcher
         $this->app->singleton(ElasticSearcher::class, function () {
-            $search = new ElasticSearcher($this->container->get(Environment::class));
+            $env    = $this->app->make(Environment::class);
+            $search = new ElasticSearcher($env);
             $search->indicesManager()->registerIndices([
+                new TracksIndex(),
             ]);
 
             return $search;
