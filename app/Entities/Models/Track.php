@@ -5,10 +5,12 @@ use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
+use Furnace\Entities\Traits\Indexable;
 
 class Track extends AbstractModel implements Favoritable, SluggableInterface
 {
     use SluggableTrait;
+    use Indexable;
 
     /**
      * @type array
