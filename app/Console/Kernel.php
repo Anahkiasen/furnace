@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Console;
 
+use Furnace\Console\Commands\ReindexDocuments;
 use Furnace\Console\Commands\UpdateInformations;
 use Furnace\Console\Commands\UpdateScores;
 use Furnace\Console\Commands\UpdateSlugs;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
         UpdateScores::class,
         UpdateInformations::class,
         UpdateSlugs::class,
+        ReindexDocuments::class,
     ];
 
     /**
