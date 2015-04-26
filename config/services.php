@@ -40,5 +40,8 @@ return [
         'client_secret' => getenv('TWITTER_SECRET'),
         'redirect'      => 'http://furnace.autopergamene.eu/auth/socialize/twitter/callback',
     ],
-
+    'lastfm'   => [
+        'client_id'     => getenv('LASTFM_ID'),
+        'client_secret' => getenv('LASTFM_SECRET'),
+    ],
 ];
