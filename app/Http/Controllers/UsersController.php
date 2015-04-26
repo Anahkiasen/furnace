@@ -2,11 +2,13 @@
 namespace Furnace\Http\Controllers;
 
 use Auth;
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Commands\CreateUserCommand;
 use Furnace\Entities\Models\User;
 use Furnace\Http\Requests\CreateUserRequest;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Redirect;
 use View;
 
@@ -29,6 +31,17 @@ class UsersController extends AbstractController
         return View::make('users/index', [
             'users' => $users,
         ]);
+    }
+
+    /**
+     * @Get("users/recommendations", as="users.recommendations")
+     * @param Authenticatable $user
+     *
+     * @return \Illuminate\View\View
+     */
+    public function recommendations(Authenticatable $user)
+    {
+        return View::make('users/recommendations');
     }
 
     /**
