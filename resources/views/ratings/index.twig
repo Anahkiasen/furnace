@@ -21,7 +21,7 @@
 {% block rows %}
 	{% for rating in ratings %}
 		<tr>
-			<td>{{ rating.track.artist|raw }}</td>
+			<td>{{ rating.track.artist.name|raw }}</td>
 			<td>{{ rating.track.name|raw }}</td>
 			<td>{{ rating.track.tracker.name|raw }}</td>
 			<td>{{ boolean(rating.normalized_volume) }}</td>
