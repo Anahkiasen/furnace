@@ -22,7 +22,7 @@ class CreateTracksTable extends Migration
             $table->boolean('riff_repeater')->default(false);
             $table->integer('difficulty_levels');
             $table->string('platforms');
-            $table->integer('score')->default(0);
+            $table->float('score')->default(0);
             $table->integer('ignition_id')->unsigned();
             $table->integer('artist_id')->unsigned()->index()->nullable();
             $table->integer('tracker_id')->unsigned()->index()->nullable();

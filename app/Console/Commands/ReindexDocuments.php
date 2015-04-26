@@ -52,8 +52,7 @@ class ReindexDocuments extends AbstractCommand
      */
     public function fire()
     {
-        $this->search->indicesManager()->delete('tracks');
-        $this->search->indicesManager()->create('tracks');
+        $this->recreateIndex('tracks');
 
         foreach ($this->models as $model) {
             $entries = $model::all();
@@ -61,5 +60,14 @@ class ReindexDocuments extends AbstractCommand
                 $entry->save();
             });
         }
+    }
+
+    /**
+     * @param string $index
+     */
+    protected function recreateIndex($index)
+    {
+        $this->search->indicesManager()->delete($index);
+        $this->search->indicesManager()->create($index);
     }
 }

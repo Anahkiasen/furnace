@@ -31,7 +31,7 @@ class SimilarTracksQuery extends AbstractQuery
                 ],
                 'filter' => [
                     'range' => [
-                        'score' => ['gte' => 6],
+                        'score' => ['gt' => 5],
                     ]
                 ]
             ]

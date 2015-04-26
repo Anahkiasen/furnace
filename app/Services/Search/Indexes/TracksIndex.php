@@ -30,7 +30,6 @@ class TracksIndex extends AbstractIndex
                     'name'              => ['type' => 'string'],
                     'slug'              => ['type' => 'string'],
                     'parts'             => [
-                        'type'       => 'object',
                         'properties' => [
                             'lead'   => ['type' => 'boolean'],
                             'rhythm' => ['type' => 'boolean'],
@@ -44,7 +43,6 @@ class TracksIndex extends AbstractIndex
                     'riff_repeater'     => ['type' => 'boolean'],
                     'difficulty_levels' => ['type' => 'integer'],
                     'platforms'         => [
-                        'type'       => 'object',
                         'properties' => [
                             'pc'      => ['type' => 'boolean'],
                             'mac'     => ['type' => 'boolean'],
@@ -52,7 +50,7 @@ class TracksIndex extends AbstractIndex
                             'ps3'     => ['type' => 'boolean'],
                         ],
                     ],
-                    'score'             => ['type' => 'integer'],
+                    'score'             => ['type' => 'float'],
                     'tracker'           => ['type' => 'string'],
                     'tags'              => ['type' => 'string'],
                 ],
