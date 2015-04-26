@@ -14,17 +14,26 @@ class SimilarTracksQuery extends AbstractQuery
         $this->searchIn('tracks', 'tracks');
         $this->parseResultsWith(new TracksResultsParser());
 
-        $this->body['size'] = 25;
+        $this->body['size']  = 25;
         $this->body['query'] = [
-            'more_like_this' => [
-                'fields'        => [
-                    'artist',
-                    'tracker',
-                    'tags',
+            'filtered' => [
+                'query'  => [
+                    'more_like_this' => [
+                        'fields'        => [
+                            'artist',
+                            'tracker',
+                            'tags',
+                        ],
+                        'ids'           => $this->getData('tracks'),
+                        'min_term_freq' => 1,
+                        'min_doc_freq'  => 1,
+                    ]
                 ],
-                'ids'           => $this->getData('tracks'),
-                'min_term_freq' => 1,
-                'min_doc_freq'  => 1,
+                'filter' => [
+                    'range' => [
+                        'score' => ['gte' => 6],
+                    ]
+                ]
             ]
         ];
     }
