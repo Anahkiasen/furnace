@@ -14,8 +14,8 @@ class LastfmServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(Lastfm::class, function ($app) {
-            $client = new Client([
+        $this->app->singleton('clients.lastfm', function ($app) {
+            return new Client([
                 'base_url' => 'http://ws.audioscrobbler.com',
                 'defaults' => [
                     'query' => [
@@ -24,8 +24,13 @@ class LastfmServiceProvider extends ServiceProvider
                     ],
                 ],
             ]);
-
-            return new Lastfm($client);
         });
+
+        $this->app
+            ->when(Lastfm::class)
+            ->needs(Client::class)
+            ->give('clients.lastfm');
+
+        $this->app->singleton(Lastfm::class, Lastfm::class);
     }
 }

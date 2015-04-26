@@ -15,13 +15,18 @@ class IgnitionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(Client::class, function () {
+        $this->app->singleton('clients.ignition', function () {
             return new Client([
                 'defaults' => [
                     'cookies' => new CookieJar(),
                 ],
             ]);
         });
+
+        $this->app
+            ->when(Ignition::class)
+            ->needs(Client::class)
+            ->give('clients.ignition');
 
         $this->app->singleton(Ignition::class, Ignition::class);
         $this->app->alias(Ignition::class, 'ignition');
