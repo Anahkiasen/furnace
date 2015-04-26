@@ -6,8 +6,10 @@ use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Furnace\Commands\CreateUserCommand;
+use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\User;
 use Furnace\Http\Requests\CreateUserRequest;
+use Furnace\Services\Search\Queries\SimilarTracksQuery;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Redirect;
 use View;
@@ -41,7 +43,18 @@ class UsersController extends AbstractController
      */
     public function recommendations(Authenticatable $user)
     {
-        return View::make('users/recommendations');
+        // Get highest rated tracks of user
+        $tracks = $user->ratings->lists('track_id');
+        $tracks = Track::limit(5)->find($tracks);
+
+        // Get most similar tracks
+        $recommendations = $this->executeQuery(SimilarTracksQuery::class, [
+           'tracks' => $tracks->lists('id'),
+        ]);
+
+        return View::make('users/recommendations', [
+            'tracks' => $recommendations,
+        ]);
     }
 
     /**

@@ -11,11 +11,11 @@ class TracksResultsParser extends AbstractResultParser
      * Parse the raw results and convert to usable results.
      * This could for example fetch models in an ORM, based on the hits.
      */
-    function getResults()
+    public function getResults()
     {
         $results = $this->getHits();
         foreach ($results as $key => $result) {
-            $results[$key] = Track::find($result['id']);
+            $results[$key] = Track::find($result['_id']);
         }
 
         return new Collection($results);
