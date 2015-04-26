@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Services;
 
+use Furnace\Entities\Models\Artist;
 use Furnace\Entities\Models\Tracker;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Cache\Repository;
@@ -233,12 +234,15 @@ class Ignition
 
         $tracker = Tracker::firstOrCreate(['name' => $tracker]);
 
+        // Create Artist
+        $artist = Arr::get($meta, 'artist');
+        $artist = Artist::firstOrCreate(['name' => $artist]);
+
         return array_merge(
             array_only($track, [
                 'ignition_id',
             ]),
             array_only($meta, [
-                'artist',
                 'album',
                 'parts',
                 'platforms',
@@ -251,6 +255,7 @@ class Ignition
                 'dd'         => array_get($meta, 'dd', 'no') === 'yes',
                 'name'       => array_get($meta, 'title'),
                 'tracker_id' => $tracker->id,
+                'artist_id'  => $artist->id,
                 'created_at' => array_get($meta, 'added'),
                 'updated_at' => array_get($meta, 'updated'),
             ]

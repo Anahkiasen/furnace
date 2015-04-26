@@ -21,7 +21,6 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      * @type array
      */
     protected $fillable = [
-        'artist',
         'album',
         'name',
         'parts',
@@ -34,6 +33,7 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
         'score',
         'ignition_id',
         'tracker_id',
+        'artist_id',
     ];
 
     //////////////////////////////////////////////////////////////////////

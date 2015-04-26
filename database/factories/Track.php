@@ -1,11 +1,11 @@
 <?php
 
+use Furnace\Entities\Models\Artist;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 use League\FactoryMuffin\Facade;
 
 Facade::define(Track::class, [
-    'artist'            => 'word',
     'album'             => 'word',
     'name'              => 'word',
     'parts'             => 'lead',
@@ -17,5 +17,6 @@ Facade::define(Track::class, [
     'difficulty_levels' => 'numberNumber|1',
     'score'             => 'randomNumber|2',
     'ignition_id'       => 'randomNumber|5',
+    'artist_id'         => 'factory|'.Artist::class,
     'tracker_id'        => 'factory|'.Tracker::class,
 ]);
