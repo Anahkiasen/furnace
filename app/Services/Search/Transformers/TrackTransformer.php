@@ -27,6 +27,7 @@ class TrackTransformer extends TransformerAbstract
             'difficulty_levels' => (int) $track->difficulty_levels,
             'platforms'         => $track->platforms,
             'score'             => (int) $track->score,
+            'tracker'           => $track->tracker->name,
         ];
     }
 }
