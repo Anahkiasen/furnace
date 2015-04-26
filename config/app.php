@@ -152,6 +152,7 @@ return [
         'Furnace\Providers\IgnitionServiceProvider',
         'Furnace\Providers\ViewServiceProvider',
         'Furnace\Providers\ScoreComputerServiceProvider',
+        'Furnace\Providers\SearchServiceProvider',
         'Furnace\Providers\Kernel\AnnotationsServiceProvider',
 
     ],
