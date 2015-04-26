@@ -14,10 +14,17 @@ class TracksResultsParser extends AbstractResultParser
     public function getResults()
     {
         $results = $this->getHits();
-        foreach ($results as $key => $result) {
-            $results[$key] = Track::find($result['_id']);
-        }
+        $order = array_column($results, '_id');
 
-        return new Collection($results);
+        // Retrieve and sort the results by score
+        $tracks = Track::find($order);
+        $tracks->sort(function ($a, $b) use ($order) {
+            $positionB = array_search($b->id, $order);
+            $positionA = array_search($a->id, $order);
+
+            return $positionA - $positionB;
+        });
+
+        return $tracks;
     }
 }

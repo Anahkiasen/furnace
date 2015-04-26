@@ -51,8 +51,10 @@ class UsersController extends AbstractController
         $recommendations = [];
         if ($tracks->count()) {
             $recommendations = $this->executeQuery(SimilarTracksQuery::class, [
-               'tracks' => $tracks->lists('id'),
+                'tracks' => $tracks->lists('id'),
             ]);
+
+            $recommendations->load('artist', 'ratings', 'tracker');
         }
 
         return View::make('users/recommendations', [
@@ -62,7 +64,6 @@ class UsersController extends AbstractController
 
     /**
      * @Middleware("guest")
-     *
      * @return \Illuminate\View\View
      */
     public function create()
@@ -91,7 +92,7 @@ class UsersController extends AbstractController
     public function show(User $user)
     {
         return View::make('users/show', [
-           'user' => $user,
+            'user' => $user,
         ]);
     }
 }
