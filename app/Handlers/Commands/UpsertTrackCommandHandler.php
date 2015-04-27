@@ -3,6 +3,7 @@ namespace Furnace\Handlers\Commands;
 
 use Furnace\Commands\UpsertTrackCommand;
 use Furnace\Entities\Models\Track;
+use Furnace\Entities\Models\Version;
 use Furnace\Services\Ignition;
 
 class UpsertTrackCommandHandler
@@ -48,6 +49,16 @@ class UpsertTrackCommandHandler
             'ignition_id' => $command->ignition,
         ]);
 
-        return $this->repository->create($attributes);
+        // Create Track
+        $version = array_pull($attributes, 'version');
+        $track   = $this->repository->create($attributes);
+
+        // Create related version
+        Version::firstOrCreate([
+            'name'     => $version,
+            'track_id' => $track->id,
+        ]);
+
+        return $track;
     }
 }

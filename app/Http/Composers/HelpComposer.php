@@ -1,7 +1,6 @@
 <?php
 namespace Furnace\Http\Composers;
 
-use Config;
 use Furnace\Services\ScoreComputer;
 use Illuminate\View\View;
 
@@ -36,7 +35,7 @@ class HelpComposer
             'presilence'        => ['Pre-silence', '1 or 0'],
             'playable'          => ['Playable', '1 or 0'],
             'dd'                => ['Dynamic difficulty', '1 or 0'],
-            'rr'                => ['Riff Repeater', '1 or 0'],
+            'riff_repeater'     => ['Riff Repeater', '1 or 0'],
             'has_pc'            => ['PC version available', '1 or 0'],
             'difficulty_levels' => ['Difficulty levels', 'Ratio to 5'],
             'platforms'         => ['Platforms', 'Ratio to 4, grants extra points'],
@@ -51,7 +50,7 @@ class HelpComposer
         }
 
         $criterias = array_sort($criterias, function ($criteria) {
-           return $criteria['weight'] * -1;
+            return $criteria['weight'] * -1;
         });
 
         $view->criterias = $criterias;

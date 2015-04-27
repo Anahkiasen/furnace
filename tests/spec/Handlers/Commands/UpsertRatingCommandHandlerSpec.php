@@ -36,7 +36,7 @@ class UpsertRatingCommandHandlerSpec extends FurnaceObjectBehavior
         $command = new UpsertRatingCommand([
             'ignition_id' => $track->ignition_id,
             'audio'       => 2,
-            'comments' => 'nope',
+            'comments'    => 'nope',
         ], $user);
         $rating  = $this->handle($command);
 

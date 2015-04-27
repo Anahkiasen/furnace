@@ -4,6 +4,7 @@ namespace spec\Furnace;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 use Furnace\Entities\Models\User;
+use Furnace\Entities\Models\Version;
 use Furnace\Services\Ignition;
 use League\FactoryMuffin\Facade;
 use Mockery;
@@ -19,7 +20,7 @@ class FurnaceObjectBehavior extends LaravelObjectBehavior
         $this->loadFactories();
 
         app()->bind(Ignition::class, function () {
-           return Mockery::mock(Ignition::class)->shouldReceive('complete')->andReturn([])->getMock();
+            return Mockery::mock(Ignition::class)->shouldReceive('complete')->andReturn([])->getMock();
         });
 
         User::first() ?: Facade::create(User::class);
@@ -40,6 +41,7 @@ class FurnaceObjectBehavior extends LaravelObjectBehavior
     {
         $tracker = Facade::create(Tracker::class);
         $item    = Facade::create(Track::class, ['tracker_id' => $tracker->id]);
+        $version = Version::create(['name' => '1.0', 'track_id' => $item->id]);
 
         return $item;
     }

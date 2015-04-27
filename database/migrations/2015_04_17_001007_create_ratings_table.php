@@ -33,11 +33,13 @@ class CreateRatingsTable extends Migration
 
             $table->float('total')->default(0);
 
+            $table->integer('version_id')->unsigned()->index();
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->enum('platform', Config::get('furnace.platforms'))->default('pc');
             $table->timestamps();
 
+            $table->foreign('version_id')->references('id')->on('versions')->onDelete('cascade');
             $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

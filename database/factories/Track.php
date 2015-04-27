@@ -11,7 +11,6 @@ Facade::define(Track::class, [
     'parts'             => 'lead',
     'platforms'         => 'pc,mac',
     'tuning'            => 'estandard',
-    'version'           => '1.0',
     'dd'                => 'boolean',
     'riff_repeater'     => 'boolean',
     'difficulty_levels' => 'randomNumber|1',

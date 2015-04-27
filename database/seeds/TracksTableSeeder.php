@@ -1,13 +1,18 @@
 <?php
 
+use Furnace\Commands\UpsertTrackCommand;
 use Furnace\Entities\Models\Rating;
 use Furnace\Entities\Models\Track;
+use Furnace\Entities\Models\Version;
 use Illuminate\Database\Seeder;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 use League\Csv\Reader;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class TracksTableSeeder extends Seeder
 {
+    use DispatchesCommands;
+
     public function run()
     {
         $rows     = $this->getTracks();
@@ -20,9 +25,11 @@ class TracksTableSeeder extends Seeder
                 continue;
             }
 
-            $track = $this->container->make('ignition')->complete($row);
-            $track = Track::firstOrCreate($track);
+            $track = $this->dispatchFromArray(UpsertTrackCommand::class, [
+                'ignition' => $row['ignition_id'],
+            ]);
 
+            unset($track->versions);
             Rating::create([
                 'presilence'        => array_get($row, 'presilence'),
                 'normalized_volume' => array_get($row, 'normalized_volume'),
@@ -33,6 +40,7 @@ class TracksTableSeeder extends Seeder
                 'techniques'        => array_get($row, 'techniques', true),
                 'tab'               => array_get($row, 'tab'),
                 'difficulty'        => array_get($row, 'difficulty', 1),
+                'version_id'        => $track->version->id,
                 'track_id'          => $track->id,
                 'user_id'           => 1,
             ]);

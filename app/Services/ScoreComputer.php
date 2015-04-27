@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Services;
 
+use Furnace\Collection;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 
@@ -10,6 +11,11 @@ class ScoreComputer
      * @type array
      */
     protected $weights;
+
+    /**
+     * @type bool
+     */
+    protected $persists = true;
 
     /**
      * The standard number of difficulty levels.
@@ -36,6 +42,10 @@ class ScoreComputer
         $this->weights = $weights;
     }
 
+    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////// OPTIONS ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
     /**
      * @return array
      */
@@ -53,26 +63,67 @@ class ScoreComputer
     }
 
     /**
+     * @return boolean
+     */
+    public function isPersists()
+    {
+        return $this->persists;
+    }
+
+    /**
+     * @param boolean $persists
+     */
+    public function setPersists($persists)
+    {
+        $this->persists = $persists;
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    /////////////////////////////// SCORES ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+    /**
      * @param Tracker $tracker
+     *
+     * @return float
      */
     public function forBlacksmith(Tracker $tracker)
     {
-        $tracker->score = $this->computeBlacksmithScore($tracker);
-        $tracker->save();
+        $score          = $this->computeBlacksmithScore($tracker);
+        $tracker->score = $score;
+
+        if ($this->persists) {
+            $tracker->save();
+        }
+
+        return $score;
     }
 
     /**
      * @param Track $track
-     * @param bool  $save
      *
-     * @return int
+     * @return float
      */
-    public function forTrack(Track $track, $save = true)
+    public function forTrack(Track $track)
     {
-        // Update track's score
-        $score        = $this->computeTrackScore($track);
+        if (!$track->version) {
+            return 0;
+        }
+
+        // Compute track's score from its versions
+        $score = $this->computeTrackScore($track, $track->version->ratings);
+        if ($track->previousVersions->count()) {
+            $previousScore = $this->computeTrackScore($track, $track->previousVersions->first()->ratings);
+            $score         = ($previousScore * 0.25 + $score * 0.75) / 2;
+        }
+
+        // Round up and ceil
+        $score = round($score, 1);
+        $score = min($score, static::RATING_SCALE);
+
+        // Assign score and save
         $track->score = $score;
-        if ($save) {
+        if ($this->persists) {
             $track->save();
         }
 
@@ -89,34 +140,30 @@ class ScoreComputer
     //////////////////////////////////////////////////////////////////////
 
     /**
-     * @param Track $track
+     * @param Track      $track
+     * @param Collection $ratings
      *
      * @return float|int
      */
-    protected function computeTrackScore(Track $track)
+    protected function computeTrackScore(Track $track, Collection $ratings)
     {
         $components = $this->applyWeights([
-            'tone'              => $track->ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
-            'audio'             => $track->ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
-            'tab'               => $track->ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
-            'sync'              => $track->ratings->average('sync'),
-            'techniques'        => $track->ratings->average('techniques'),
-            'normalized_volume' => $track->ratings->average('normalized_volume'),
-            'presilence'        => $track->ratings->average('presilence'),
-            'playable'          => $track->ratings->average('playable'),
+            'tone'              => $ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
+            'audio'             => $ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
+            'tab'               => $ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
+            'sync'              => $ratings->average('sync'),
+            'techniques'        => $ratings->average('techniques'),
+            'normalized_volume' => $ratings->average('normalized_volume'),
+            'presilence'        => $ratings->average('presilence'),
+            'playable'          => $ratings->average('playable'),
             'dd'                => $track->dd,
-            'rr'                => $track->riff_repeater,
+            'riff_repeater'     => $track->riff_repeater,
             'has_pc'            => $track->platforms['pc'],
             'platforms'         => count($track->platforms) / 4,
             'difficulty_levels' => min(1, round($track->difficulty_levels / static::STANDARD_DIFFICULTY_LEVELS)),
         ]);
 
-        // Round up and ceil
-        $rating = array_sum($components);
-        $rating = round($rating, 1);
-        $rating = min($rating, static::RATING_SCALE);
-
-        return $rating;
+        return array_sum($components);
     }
 
     /**
@@ -126,7 +173,7 @@ class ScoreComputer
      */
     protected function computeBlacksmithScore(Tracker $tracker)
     {
-        $ratings = $tracker->tracks()->lists('score');
+        $ratings = $tracker->tracks->lists('score');
         if (!$ratings) {
             return 0;
         }

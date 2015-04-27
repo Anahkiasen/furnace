@@ -74,7 +74,10 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
             'artist_id'   => $artist->id,
         ]);
 
-        $ignition->complete(['ignition_id' => $track->ignition_id])->willReturn($track->getAttributes());
+        $ignition->complete(['ignition_id' => $track->ignition_id])->willReturn(array_merge(
+            ['version' => '1.0'],
+            $track->getAttributes()
+        ));
 
         $this->beConstructedWith($ignition, new Track);
 
