@@ -7,10 +7,13 @@ use Collective\Annotations\Routing\Annotations\Annotations\Post;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Debugbar;
 use Furnace\Commands\Ratings\ExportRatingsCommand;
+use Furnace\Commands\Ratings\ImportRatingsCommand;
 use Furnace\Commands\UpsertRatingCommand;
 use Furnace\Entities\Models\Rating;
+use Furnace\Http\Requests\ImportRatings;
 use Furnace\Http\Requests\UpsertRating;
 use Illuminate\Contracts\Auth\Authenticatable;
+use League\Csv\Reader;
 use Redirect;
 use Response;
 use View;
@@ -56,12 +59,29 @@ class RatingsController extends AbstractController
 
     /**
      * @Post("ratings/import", as="ratings.import")
-     *
+     * @param ImportRatings   $request
      * @param Authenticatable $user
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function import(Authenticatable $user)
+    public function import(ImportRatings $request, Authenticatable $user)
     {
+        $hash = md5($user->id + time());
+        $destination = public_path('uploads/'.$hash.'.csv');
 
+        // Upload file
+        $ratings = $request->file('ratings');
+        $ratings->move($destination);
+
+        // Parse data
+        $ratings = Reader::createFromPath($destination);
+        $ratings = $ratings->fetchAssoc(0);
+
+        $this->dispatchFromArray(ImportRatingsCommand::class, [
+           'ratings' => $ratings,
+        ]);
+
+        return Redirect::back();
     }
 
     /**

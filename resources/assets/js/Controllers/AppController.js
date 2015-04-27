@@ -1,11 +1,6 @@
 angular.module('furnace').controller('AppController', function ($scope, $http) {
 
 	/**
-	 * @type {boolean}
-	 */
-	$scope.showImport = false;
-
-	/**
 	 * Favorite a track
 	 *
 	 * @param $event

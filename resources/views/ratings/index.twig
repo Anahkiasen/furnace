@@ -8,7 +8,7 @@
 			Export
 			<i class="glyphicon glyphicon-log-out"></i>
 		</a>
-		<a ng-click="showImport = !showImport" class="btn btn-default">
+		<a ng-init="showImport = {{ errors.any() ? 'true' : 'false' }}" ng-click="showImport = !showImport" class="btn btn-default">
 			Import
 			<i class="glyphicon glyphicon-log-in"></i>
 		</a>
