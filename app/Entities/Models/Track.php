@@ -6,11 +6,18 @@ use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
 use Furnace\Entities\Traits\Indexable;
+use Furnace\Services\ScoreComputer;
 
 class Track extends AbstractModel implements Favoritable, SluggableInterface
 {
     use SluggableTrait;
     use Indexable;
+
+    /**
+     * Number of ratings to have before
+     * the track can be marked as unplayable.
+     */
+    const UNPLAYLABLE_AFTER = 5;
 
     /**
      * @type array
@@ -117,6 +124,20 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     }
 
     /**
+     * Get the state of the track
+     *
+     * @return string
+     */
+    public function getStateAttribute()
+    {
+        if (!$this->isPlayable && $this->ratings->count() > static::UNPLAYLABLE_AFTER) {
+            return 'danger';
+        } elseif ($this->score >= (ScoreComputer::RATING_SCALE * 0.9)) {
+            return 'success';
+        }
+    }
+
+    /**
      * Get the human-readable tuning.
      *
      * @return string
@@ -137,6 +158,10 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
 
         return array_get($tunings, $tuning, $tuning);
     }
+
+    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////// HELPERS ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
     /**
      * @param string   $attribute

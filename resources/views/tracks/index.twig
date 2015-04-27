@@ -30,7 +30,7 @@
 
 {% block rows %}
 	{% for track in tracks %}
-		<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.score >= (rating_scale * 0.9) %}success{% endif %}">
+		<tr class="{{ track.state }}">
 			<td>{{ track.artist.name|raw }}</td>
 			<td>{{ track.name|raw }}</td>
 			<td>{{ track.tracker.name|raw }}</td>
