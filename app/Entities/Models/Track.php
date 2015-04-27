@@ -74,10 +74,10 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     public function getIdentifierAttribute()
     {
         if (!$this->tracker) {
-            return sprintf('%s - %s', $this->artist, $this->name);
+            return sprintf('%s - %s', $this->artist->name, $this->name);
         }
 
-        return sprintf('%s - %s (%s)', $this->artist, $this->name, $this->tracker->name);
+        return sprintf('%s - %s (%s)', $this->artist->name, $this->name, $this->tracker->name);
     }
 
     /**
