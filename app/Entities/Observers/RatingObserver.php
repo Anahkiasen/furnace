@@ -26,7 +26,7 @@ class RatingObserver
      */
     public function saving(Rating $rating)
     {
-        $rating->total = array_sum([
+        $components    = [
             $rating->presilence,
             $rating->normalized_volume,
             $rating->playable,
@@ -35,7 +35,9 @@ class RatingObserver
             $rating->sync,
             $rating->techniques,
             $rating->tab,
-        ]);
+        ];
+
+        $rating->total = round(array_sum($components), 1);
     }
 
     /**
