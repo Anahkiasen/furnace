@@ -23,7 +23,8 @@
     "creativeorange/gravatar": "~1.0",
     "cviebrock/eloquent-sluggable": ">=3.0.0-alpha",
     "madewithlove/elasticsearcher": "0.2.*@dev",
-    "league/fractal": "0.12.*"
+    "league/fractal": "0.12.*",
+    "predis/predis": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
