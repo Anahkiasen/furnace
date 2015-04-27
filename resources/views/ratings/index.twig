@@ -8,11 +8,21 @@
 			Export
 			<i class="glyphicon glyphicon-log-out"></i>
 		</a>
-		<a href="#" class="btn btn-default">
+		<a ng-click="showImport = !showImport" class="btn btn-default">
 			Import
 			<i class="glyphicon glyphicon-log-in"></i>
 		</a>
 	</div>
+
+	{% autoescape false %}
+		{{ Former.open().route('ratings.import').ngShow('showImport') }}
+		<fieldset>
+			<legend>Import ratings</legend>
+			{{ Former.file('ratings') }}
+			{{ Former.actions().large_primary_submit('Import') }}
+		</fieldset>
+		{{ Former.close() }}
+	{% endautoescape %}
 {% endblock %}
 
 {% block headers %}
@@ -44,9 +54,17 @@
 			<td>{{ progress(rating.audio, integer_scale) }}</td>
 			<td>{{ progress(rating.tab, integer_scale) }}</td>
 			<td>{{ progress(rating.total, rating_scale, true) }}</td>
-			<td class="text-center"><a href="{{ URL.route('ratings.edit', rating.id) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+			<td class="text-center">
+				<a href="{{ URL.route('ratings.edit', rating.id) }}">
+					<i class="glyphicon glyphicon-edit"></i>
+				</a>
+			</td>
 			<td class="text-center">{{ favorite(current_user, rating.track) }}</td>
-			<td class="text-center"><a ng-click="remove($event)" href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+			<td class="text-center">
+				<a ng-click="remove($event)" href="{{ URL.route('ratings.destroy', rating.id) }}">
+					<i class="glyphicon glyphicon-remove"></i>
+				</a>
+			</td>
 		</tr>
 	{% endfor %}
 {% endblock %}
