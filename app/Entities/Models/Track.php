@@ -32,7 +32,6 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
         'name',
         'parts',
         'tuning',
-        'version',
         'dd',
         'riff_repeater',
         'difficulty_levels',
@@ -68,12 +67,38 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      */
     public function ratings()
     {
-        return $this->hasMany(Rating::class)->whereVersion($this->version);
+        $versions = $this->latestVersions->lists('id');
+
+        return $this->hasMany(Rating::class)->whereIn('version_id', $versions);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function versions()
+    {
+        return $this->hasMany(Version::class)->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function latestVersions()
+    {
+        return $this->versions()->take(2);
     }
 
     //////////////////////////////////////////////////////////////////////
     ///////////////////////////// ATTRIBUTES /////////////////////////////
     //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return Version
+     */
+    public function getVersionAttribute()
+    {
+        return $this->versions->first();
+    }
 
     /**
      * @return string

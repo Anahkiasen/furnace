@@ -17,7 +17,6 @@ class CreateTracksTable extends Migration
             $table->string('slug')->nullable();
             $table->string('parts');
             $table->string('tuning');
-            $table->string('version');
             $table->boolean('dd')->default(false);
             $table->boolean('riff_repeater')->default(false);
             $table->integer('difficulty_levels');
