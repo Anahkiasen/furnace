@@ -26,7 +26,7 @@ class RatingObserver
      */
     public function saving(Rating $rating)
     {
-        $components    = [
+        $components = [
             $rating->presilence,
             $rating->normalized_volume,
             $rating->playable,
@@ -43,23 +43,27 @@ class RatingObserver
     /**
      * @param Rating $rating
      */
-    public function created(Rating $rating)
+    public function saved(Rating $rating)
     {
-        $this->scoreComputer->forTrack($rating->track);
-    }
-
-    /**
-     * @param Rating $rating
-     */
-    public function updated(Rating $rating)
-    {
-        $this->scoreComputer->forTrack($rating->track);
+        $this->updateTrackRating($rating);
     }
 
     /**
      * @param Rating $rating
      */
     public function deleted(Rating $rating)
+    {
+        $this->updateTrackRating($rating);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////// HELPERS ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param Rating $rating
+     */
+    protected function updateTrackRating(Rating $rating)
     {
         $this->scoreComputer->forTrack($rating->track);
     }

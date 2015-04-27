@@ -131,8 +131,10 @@ return [
         'facades'   => [
             'Auth',
             'Config',
+            'Input',
             'Former',
             'Route',
+            'Session',
             'URL',
         ],
         /*

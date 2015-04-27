@@ -2,6 +2,33 @@
 {% from '_macros/table.twig' import progress, boolean, favorite %}
 {% set title = 'My ratings' %}
 
+{% block before %}
+	{% if Session.has('imported') %}
+		<p class="alert alert-success">{{ Session.get('imported') }} ratings were imported.</p>
+	{% endif %}
+
+	<div class="btn-group btn-group-justified">
+		<a href="{{ URL.route('ratings.export') }}" class="btn btn-default">
+			Export
+			<i class="glyphicon glyphicon-log-out"></i>
+		</a>
+		<a ng-init="showImport = {{ errors.any() ? 'true' : 'false' }}" ng-click="showImport = !showImport" class="btn btn-default">
+			Import
+			<i class="glyphicon glyphicon-log-in"></i>
+		</a>
+	</div>
+
+	{% autoescape false %}
+		{{ Former.open_for_files().route('ratings.import').ngShow('showImport') }}
+		<fieldset>
+			<legend>Import ratings</legend>
+			{{ Former.file('ratings') }}
+			{{ Former.actions().large_primary_submit('Import') }}
+		</fieldset>
+		{{ Former.close() }}
+	{% endautoescape %}
+{% endblock %}
+
 {% block headers %}
 	<th>Artist</th>
 	<th>Title</th>
@@ -31,9 +58,17 @@
 			<td>{{ progress(rating.audio, integer_scale) }}</td>
 			<td>{{ progress(rating.tab, integer_scale) }}</td>
 			<td>{{ progress(rating.total, rating_scale, true) }}</td>
-			<td class="text-center"><a href="{{ URL.route('ratings.edit', rating.id) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+			<td class="text-center">
+				<a href="{{ URL.route('ratings.edit', rating.id) }}">
+					<i class="glyphicon glyphicon-edit"></i>
+				</a>
+			</td>
 			<td class="text-center">{{ favorite(current_user, rating.track) }}</td>
-			<td class="text-center"><a ng-click="remove($event)" href="{{ URL.route('ratings.destroy', rating.id) }}"><i class="glyphicon glyphicon-remove"></i></a></td>
+			<td class="text-center">
+				<a ng-click="remove($event)" href="{{ URL.route('ratings.destroy', rating.id) }}">
+					<i class="glyphicon glyphicon-remove"></i>
+				</a>
+			</td>
 		</tr>
 	{% endfor %}
 {% endblock %}

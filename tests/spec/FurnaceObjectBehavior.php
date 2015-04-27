@@ -1,6 +1,7 @@
 <?php
 namespace spec\Furnace;
 
+use Furnace\Entities\Models\Rating;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 use Furnace\Entities\Models\User;
@@ -44,5 +45,26 @@ class FurnaceObjectBehavior extends LaravelObjectBehavior
         $version = Version::create(['name' => '1.0', 'track_id' => $item->id]);
 
         return $item;
+    }
+
+    /**
+     * @param integer $average
+     * @param array   $attributes
+     *
+     * @return Rating
+     */
+    protected function getDummyRating($average, array $attributes = [])
+    {
+        return new Rating([
+            'track_id'          => 1,
+            'tone'              => $average,
+            'audio'             => $average,
+            'tab'               => $average,
+            'sync'              => true,
+            'techniques'        => true,
+            'normalized_volume' => true,
+            'presilence'        => true,
+            'playable'          => true
+        ]);
     }
 }

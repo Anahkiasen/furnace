@@ -207,6 +207,7 @@ return [
         // Packages
         'Former'   => 'Former\Facades\Former',
         'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 

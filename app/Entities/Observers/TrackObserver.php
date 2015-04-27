@@ -35,7 +35,8 @@ class TrackObserver
     public function saving(Track $track)
     {
         if (!$track->isDirty('score')) {
-            $track->score = $this->scoreComputer->forTrack($track, false);
+            $this->scoreComputer->setPersists(false);
+            $track->score = $this->scoreComputer->forTrack($track);
         }
     }
 

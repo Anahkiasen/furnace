@@ -1,12 +1,19 @@
 <?php
 namespace Furnace\Http\Controllers;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
+use Collective\Annotations\Routing\Annotations\Annotations\Post;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
+use Debugbar;
+use Furnace\Commands\Ratings\ExportRatingsCommand;
+use Furnace\Commands\Ratings\ImportRatingsCommand;
 use Furnace\Commands\UpsertRatingCommand;
 use Furnace\Entities\Models\Rating;
+use Furnace\Http\Requests\ImportRatings;
 use Furnace\Http\Requests\UpsertRating;
 use Illuminate\Contracts\Auth\Authenticatable;
+use League\Csv\Reader;
 use Redirect;
 use Response;
 use View;
@@ -43,11 +50,58 @@ class RatingsController extends AbstractController
      */
     public function index(Authenticatable $user)
     {
-        $ratings = $user->ratings->load('track.tracker');
+        $ratings = $user->ratings->load('track.tracker', 'track.artist');
 
         return View::make('ratings/index', [
             'ratings' => $ratings,
         ]);
+    }
+
+    /**
+     * @Post("ratings/import", as="ratings.import")
+     * @param ImportRatings   $request
+     * @param Authenticatable $user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function import(ImportRatings $request, Authenticatable $user)
+    {
+        $filename    = md5($user->id + time()).'.csv';
+        $destination = public_path('uploads');
+
+        // Upload file
+        $ratings = $request->file('ratings');
+        $ratings->move($destination, $filename);
+
+        // Parse data
+        $ratings = Reader::createFromPath($destination.'/'.$filename);
+        $ratings = $ratings->fetchAssoc(0);
+
+        $this->dispatchFromArray(ImportRatingsCommand::class, [
+            'user'    => $user,
+            'ratings' => $ratings,
+        ]);
+
+        return Redirect::back()->with('imported', count($ratings));
+    }
+
+    /**
+     * Export ratings to a file
+     * @Get("ratings/export", as="ratings.export")
+     *
+     * @param Authenticatable $user
+     *
+     * @return int
+     */
+    public function export(Authenticatable $user)
+    {
+        Debugbar::disable();
+
+        $file = $this->dispatchFromArray(ExportRatingsCommand::class, [
+            'ratings' => $user->ratings,
+        ]);
+
+        return $file->output('ratings.csv');
     }
 
     /**
@@ -109,7 +163,6 @@ class RatingsController extends AbstractController
      *
      * @throws \Exception
      * @return \Symfony\Component\HttpFoundation\Response
-     *
      */
     public function destroy(Rating $rating)
     {

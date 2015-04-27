@@ -3,10 +3,12 @@ namespace Furnace\Providers;
 
 use Arrounded\Macros\FormerBuilder;
 use Furnace\Collection;
+use Furnace\FurnaceValidator;
 use Furnace\Services\ScoreComputer;
 use Illuminate\Support\ServiceProvider;
 use Laracasts\Generators\GeneratorsServiceProvider;
 use League\Csv\Reader;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->make(FormerBuilder::class)->registerMacros();
+
+        Validator::resolver(function ($translator, $data, $rules, $messages) {
+            return new FurnaceValidator($translator, $data, $rules, $messages);
+        });
     }
 }
