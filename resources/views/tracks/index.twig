@@ -50,20 +50,20 @@
 			<td class="text-center">{{ boolean(track.dd) }}</td>
 			<td class="text-center">{{ boolean(track.riff_repeater) }}</td>
 			<td class="text-center">{{ track.difficulty_levels }}</td>
-			<td class="text-center">{{ boolean(track.ratings.average('normalized_volume')) }}</td>
-			<td class="text-center">{{ boolean(track.ratings.average('presilence')) }}</td>
-			<td class="text-center">{{ boolean(track.ratings.average('playable')) }}</td>
-			<td class="text-center">{{ boolean(track.ratings.average('sync')) }}</td>
-			<td class="text-center">{{ boolean(track.ratings.average('techniques')) }}</td>
+			<td class="text-center">{{ boolean(track.version.ratings.average('normalized_volume')) }}</td>
+			<td class="text-center">{{ boolean(track.version.ratings.average('presilence')) }}</td>
+			<td class="text-center">{{ boolean(track.version.ratings.average('playable')) }}</td>
+			<td class="text-center">{{ boolean(track.version.ratings.average('sync')) }}</td>
+			<td class="text-center">{{ boolean(track.version.ratings.average('techniques')) }}</td>
 			<td>{{ track.version.name }}</td>
 			<td>
-				{{ progress(track.ratings.average('tone'), integer_scale) }}
+				{{ progress(track.version.ratings.average('tone'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('audio'), integer_scale) }}
+				{{ progress(track.version.ratings.average('audio'), integer_scale) }}
 			</td>
 			<td>
-				{{ progress(track.ratings.average('tab'), integer_scale) }}
+				{{ progress(track.version.ratings.average('tab'), integer_scale) }}
 			</td>
 			<td>
 				{{ progress(track.score, rating_scale, true) }}

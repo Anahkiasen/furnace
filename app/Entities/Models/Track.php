@@ -66,7 +66,7 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      */
     public function ratings()
     {
-        return $this->hasMany(Rating::class)->where('version_id', $this->version->id);
+        return $this->hasMany(Rating::class);
     }
 
     /**
