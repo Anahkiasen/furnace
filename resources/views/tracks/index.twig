@@ -1,6 +1,6 @@
 {% extends '_layouts/table.twig' %}
 {% from '_macros/table.twig' import progress, boolean, favorite %}
-{% set title = 'Tracks' %}
+{% set title = title|default('Tracks') %}
 
 {% block headers %}
 	<th>Artist</th>
