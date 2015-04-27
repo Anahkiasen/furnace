@@ -14,7 +14,7 @@ Facade::define(Track::class, [
     'version'           => '1.0',
     'dd'                => 'boolean',
     'riff_repeater'     => 'boolean',
-    'difficulty_levels' => 'numberNumber|1',
+    'difficulty_levels' => 'randomNumber|1',
     'score'             => 'randomNumber|2',
     'ignition_id'       => 'randomNumber|5',
     'artist_id'         => 'factory|'.Artist::class,
