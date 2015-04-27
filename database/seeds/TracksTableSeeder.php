@@ -1,13 +1,13 @@
 <?php
 
-use Furnace\Commands\UpsertTrackCommand;
+use Furnace\Commands\Ratings\ImportRatingsCommand;
 use Furnace\Entities\Models\Rating;
 use Furnace\Entities\Models\Track;
+use Furnace\Entities\Models\User;
 use Furnace\Entities\Models\Version;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use League\Csv\Reader;
-use Symfony\Component\Console\Helper\ProgressBar;
 
 class TracksTableSeeder extends Seeder
 {
@@ -15,40 +15,10 @@ class TracksTableSeeder extends Seeder
 
     public function run()
     {
-        $rows     = $this->getTracks();
-        $progress = new ProgressBar($this->command->getOutput(), count($rows));
-        $progress->start();
-
-        foreach ($rows as $row) {
-            if (!$row['file']) {
-                $progress->advance();
-                continue;
-            }
-
-            $track = $this->dispatchFromArray(UpsertTrackCommand::class, [
-                'ignition' => $row['ignition_id'],
-            ]);
-
-            unset($track->versions);
-            Rating::create([
-                'presilence'        => array_get($row, 'presilence'),
-                'normalized_volume' => array_get($row, 'normalized_volume'),
-                'playable'          => array_get($row, 'playable'),
-                'tone'              => array_get($row, 'tone'),
-                'audio'             => array_get($row, 'track'),
-                'sync'              => array_get($row, 'sync', true),
-                'techniques'        => array_get($row, 'techniques', true),
-                'tab'               => array_get($row, 'tab'),
-                'difficulty'        => array_get($row, 'difficulty', 1),
-                'version_id'        => $track->version->id,
-                'track_id'          => $track->id,
-                'user_id'           => 1,
-            ]);
-
-            $progress->advance();
-        }
-
-        $progress->finish();
+        $this->dispatchFromArray(ImportRatingsCommand::class, [
+            'user'    => User::first(),
+            'ratings' => $this->getTracks(),
+        ]);
     }
 
     /**

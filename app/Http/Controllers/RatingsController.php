@@ -3,6 +3,7 @@ namespace Furnace\Http\Controllers;
 
 use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
+use Collective\Annotations\Routing\Annotations\Annotations\Post;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
 use Debugbar;
 use Furnace\Commands\Ratings\ExportRatingsCommand;
@@ -51,6 +52,16 @@ class RatingsController extends AbstractController
         return View::make('ratings/index', [
             'ratings' => $ratings,
         ]);
+    }
+
+    /**
+     * @Post("ratings/import", as="ratings.import")
+     *
+     * @param Authenticatable $user
+     */
+    public function import(Authenticatable $user)
+    {
+
     }
 
     /**
