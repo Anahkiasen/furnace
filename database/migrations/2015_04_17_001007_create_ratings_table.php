@@ -29,7 +29,7 @@ class CreateRatingsTable extends Migration
 
             // Feedback
             $table->integer('difficulty')->default(0);
-            $table->text('comments');
+            $table->text('comments')->nullable();
 
             $table->float('total')->default(0);
 

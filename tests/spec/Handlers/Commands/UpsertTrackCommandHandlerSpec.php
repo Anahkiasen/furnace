@@ -3,9 +3,11 @@
 namespace spec\Furnace\Handlers\Commands;
 
 use Furnace\Commands\UpsertTrackCommand;
+use Furnace\Entities\Models\Artist;
 use Furnace\Entities\Models\Track;
 use Furnace\Handlers\Commands\UpsertTrackCommandHandler;
 use Furnace\Services\Ignition;
+use League\FactoryMuffin\Facade;
 use Prophecy\Argument;
 use spec\Furnace\FurnaceObjectBehavior;
 
@@ -63,16 +65,14 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
      */
     protected function mockIgnition($ignition)
     {
-        $ignition->complete(['ignition_id' => $this->ignitionKey])->willReturn([
-            'name'              => 'Stairway to Heaven',
-            'parts'             => 'lead',
-            'platforms'         => 'pc,mac',
-            'tuning'            => 'estandard',
-            'version'           => '1.0',
-            'difficulty_levels' => 8,
-            'score'             => 2,
-            'ignition_id'       => $this->ignitionKey,
+        $artist = Facade::create(Artist::class);
+        $track  = Facade::instance(Track::class, [
+            'name'        => 'Stairway to Heaven',
+            'ignition_id' => $this->ignitionKey,
+            'artist_id'   => $artist->id,
         ]);
+
+        $ignition->complete(['ignition_id' => $this->ignitionKey])->willReturn($track->toArray());
 
         $this->beConstructedWith($ignition, new Track);
     }
