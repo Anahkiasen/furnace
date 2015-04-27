@@ -70,13 +70,18 @@ class ScoreComputer
      */
     public function forTrack(Track $track, $save = true)
     {
-        // Update track's score
-        $scores = [
-            $this->computeTrackScore($track, $track->previousVersions->first()->ratings) * 0.25,
-            $this->computeTrackScore($track, $track->version->ratings) * 0.75,
-        ];
+        // Compute track's score from its versions
+        $score = $this->computeTrackScore($track, $track->version->ratings);
+        if ($track->previousVersions->count()) {
+            $scores = [
+                $this->computeTrackScore($track, $track->previousVersions->first()->ratings) * 0.25,
+                $score * 0.75,
+            ];
 
-        $score        = array_sum($scores) / count($scores);
+            $score = array_sum($scores) / count($scores);
+        }
+
+        // Assign score and save
         $track->score = $score;
         if ($save) {
             $track->save();
