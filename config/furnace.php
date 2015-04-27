@@ -29,7 +29,7 @@ return [
         'presilence'        => 1,
         'playable'         => 1,
         'dd'                => 1,
-        'rr'                => 1,
+        'riff_repeater'     => 1,
         'difficulty_levels' => 1,
         'has_pc'            => 1,
         'platforms'         => 1,
