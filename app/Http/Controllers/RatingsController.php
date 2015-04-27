@@ -43,7 +43,7 @@ class RatingsController extends AbstractController
      */
     public function index(Authenticatable $user)
     {
-        $ratings = $user->ratings->load('track.tracker');
+        $ratings = $user->ratings->load('track.tracker', 'track.artist');
 
         return View::make('ratings/index', [
             'ratings' => $ratings,
