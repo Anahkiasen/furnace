@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Console\Commands;
 
+use Furnace\Entities\Models\Artist;
 use Furnace\Entities\Models\Track;
 use Furnace\Services\Ignition;
 
@@ -38,6 +39,10 @@ class UpdateInformations extends AbstractCommand
      */
     public function handle()
     {
+        $this->onModel(Artist::class, function (Artist $artist) {
+            $artist->save();
+        });
+
         $this->onTracks(function (Track $track) {
             $meta = $this->ignition->complete($track->toArray());
 
