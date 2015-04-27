@@ -44,7 +44,7 @@ class UsersController extends AbstractController
     public function recommendations(Authenticatable $user)
     {
         // Get highest rated tracks of user
-        $tracks = $user->ratings->lists('track_id');
+        $tracks = $user->ratings->sortByDesc('total')->lists('track_id');
         $tracks = Track::limit(5)->find($tracks);
 
         // Get most similar tracks

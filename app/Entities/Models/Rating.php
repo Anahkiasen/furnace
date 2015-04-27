@@ -25,6 +25,7 @@ class Rating extends AbstractModel
         'track_id',
         'user_id',
         'platform',
+        'total',
         'track_id',
         'user_id',
     ];

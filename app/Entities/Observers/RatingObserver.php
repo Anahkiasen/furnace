@@ -24,6 +24,23 @@ class RatingObserver
     /**
      * @param Rating $rating
      */
+    public function saving(Rating $rating)
+    {
+        $rating->total = array_sum([
+            $rating->presilence,
+            $rating->normalized_volume,
+            $rating->playable,
+            $rating->tone,
+            $rating->audio,
+            $rating->sync,
+            $rating->techniques,
+            $rating->tab,
+        ]);
+    }
+
+    /**
+     * @param Rating $rating
+     */
     public function created(Rating $rating)
     {
         $this->scoreComputer->forTrack($rating->track);
