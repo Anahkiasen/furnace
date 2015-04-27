@@ -2,8 +2,8 @@
 
 use Furnace\Commands\Ratings\ExportRatingsCommand;
 use Furnace\Entities\Transformers\RatingExportTransformer;
-use League\Csv\AbstractCsv;
 use League\Csv\Writer;
+use SplTempFileObject;
 
 class ExportRatingsCommandHandler
 {
@@ -27,7 +27,7 @@ class ExportRatingsCommandHandler
      *
      * @param ExportRatingsCommand $command
      *
-     * @return AbstractCsv
+     * @return Writer
      */
     public function handle(ExportRatingsCommand $command)
     {
@@ -38,7 +38,7 @@ class ExportRatingsCommandHandler
         $columns = array_keys($ratings->first());
 
         // Create CSV file
-        $file = Writer::createFromFileObject(new \SplTempFileObject());
+        $file = Writer::createFromFileObject(new SplTempFileObject());
         $file->insertOne($columns);
         $file->insertAll($ratings->toArray());
 

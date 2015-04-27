@@ -95,23 +95,4 @@ class ScoreComputerSpec extends FurnaceObjectBehavior
         $score = $this->forBlacksmith($blacksmith);
         $score->shouldBeLike(7.5);
     }
-
-    /**
-     * @param integer $average
-     *
-     * @return Rating
-     */
-    protected function getDummyRating($average)
-    {
-        return new Rating([
-            'tone'              => $average,
-            'audio'             => $average,
-            'tab'               => $average,
-            'sync'              => true,
-            'techniques'        => true,
-            'normalized_volume' => true,
-            'presilence'        => true,
-            'playable'          => true
-        ]);
-    }
 }
