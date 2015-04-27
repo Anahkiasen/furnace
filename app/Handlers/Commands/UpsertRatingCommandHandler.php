@@ -4,6 +4,7 @@ namespace Furnace\Handlers\Commands;
 use Furnace\Commands\UpsertRatingCommand;
 use Furnace\Commands\UpsertTrackCommand;
 use Furnace\Entities\Models\Rating;
+use Furnace\Entities\Models\Version;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class UpsertRatingCommandHandler
@@ -41,8 +42,9 @@ class UpsertRatingCommandHandler
 
         // Update rating
         $rating->fill($command->attributes->all());
-        $rating->track_id = $track->id;
-        $rating->user_id  = $command->user->id;
+        $rating->version_id = $track->version->id;
+        $rating->track_id   = $track->id;
+        $rating->user_id    = $command->user->id;
         $rating->save();
 
         return $rating;

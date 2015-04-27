@@ -83,7 +83,7 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      */
     public function previousVersions()
     {
-        return $this->versions()->skip(1);
+        return $this->versions()->where('id', '!=', $this->version->id);
     }
 
     //////////////////////////////////////////////////////////////////////
