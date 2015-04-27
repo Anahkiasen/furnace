@@ -38,7 +38,7 @@ class TracksTableSeeder extends Seeder
                 'techniques'        => array_get($row, 'techniques', true),
                 'tab'               => array_get($row, 'tab'),
                 'difficulty'        => array_get($row, 'difficulty', 1),
-                'version_id'        => $track->versions->last()->id,
+                'version_id'        => $track->version->id,
                 'track_id'          => $track->id,
                 'user_id'           => 1,
             ]);
