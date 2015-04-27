@@ -25,7 +25,7 @@ class TrackTransformer extends TransformerAbstract
             'riff_repeater'     => (bool) $track->riff_repeater,
             'difficulty_levels' => (int) $track->difficulty_levels,
             'platforms'         => $track->platforms,
-            'score'             => (int) $track->score,
+            'score'             => (float) $track->score,
             'tracker'           => $track->tracker->name,
         ];
 
