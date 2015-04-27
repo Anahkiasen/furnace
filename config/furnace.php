@@ -27,7 +27,7 @@ return [
         'tab'               => 1,
         'normalized_volume' => 1,
         'presilence'        => 1,
-        'playable'         => 1,
+        'playable'          => 1,
         'dd'                => 1,
         'riff_repeater'     => 1,
         'difficulty_levels' => 1,

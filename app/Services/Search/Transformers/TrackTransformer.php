@@ -20,7 +20,7 @@ class TrackTransformer extends TransformerAbstract
             'slug'              => $track->slug,
             'parts'             => $track->parts,
             'tuning'            => $track->tuning,
-            'version'           => $track->version,
+            'version'           => $track->version ? $track->version->name : null,
             'dd'                => (bool) $track->dd,
             'riff_repeater'     => (bool) $track->riff_repeater,
             'difficulty_levels' => (int) $track->difficulty_levels,
