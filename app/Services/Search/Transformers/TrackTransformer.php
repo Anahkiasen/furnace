@@ -26,7 +26,7 @@ class TrackTransformer extends TransformerAbstract
             'difficulty_levels' => (int) $track->difficulty_levels,
             'platforms'         => $track->platforms,
             'score'             => (float) $track->score,
-            'tracker'           => $track->tracker->name,
+            'tracker'           => $track->tracker ? $track->tracker->name : null,
         ];
 
         if ($track->artist) {

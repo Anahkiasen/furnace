@@ -24,6 +24,7 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
     public function let()
     {
         parent::let();
+        //Track::truncate();
 
         $this->beConstructedWith(
             app(Ignition::class),
@@ -38,25 +39,26 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
 
     public function it_can_create_track(Ignition $ignition)
     {
-        $this->mockIgnition($ignition);
+        $this->ignitionKey = $this->mockIgnition($ignition);
         $command = new UpsertTrackCommand($this->ignitionKey);
         $track   = $this->handle($command);
 
         $track->shouldHaveType(Track::class);
-        $track->name->shouldEqual('Stairway to Heaven');
         $track->ignition_id->shouldBeLike($this->ignitionKey);
     }
 
     public function it_can_retrieve_track(Ignition $ignition)
     {
-        $this->mockIgnition($ignition);
-        $existing = Track::where('ignition_id', $this->ignitionKey)->first();
+        $this->ignitionKey = $this->mockIgnition($ignition);
+
+        $command = new UpsertTrackCommand($this->ignitionKey);
+        $existing   = $this->handle($command);
+
         $command  = new UpsertTrackCommand($this->ignitionKey);
         $track    = $this->handle($command);
 
         $track->shouldHaveType(Track::class);
         $track->id->shouldBeLike($existing->id);
-        $track->name->shouldEqual('Stairway to Heaven');
         $track->ignition_id->shouldBeLike($this->ignitionKey);
     }
 
@@ -67,13 +69,15 @@ class UpsertTrackCommandHandlerSpec extends FurnaceObjectBehavior
     {
         $artist = Facade::create(Artist::class);
         $track  = Facade::instance(Track::class, [
-            'name'        => 'Stairway to Heaven',
-            'ignition_id' => $this->ignitionKey,
+            'parts'       => 'lead',
+            'platforms'   => 'mac',
             'artist_id'   => $artist->id,
         ]);
 
-        $ignition->complete(['ignition_id' => $this->ignitionKey])->willReturn($track->toArray());
+        $ignition->complete(['ignition_id' => $track->ignition_id])->willReturn($track->getAttributes());
 
         $this->beConstructedWith($ignition, new Track);
+
+        return $track->ignition_id;
     }
 }
