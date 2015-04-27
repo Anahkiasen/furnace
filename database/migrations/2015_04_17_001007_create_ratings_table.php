@@ -33,6 +33,7 @@ class CreateRatingsTable extends Migration
 
             $table->float('total')->default(0);
 
+            $table->string('version')->nullable();
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->enum('platform', Config::get('furnace.platforms'))->default('pc');
