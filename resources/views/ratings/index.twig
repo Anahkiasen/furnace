@@ -2,6 +2,19 @@
 {% from '_macros/table.twig' import progress, boolean, favorite %}
 {% set title = 'My ratings' %}
 
+{% block before %}
+	<div class="btn-group btn-group-justified">
+		<a href="{{ URL.route('ratings.export') }}" class="btn btn-default">
+			Export
+			<i class="glyphicon glyphicon-log-out"></i>
+		</a>
+		<a href="#" class="btn btn-default">
+			Import
+			<i class="glyphicon glyphicon-log-in"></i>
+		</a>
+	</div>
+{% endblock %}
+
 {% block headers %}
 	<th>Artist</th>
 	<th>Title</th>

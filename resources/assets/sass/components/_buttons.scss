@@ -1,5 +1,13 @@
+.btn-group {
+	margin-bottom: 2rem;
+}
+
 .btn {
 	transition: background 0.3s;
+
+	i {
+		margin-left: 0.5em;
+	}
 }
 
 @each $provider, $color in $providers {

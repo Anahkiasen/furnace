@@ -1,8 +1,11 @@
 <?php
 namespace Furnace\Http\Controllers;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Collective\Annotations\Routing\Annotations\Annotations\Resource;
+use Debugbar;
+use Furnace\Commands\Ratings\ExportRatingsCommand;
 use Furnace\Commands\UpsertRatingCommand;
 use Furnace\Entities\Models\Rating;
 use Furnace\Http\Requests\UpsertRating;
@@ -48,6 +51,25 @@ class RatingsController extends AbstractController
         return View::make('ratings/index', [
             'ratings' => $ratings,
         ]);
+    }
+
+    /**
+     * Export ratings to a file
+     * @Get("ratings/export", as="ratings.export")
+     *
+     * @param Authenticatable $user
+     *
+     * @return int
+     */
+    public function export(Authenticatable $user)
+    {
+        Debugbar::disable();
+
+        $file = $this->dispatchFromArray(ExportRatingsCommand::class, [
+            'ratings' => $user->ratings,
+        ]);
+
+        return $file->output('ratings.csv');
     }
 
     /**
@@ -109,7 +131,6 @@ class RatingsController extends AbstractController
      *
      * @throws \Exception
      * @return \Symfony\Component\HttpFoundation\Response
-     *
      */
     public function destroy(Rating $rating)
     {
