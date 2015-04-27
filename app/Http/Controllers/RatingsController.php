@@ -81,7 +81,7 @@ class RatingsController extends AbstractController
            'ratings' => $ratings,
         ]);
 
-        return Redirect::back();
+        return Redirect::back()->with('imported', $ratings->count());
     }
 
     /**

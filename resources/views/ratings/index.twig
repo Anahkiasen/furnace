@@ -3,6 +3,10 @@
 {% set title = 'My ratings' %}
 
 {% block before %}
+	{% if Session.has('imported') %}
+		<p class="alert alert-success">{{ Session.get('imported') }} ratings were imported.</p>
+	{% endif %}
+
 	<div class="btn-group btn-group-justified">
 		<a href="{{ URL.route('ratings.export') }}" class="btn btn-default">
 			Export
