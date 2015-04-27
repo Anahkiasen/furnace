@@ -150,8 +150,10 @@ return [
         'Furnace\Providers\Kernel\EventServiceProvider',
         'Furnace\Providers\Kernel\RouteServiceProvider',
         'Furnace\Providers\IgnitionServiceProvider',
+        'Furnace\Providers\LastfmServiceProvider',
         'Furnace\Providers\ViewServiceProvider',
         'Furnace\Providers\ScoreComputerServiceProvider',
+        'Furnace\Providers\SearchServiceProvider',
         'Furnace\Providers\Kernel\AnnotationsServiceProvider',
 
     ],

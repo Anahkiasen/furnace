@@ -25,6 +25,7 @@ class Rating extends AbstractModel
         'track_id',
         'user_id',
         'platform',
+        'total',
         'track_id',
         'user_id',
     ];
@@ -47,29 +48,5 @@ class Rating extends AbstractModel
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    //////////////////////////////////////////////////////////////////////
-    ///////////////////////////// ATTRIBUTES /////////////////////////////
-    //////////////////////////////////////////////////////////////////////
-
-    /**
-     * @return float
-     */
-    public function getNoteAttribute()
-    {
-        $components = [
-            $this->presilence,
-            $this->normalized_volume,
-            $this->playable,
-            $this->tone,
-            $this->audio,
-            $this->tab,
-        ];
-
-        $note = array_sum($components);
-        $note = round($note, 1);
-
-        return $note;
     }
 }

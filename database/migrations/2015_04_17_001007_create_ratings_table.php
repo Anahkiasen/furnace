@@ -29,8 +29,9 @@ class CreateRatingsTable extends Migration
 
             // Feedback
             $table->integer('difficulty')->default(0);
-            $table->text('comments');
+            $table->text('comments')->nullable();
 
+            $table->float('total')->default(0);
 
             $table->integer('track_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();

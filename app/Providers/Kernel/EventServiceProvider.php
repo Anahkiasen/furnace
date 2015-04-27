@@ -1,8 +1,10 @@
 <?php
 namespace Furnace\Providers\Kernel;
 
+use Furnace\Entities\Models\Artist;
 use Furnace\Entities\Models\Rating;
 use Furnace\Entities\Models\Track;
+use Furnace\Entities\Observers\ArtistObserver;
 use Furnace\Entities\Observers\RatingObserver;
 use Furnace\Entities\Observers\TrackObserver;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
@@ -32,5 +34,6 @@ class EventServiceProvider extends ServiceProvider
 
         Rating::observe(RatingObserver::class);
         Track::observe(TrackObserver::class);
+        Artist::observe(ArtistObserver::class);
     }
 }

@@ -10,6 +10,9 @@ dependencies:
   pre:
     - pecl install xdebug
     - echo "memory_limit = 1024M" > ~/.phpenv/versions/5.5.15/etc/conf.d/memory.ini
+    - wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.2.tar.gz
+    - tar -xvf elasticsearch-1.5.2.tar.gz
+    - elasticsearch-1.5.2/bin/elasticsearch: {background: true}
   override:
     - composer install --prefer-source --no-interaction
 

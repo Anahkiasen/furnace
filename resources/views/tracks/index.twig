@@ -1,6 +1,6 @@
 {% extends '_layouts/table.twig' %}
 {% from '_macros/table.twig' import progress, boolean, favorite %}
-{% set title = 'Tracks' %}
+{% set title = title|default('Tracks') %}
 
 {% block headers %}
 	<th>Artist</th>
@@ -31,7 +31,7 @@
 {% block rows %}
 	{% for track in tracks %}
 		<tr class="{% if not track.is_playable %}danger{% endif %} {% if track.score >= (rating_scale * 0.9) %}success{% endif %}">
-			<td>{{ track.artist|raw }}</td>
+			<td>{{ track.artist.name|raw }}</td>
 			<td>{{ track.name|raw }}</td>
 			<td>{{ track.tracker.name|raw }}</td>
 			<td>{{ track.tuning }}</td>

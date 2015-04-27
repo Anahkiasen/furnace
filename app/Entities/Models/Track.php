@@ -5,10 +5,12 @@ use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
+use Furnace\Entities\Traits\Indexable;
 
 class Track extends AbstractModel implements Favoritable, SluggableInterface
 {
     use SluggableTrait;
+    use Indexable;
 
     /**
      * @type array
@@ -19,7 +21,6 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      * @type array
      */
     protected $fillable = [
-        'artist',
         'album',
         'name',
         'parts',
@@ -32,11 +33,20 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
         'score',
         'ignition_id',
         'tracker_id',
+        'artist_id',
     ];
 
     //////////////////////////////////////////////////////////////////////
     //////////////////////////// RELATIONSHIPS ///////////////////////////
     //////////////////////////////////////////////////////////////////////
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function artist()
+    {
+        return $this->belongsTo(Artist::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -64,10 +74,10 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     public function getIdentifierAttribute()
     {
         if (!$this->tracker) {
-            return sprintf('%s - %s', $this->artist, $this->name);
+            return sprintf('%s - %s', $this->artist->name, $this->name);
         }
 
-        return sprintf('%s - %s (%s)', $this->artist, $this->name, $this->tracker->name);
+        return sprintf('%s - %s (%s)', $this->artist->name, $this->name, $this->tracker->name);
     }
 
     /**

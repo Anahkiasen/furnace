@@ -12,7 +12,6 @@ class CreateTracksTable extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('artist')->nullable();
             $table->string('album')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
@@ -23,11 +22,13 @@ class CreateTracksTable extends Migration
             $table->boolean('riff_repeater')->default(false);
             $table->integer('difficulty_levels');
             $table->string('platforms');
-            $table->integer('score')->default(0);
+            $table->float('score')->default(0);
             $table->integer('ignition_id')->unsigned();
+            $table->integer('artist_id')->unsigned()->index()->nullable();
             $table->integer('tracker_id')->unsigned()->index()->nullable();
             $table->timestamps();
 
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
             $table->foreign('tracker_id')->references('id')->on('trackers')->onDelete('cascade');
         });
     }
