@@ -19,7 +19,7 @@
 	</div>
 
 	{% autoescape false %}
-		{{ Former.open().route('ratings.import').ngShow('showImport') }}
+		{{ Former.open_for_files().route('ratings.import').ngShow('showImport') }}
 		<fieldset>
 			<legend>Import ratings</legend>
 			{{ Former.file('ratings') }}

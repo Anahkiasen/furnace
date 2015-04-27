@@ -134,6 +134,7 @@ return [
             'Input',
             'Former',
             'Route',
+            'Session',
             'URL',
         ],
         /*

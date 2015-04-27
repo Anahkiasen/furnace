@@ -24,7 +24,7 @@ class ImportRatings extends Request
     public function rules()
     {
         return [
-            'ratings' => 'required|mimes:csv',
+            'ratings' => 'required|extension:csv',
         ];
     }
 }

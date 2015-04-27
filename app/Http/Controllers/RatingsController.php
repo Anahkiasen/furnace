@@ -66,22 +66,23 @@ class RatingsController extends AbstractController
      */
     public function import(ImportRatings $request, Authenticatable $user)
     {
-        $hash = md5($user->id + time());
-        $destination = public_path('uploads/'.$hash.'.csv');
+        $filename    = md5($user->id + time()).'.csv';
+        $destination = public_path('uploads');
 
         // Upload file
         $ratings = $request->file('ratings');
-        $ratings->move($destination);
+        $ratings->move($destination, $filename);
 
         // Parse data
-        $ratings = Reader::createFromPath($destination);
+        $ratings = Reader::createFromPath($destination.'/'.$filename);
         $ratings = $ratings->fetchAssoc(0);
 
         $this->dispatchFromArray(ImportRatingsCommand::class, [
-           'ratings' => $ratings,
+            'user'    => $user,
+            'ratings' => $ratings,
         ]);
 
-        return Redirect::back()->with('imported', $ratings->count());
+        return Redirect::back()->with('imported', count($ratings));
     }
 
     /**
