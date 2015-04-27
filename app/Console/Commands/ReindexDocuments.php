@@ -55,8 +55,7 @@ class ReindexDocuments extends AbstractCommand
         $this->recreateIndex('tracks');
 
         foreach ($this->models as $model) {
-            $entries = $model::all();
-            $this->progressIterator($entries, function (Model $entry) {
+            $this->onModel($model, function (Model $entry) {
                 $entry->save();
             });
         }
