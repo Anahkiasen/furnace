@@ -2,6 +2,8 @@
 namespace Furnace\Services\Search\Queries;
 
 use ElasticSearcher\Abstracts\AbstractQuery;
+use Furnace\Services\Search\Fragments\ExcludeKeysFilter;
+use Furnace\Services\Search\Fragments\ScoreFilter;
 use Furnace\Services\Search\ResultsParsers\TracksResultsParser;
 
 class SimilarTracksQuery extends AbstractQuery
@@ -31,22 +33,8 @@ class SimilarTracksQuery extends AbstractQuery
                 'filter' => [
                     'and' => [
                         'filters' => [
-                            [
-                                'not' => [
-                                    'filter' => [
-                                        'ids' => [
-                                            'values' => $tracks,
-                                        ]
-                                    ]
-                                ]
-                            ],
-                            [
-                                'range' => [
-                                    'score' => [
-                                        'gte' => 5
-                                    ]
-                                ]
-                            ]
+                            new ExcludeKeysFilter($tracks),
+                            new ScoreFilter(5),
                         ]
                     ]
                 ]
