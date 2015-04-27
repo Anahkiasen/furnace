@@ -14,6 +14,12 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     use Indexable;
 
     /**
+     * Number of ratings to have before
+     * the track can be marked as unplayable.
+     */
+    const UNPLAYLABLE_AFTER = 5;
+
+    /**
      * @type array
      */
     protected $sluggable = [];
@@ -124,7 +130,7 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
      */
     public function getStateAttribute()
     {
-        if (!$this->isPlayable && $this->ratings->count() > 5) {
+        if (!$this->isPlayable && $this->ratings->count() > static::UNPLAYLABLE_AFTER) {
             return 'danger';
         } elseif ($this->score >= (ScoreComputer::RATING_SCALE * 0.9)) {
             return 'success';
