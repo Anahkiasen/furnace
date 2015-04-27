@@ -23,7 +23,7 @@ class ScoreComputer
     const STANDARD_DIFFICULTY_LEVELS = 5;
 
     /**
-     * The max score a multichoice criteria can have
+     * The max score a multichoice criteria can have.
      */
     const INTEGER_CRITERIA_SCALE = 3;
 
@@ -63,7 +63,7 @@ class ScoreComputer
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isPersists()
     {
@@ -71,7 +71,7 @@ class ScoreComputer
     }
 
     /**
-     * @param boolean $persists
+     * @param bool $persists
      */
     public function setPersists($persists)
     {
@@ -185,7 +185,7 @@ class ScoreComputer
     }
 
     /**
-     * Apply weights to the formula's components
+     * Apply weights to the formula's components.
      *
      * @param array $components
      *

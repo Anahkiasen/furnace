@@ -37,6 +37,7 @@ class UsersController extends AbstractController
 
     /**
      * @Get("users/recommendations", as="users.recommendations")
+     *
      * @param Authenticatable $user
      *
      * @return \Illuminate\View\View
@@ -64,6 +65,7 @@ class UsersController extends AbstractController
 
     /**
      * @Middleware("guest")
+     *
      * @return \Illuminate\View\View
      */
     public function create()

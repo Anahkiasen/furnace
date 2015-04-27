@@ -17,7 +17,7 @@ abstract class AbstractIndexMigration extends Migration
     protected $search;
 
     /**
-     * Build the migration
+     * Build the migration.
      */
     public function __construct()
     {

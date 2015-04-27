@@ -31,8 +31,8 @@ class FavoriteEntityCommandHandler
      * @param FavoriteEntityCommand $command
      *
      * @throws InvalidArgumentException
-     * @return Favorite
      *
+     * @return Favorite
      */
     public function handle(FavoriteEntityCommand $command)
     {

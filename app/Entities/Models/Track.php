@@ -1,7 +1,6 @@
 <?php
 namespace Furnace\Entities\Models;
 
-use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;
@@ -147,7 +146,7 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     }
 
     /**
-     * Get the state of the track
+     * Get the state of the track.
      *
      * @return string
      */

@@ -15,8 +15,6 @@ class ScoreComputerServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -29,7 +27,7 @@ class ScoreComputerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the weights from the fixture file
+     * Get the weights from the fixture file.
      *
      * @return array
      */

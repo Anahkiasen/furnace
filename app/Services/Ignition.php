@@ -341,11 +341,11 @@ class Ignition
         ]);
     }
 
-    /**
-     * @param $artist
-     *
-     * @return string
-     */protected function decode($artist)
+/**
+ * @param $artist
+ *
+ * @return string
+ */protected function decode($artist)
 {
     $artist = mb_convert_encoding($artist, 'UTF-8', 'HTML-ENTITIES');
 

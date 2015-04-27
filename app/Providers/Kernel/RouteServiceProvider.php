@@ -19,8 +19,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
+     * @param \Illuminate\Routing\Router $router
      */
     public function boot(Router $router)
     {

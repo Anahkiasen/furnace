@@ -1,7 +1,6 @@
 <?php
 
 use Furnace\Entities\Models\Track;
-use Furnace\Entities\Models\Tracker;
 use Furnace\Entities\Models\Version;
 use League\FactoryMuffin\Facade;
 

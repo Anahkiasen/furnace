@@ -4,7 +4,7 @@ namespace Furnace\Entities\Traits;
 trait Indexable
 {
     /**
-     * Transforms the model to an ES document
+     * Transforms the model to an ES document.
      *
      * @return array
      */
@@ -12,7 +12,7 @@ trait Indexable
     {
         $transformer = class_basename($this);
         $transformer = sprintf('Furnace\Services\Search\Transformers\%sTransformer', $transformer);
-        $transformer = new $transformer;
+        $transformer = new $transformer();
 
         return $transformer->transform($this);
     }

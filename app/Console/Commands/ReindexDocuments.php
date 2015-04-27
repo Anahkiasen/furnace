@@ -1,4 +1,5 @@
-<?php namespace Furnace\Console\Commands;
+<?php
+namespace Furnace\Console\Commands;
 
 use ElasticSearcher\ElasticSearcher;
 use Furnace\Entities\Models\Track;
@@ -9,19 +10,19 @@ class ReindexDocuments extends AbstractCommand
     /**
      * The console command name.
      *
-     * @var string
+     * @type string
      */
     protected $name = 'elastic:reindex';
 
     /**
      * The console command description.
      *
-     * @var string
+     * @type string
      */
     protected $description = 'Reindex the ES database.';
 
     /**
-     * The models to reindex
+     * The models to reindex.
      *
      * @type array
      */
@@ -43,7 +44,6 @@ class ReindexDocuments extends AbstractCommand
 
         $this->search = $search;
     }
-
 
     /**
      * Execute the console command.

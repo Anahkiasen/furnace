@@ -1,7 +1,7 @@
-<?php namespace Furnace\Commands\Ratings;
+<?php
+namespace Furnace\Commands\Ratings;
 
 use Furnace\Collection;
-use Furnace\Commands\Command;
 
 class ExportRatingsCommand
 {

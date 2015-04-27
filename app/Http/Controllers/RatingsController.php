@@ -59,6 +59,7 @@ class RatingsController extends AbstractController
 
     /**
      * @Post("ratings/import", as="ratings.import")
+     *
      * @param ImportRatings   $request
      * @param Authenticatable $user
      *
@@ -86,7 +87,8 @@ class RatingsController extends AbstractController
     }
 
     /**
-     * Export ratings to a file
+     * Export ratings to a file.
+     *
      * @Get("ratings/export", as="ratings.export")
      *
      * @param Authenticatable $user
@@ -162,6 +164,7 @@ class RatingsController extends AbstractController
      * @param Rating $rating
      *
      * @throws \Exception
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function destroy(Rating $rating)

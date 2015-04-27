@@ -54,7 +54,7 @@ class TracksIndex extends AbstractIndex
                     'tracker'           => ['type' => 'string'],
                     'tags'              => ['type' => 'string'],
                 ],
-            ]
+            ],
         ];
     }
 }

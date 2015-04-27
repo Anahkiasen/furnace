@@ -31,7 +31,7 @@ class Lastfm
     }
 
     /**
-     * Get the tags for a track
+     * Get the tags for a track.
      *
      * @param Track $track
      *
@@ -43,7 +43,7 @@ class Lastfm
     }
 
     /**
-     * Get the tags for an artist
+     * Get the tags for an artist.
      *
      * @param string $artist
      *

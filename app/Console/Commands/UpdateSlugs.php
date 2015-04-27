@@ -29,5 +29,4 @@ class UpdateSlugs extends AbstractCommand
             $user->save();
         });
     }
-
 }

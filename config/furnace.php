@@ -7,7 +7,7 @@ return [
         'xbox360',
         'ps3',
         'pc',
-        'mac'
+        'mac',
     ],
 
     // The difficulties a CDLC can be rated as

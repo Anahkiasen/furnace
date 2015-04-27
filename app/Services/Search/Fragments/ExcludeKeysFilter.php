@@ -17,9 +17,9 @@ class ExcludeKeysFilter extends AbstractFragment
                 'filter' => [
                     'ids' => [
                         'values' => $keys,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

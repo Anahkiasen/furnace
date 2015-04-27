@@ -8,7 +8,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 abstract class AbstractCommand extends Command
 {
     /**
-     * Execute an action on all tracks
+     * Execute an action on all tracks.
      *
      * @param callable $callback
      */
@@ -18,7 +18,7 @@ abstract class AbstractCommand extends Command
     }
 
     /**
-     * @param string         $model
+     * @param string   $model
      * @param callable $callback
      */
     protected function onModel($model, callable $callback)
@@ -28,7 +28,7 @@ abstract class AbstractCommand extends Command
     }
 
     /**
-     * Displays progress as an iterator is looped over
+     * Displays progress as an iterator is looped over.
      *
      * @param array    $items
      * @param callable $callback

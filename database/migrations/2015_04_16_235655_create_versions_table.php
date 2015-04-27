@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -6,8 +7,6 @@ class CreateVersionsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -23,8 +22,6 @@ class CreateVersionsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -1,6 +1,6 @@
-<?php namespace Furnace\Commands\Ratings;
+<?php
+namespace Furnace\Commands\Ratings;
 
-use Furnace\Commands\Command;
 use Furnace\Entities\Models\User;
 
 class ImportRatingsCommand

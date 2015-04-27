@@ -1,7 +1,6 @@
 <?php
 namespace Furnace\Entities\Models;
 
-use Collective\Annotations\Database\Eloquent\Annotations\Annotations\Bind;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use Furnace\Entities\Interfaces\Favoritable;

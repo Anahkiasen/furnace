@@ -1,4 +1,5 @@
-<?php namespace Furnace\Handlers\Commands\Ratings;
+<?php
+namespace Furnace\Handlers\Commands\Ratings;
 
 use Furnace\Commands\Ratings\ExportRatingsCommand;
 use Furnace\Entities\Transformers\RatingExportTransformer;

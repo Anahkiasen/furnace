@@ -49,10 +49,10 @@ class SimilarTracksQuery extends AbstractQuery
                         'filters' => [
                             new ExcludeKeysFilter($tracks),
                             new ScoreFilter(ScoreComputer::RATING_SCALE / 2),
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

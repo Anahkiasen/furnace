@@ -6,7 +6,7 @@ use ElasticSearcher\Abstracts\AbstractFragment;
 class ScoreFilter extends AbstractFragment
 {
     /**
-     * @param integer $score
+     * @param int $score
      */
     public function __construct($score)
     {
@@ -14,8 +14,8 @@ class ScoreFilter extends AbstractFragment
             'range' => [
                 'score' => [
                     'gte' => $score,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

@@ -12,7 +12,7 @@ abstract class AbstractController extends BaseController
     use DispatchesCommands, ValidatesRequests;
 
     /**
-     * Run an ES query
+     * Run an ES query.
      *
      * @param string $query
      * @param array  $data

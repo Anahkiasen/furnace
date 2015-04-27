@@ -5,7 +5,6 @@ use ElasticSearcher\Abstracts\AbstractFragment;
 
 class MoreLikeTheseKeysQuery extends AbstractFragment
 {
-
     /**
      * MoreLikeTheseKeysQuery constructor.
      *
@@ -22,7 +21,7 @@ class MoreLikeTheseKeysQuery extends AbstractFragment
                 'min_term_freq' => 1,
                 'min_doc_freq'  => 1,
                 'boost'         => $boost,
-            ]
+            ],
         ];
     }
 }
