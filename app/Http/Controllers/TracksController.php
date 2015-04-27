@@ -34,7 +34,7 @@ class TracksController extends AbstractController
      */
     public function index()
     {
-        $tracks = Track::with('tracker', 'ratings', 'artist', 'versions')->get();
+        $tracks = Track::has('ratings')->with('tracker', 'artist', 'versions.ratings')->get();
         $tracks = $tracks->sortByDesc('score');
 
         return View::make('tracks/index', [
