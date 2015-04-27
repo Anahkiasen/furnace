@@ -14,7 +14,7 @@ dependencies:
     - tar -xvf elasticsearch-1.5.2.tar.gz
     - elasticsearch-1.5.2/bin/elasticsearch: {background: true}
   override:
-    - composer install --prefer-source --no-interaction
+    - composer install --no-interaction
 
 test:
   pre:
