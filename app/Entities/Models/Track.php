@@ -81,9 +81,9 @@ class Track extends AbstractModel implements Favoritable, SluggableInterface
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function latestVersions()
+    public function previousVersions()
     {
-        return $this->versions()->take(2);
+        return $this->versions()->skip(1);
     }
 
     //////////////////////////////////////////////////////////////////////

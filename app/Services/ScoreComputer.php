@@ -1,6 +1,7 @@
 <?php
 namespace Furnace\Services;
 
+use Furnace\Collection;
 use Furnace\Entities\Models\Track;
 use Furnace\Entities\Models\Tracker;
 
@@ -70,7 +71,12 @@ class ScoreComputer
     public function forTrack(Track $track, $save = true)
     {
         // Update track's score
-        $score        = $this->computeTrackScore($track);
+        $scores = [
+            $this->computeTrackScore($track, $track->previousVersions->first()->ratings) * 0.25,
+            $this->computeTrackScore($track, $track->version->ratings) * 0.75,
+        ];
+
+        $score        = array_sum($scores) / count($scores);
         $track->score = $score;
         if ($save) {
             $track->save();
@@ -89,21 +95,22 @@ class ScoreComputer
     //////////////////////////////////////////////////////////////////////
 
     /**
-     * @param Track $track
+     * @param Track      $track
+     * @param Collection $ratings
      *
      * @return float|int
      */
-    protected function computeTrackScore(Track $track)
+    protected function computeTrackScore(Track $track, Collection $ratings)
     {
         $components = $this->applyWeights([
-            'tone'              => $track->ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
-            'audio'             => $track->ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
-            'tab'               => $track->ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
-            'sync'              => $track->ratings->average('sync'),
-            'techniques'        => $track->ratings->average('techniques'),
-            'normalized_volume' => $track->ratings->average('normalized_volume'),
-            'presilence'        => $track->ratings->average('presilence'),
-            'playable'          => $track->ratings->average('playable'),
+            'tone'              => $ratings->average('tone') / static::INTEGER_CRITERIA_SCALE,
+            'audio'             => $ratings->average('audio') / static::INTEGER_CRITERIA_SCALE,
+            'tab'               => $ratings->average('tab') / static::INTEGER_CRITERIA_SCALE,
+            'sync'              => $ratings->average('sync'),
+            'techniques'        => $ratings->average('techniques'),
+            'normalized_volume' => $ratings->average('normalized_volume'),
+            'presilence'        => $ratings->average('presilence'),
+            'playable'          => $ratings->average('playable'),
             'dd'                => $track->dd,
             'rr'                => $track->riff_repeater,
             'has_pc'            => $track->platforms['pc'],
