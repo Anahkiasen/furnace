@@ -26,4 +26,4 @@ test:
   override:
     - php artisan env
     - vendor/bin/phpspec run -vvv --no-interaction --format="pretty"
-    - vendor/bin/codecept run -vvv --no-interaction
+    - vendor/bin/codecept run -vvv --no-interaction -d
