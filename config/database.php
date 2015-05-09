@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => app()->environment() === 'testing' ? 'sqlite' : 'mysql',
+    'default' => app()->environment('testing') ? 'sqlite' : 'mysql',
 
     /*
     |--------------------------------------------------------------------------
