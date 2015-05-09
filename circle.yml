@@ -19,9 +19,7 @@ dependencies:
 test:
   pre:
     - touch database/testing.sqlite
-    - php artisan migrate --env="testing"
-    - php artisan migrate:refresh --env="testing"
-    - php artisan db:seed --class="UsersTableSeeder"
+    - php artisan db:remigrate --env="testing"
     - sqlite3 database/testing.sqlite .dump > tests/codeception/_data/dump.sql
     - php artisan route:scan
   override:
