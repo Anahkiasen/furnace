@@ -3,13 +3,14 @@
 .env.gen
 
 # Cached and compiled
-public/builds
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
+npm-debug.log
+public/builds
 storage/framework
 
 # Dependencies
-public/components
+/public/components
 /node_modules
 /vendor
