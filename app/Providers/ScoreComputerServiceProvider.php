@@ -9,6 +9,11 @@ use League\Csv\Reader;
 class ScoreComputerServiceProvider extends ServiceProvider
 {
     /**
+     * @var bool
+     */
+    protected $defer = true;
+
+    /**
      * @type string
      */
     protected $fixture = 'fixtures/weights.csv';
@@ -25,6 +30,15 @@ class ScoreComputerServiceProvider extends ServiceProvider
             return new ScoreComputer($weights);
         });
     }
+
+    /**
+     * @return string[]
+     */
+    public function provides()
+    {
+        return [ScoreComputer::class];
+    }
+
 
     /**
      * Get the weights from the fixture file.

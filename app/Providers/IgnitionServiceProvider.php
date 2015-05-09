@@ -9,6 +9,11 @@ use Illuminate\Support\ServiceProvider;
 class IgnitionServiceProvider extends ServiceProvider
 {
     /**
+     * @var bool
+     */
+    protected $defer = true;
+
+    /**
      * Use the register method to register items with the container via the
      * protected $this->container property or the `getContainer` method
      * from the ContainerAwareTrait.
@@ -30,5 +35,17 @@ class IgnitionServiceProvider extends ServiceProvider
 
         $this->app->singleton(Ignition::class, Ignition::class);
         $this->app->alias(Ignition::class, 'ignition');
+    }
+
+    /**
+     * @return string[]
+     */
+    public function provides()
+    {
+        return [
+            'clients.ignition',
+            'ignition',
+            Ignition::class,
+        ];
     }
 }
