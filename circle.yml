@@ -22,6 +22,7 @@ test:
     - php artisan migrate --env="testing"
     - php artisan migrate:refresh --env="testing"
     - sqlite3 database/testing.sqlite .dump > tests/codeception/_data/dump.sql
+    - php artisan route:scan
   override:
     - php artisan env
     - vendor/bin/phpspec run -vvv --no-interaction --format="pretty"

@@ -11,6 +11,7 @@ public/builds
 storage/framework
 
 # Tests
+database/testing.sqlite_snapshot
 tests/codeception/_output
 tests/codeception/_data/dump.sql
 
