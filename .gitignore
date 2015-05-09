@@ -9,6 +9,9 @@ _ide_helper_models.php
 npm-debug.log
 public/builds
 storage/framework
+
+# Tests
+tests/codeception/_output
 tests/codeception/_data/dump.sql
 
 # Dependencies

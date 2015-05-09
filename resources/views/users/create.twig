@@ -5,7 +5,7 @@
 	{% autoescape false %}
 		<div class="row">
 			<div class="col-lg-6">
-				{{ Former.open().route('auth.authenticate') }}
+				{{ Former.open().id('login').route('auth.authenticate') }}
 
 				<fieldset>
 					<legend>Login with a social account</legend>
@@ -30,7 +30,7 @@
 				{{ Former.close() }}
 			</div>
 			<div class="col-lg-6">
-				{{ Former.open().route('users.store') }}
+				{{ Former.open().id('register').route('users.store') }}
 				<fieldset>
 					<legend class="text-center">Sign up</legend>
 					{{ Former.text('name', 'Username') }}
