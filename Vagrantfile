@@ -312,7 +312,7 @@ Vagrant.configure("2") do |config|
   # Install Mailcatcher
   # config.vm.provision "shell", path: "#{github_url}/scripts/mailcatcher.sh"
 
-  # Install git-ftp
+  # Install git-ftp 
   # config.vm.provision "shell", path: "#{github_url}/scripts/git-ftp.sh", privileged: false
 
   # Install Ansible
@@ -327,7 +327,7 @@ Vagrant.configure("2") do |config|
   # Add these to the same directory as the Vagrantfile.
   ##########
 
-  config.vm.provision "shell", path: "https://raw.githubusercontent.com/madewithlove/vaprobash-scripts/master/mysql-db.sh", args: 'furnace'
+  config.vm.provision "shell", path: "https://raw.githubusercontent.com/madewithlove/vaprobash-scripts/master/mysql-db.sh", args: [mysql_root_password, 'furnace']
   config.vm.provision "shell", path: "https://raw.githubusercontent.com/madewithlove/vaprobash-scripts/master/zsh.sh"
 
 end
