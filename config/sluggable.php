@@ -13,7 +13,7 @@ return [
      * since Eloquent will call them when you request a custom attribute.
      * Defaults to null, which uses the toString() method on your model.
      */
-    'build_from'      => 'identifier',
+    'build_from' => 'identifier',
 
     /*
      * What field to we store the slug in?  Defaults to "slug".
@@ -23,14 +23,14 @@ return [
      *    $table->string('slug');
      * });
      */
-    'save_to'         => 'slug',
+    'save_to' => 'slug',
 
     /*
      * The maximum length of a generated slug.  Defaults to "null", which means
      * no length restrictions are enforced.  Set it to a positive integer if you
      * want to make sure your slugs aren't too long.
      */
-    'max_length'      => null,
+    'max_length' => null,
 
     /*
      * If left to "null", then use Laravel's built-in Str::slug() method to
@@ -43,12 +43,12 @@ return [
      * Otherwise, this will be treated as a callable to be used.  e.g.:
      *        'method' => array('Str','slug'),
      */
-    'method'          => null,
+    'method' => null,
 
     /*
      * Separator to use if using the default Str::slug() method.  Defaults to a hyphen.
      */
-    'separator'       => '-',
+    'separator' => '-',
 
     /*
      * Enforce uniqueness of slugs?  Defaults to true.
@@ -58,7 +58,7 @@ return [
      *     my-slug-1
      *     my-slug-2
      */
-    'unique'          => true,
+    'unique' => true,
 
     /*
      * Should we include the trashed items when generating a unique slug?
@@ -73,7 +73,7 @@ return [
      * re-saved (i.e. already exists).  Defaults to false, which
      * means slugs are not updated.
      */
-    'on_update'       => true,
+    'on_update' => true,
 
     /*
      * An array of slug names that can never be used for this model,
@@ -92,7 +92,7 @@ return [
      *    $slug .= $seperator + "1"
      * and continue from there.
      */
-    'reserved'        => null,
+    'reserved' => null,
 
     /*
      * Whether or not to use Laravel's caching system to help generate
@@ -103,6 +103,6 @@ return [
      * if 'unique' is true -- then you must use a cache backend that
      * supports tags, i.e. not 'file' or 'database'.
      */
-    'use_cache'       => false,
+    'use_cache' => false,
 
 ];

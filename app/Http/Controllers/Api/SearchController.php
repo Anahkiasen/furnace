@@ -31,7 +31,7 @@ class SearchController extends AbstractController
      */
     public function search(Request $request)
     {
-        $tracks  = [];
+        $tracks = [];
         try {
             $results = $this->ignition->search($request->get('q'));
             foreach ($results as $result) {

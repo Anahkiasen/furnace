@@ -3,7 +3,7 @@
 return [
 
     // The platforms a CDLC can be used on
-    'platforms'    => [
+    'platforms' => [
         'xbox360',
         'ps3',
         'pc',
@@ -19,7 +19,7 @@ return [
     ],
 
     // The weights of the score criterias
-    'weights'      => [
+    'weights' => [
         'tone'              => 1,
         'audio'             => 1,
         'sync'              => 1,

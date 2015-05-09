@@ -39,7 +39,7 @@ class SimilarTracksQuery extends AbstractQuery
         $this->body['size']  = 25;
         $this->body['query'] = [
             'filtered' => [
-                'query'  => [
+                'query' => [
                     'dis_max' => [
                         'queries' => $queries,
                     ],

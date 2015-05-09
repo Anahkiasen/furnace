@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class LastfmServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
+     * @type bool
      */
     protected $defer = true;
 

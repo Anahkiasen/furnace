@@ -30,7 +30,7 @@ class SearchServiceProvider extends ServiceProvider
 
         // Register ElasticSearcher
         $this->app->singleton(ElasticSearcher::class, function () {
-            $env    = $this->app->make(Environment::class);
+            $env = $this->app->make(Environment::class);
             $search = new ElasticSearcher($env);
             $search->indicesManager()->registerIndices([
                 new TracksIndex(),

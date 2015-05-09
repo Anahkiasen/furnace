@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class IgnitionServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
+     * @type bool
      */
     protected $defer = true;
 

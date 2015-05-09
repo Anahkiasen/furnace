@@ -22,9 +22,9 @@ class ViewServiceProvider extends ServiceProvider
         ]);
 
         View::share([
-            'rating_scale'    => ScoreComputer::RATING_SCALE,
-            'integer_scale'   => ScoreComputer::INTEGER_CRITERIA_SCALE,
-            'menu'            => [
+            'rating_scale'  => ScoreComputer::RATING_SCALE,
+            'integer_scale' => ScoreComputer::INTEGER_CRITERIA_SCALE,
+            'menu'          => [
                 'tracks.index'   => 'Tracks',
                 'trackers.index' => 'Blacksmiths',
                 'users.index'    => 'Users',

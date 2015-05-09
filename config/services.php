@@ -14,19 +14,19 @@ return [
     |
     */
 
-    'mailgun'  => [
+    'mailgun' => [
         'domain' => '',
         'secret' => '',
     ],
     'mandrill' => [
         'secret' => '',
     ],
-    'ses'      => [
+    'ses' => [
         'key'    => '',
         'secret' => '',
         'region' => 'us-east-1',
     ],
-    'stripe'   => [
+    'stripe' => [
         'model'  => 'App\User',
         'secret' => '',
     ],
@@ -35,12 +35,12 @@ return [
         'client_secret' => getenv('FACEBOOK_SECRET'),
         'redirect'      => 'http://furnace.autopergamene.eu/auth/socialize/facebook/callback',
     ],
-    'twitter'  => [
+    'twitter' => [
         'client_id'     => getenv('TWITTER_ID'),
         'client_secret' => getenv('TWITTER_SECRET'),
         'redirect'      => 'http://furnace.autopergamene.eu/auth/socialize/twitter/callback',
     ],
-    'lastfm'   => [
+    'lastfm' => [
         'client_id'     => getenv('LASTFM_ID'),
         'client_secret' => getenv('LASTFM_SECRET'),
     ],

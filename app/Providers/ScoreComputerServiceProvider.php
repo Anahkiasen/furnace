@@ -9,7 +9,7 @@ use League\Csv\Reader;
 class ScoreComputerServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
+     * @type bool
      */
     protected $defer = true;
 
@@ -38,7 +38,6 @@ class ScoreComputerServiceProvider extends ServiceProvider
     {
         return [ScoreComputer::class];
     }
-
 
     /**
      * Get the weights from the fixture file.

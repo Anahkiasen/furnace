@@ -20,16 +20,16 @@ class TracksIndex extends AbstractIndex
     {
         return [
             'tracks' => [
-                '_id'        => [
+                '_id' => [
                     'path' => 'id',
                 ],
                 'properties' => [
-                    'id'                => ['type' => 'integer'],
-                    'artist'            => ['type' => 'string'],
-                    'album'             => ['type' => 'string'],
-                    'name'              => ['type' => 'string'],
-                    'slug'              => ['type' => 'string'],
-                    'parts'             => [
+                    'id'     => ['type' => 'integer'],
+                    'artist' => ['type' => 'string'],
+                    'album'  => ['type' => 'string'],
+                    'name'   => ['type' => 'string'],
+                    'slug'   => ['type' => 'string'],
+                    'parts'  => [
                         'properties' => [
                             'lead'   => ['type' => 'boolean'],
                             'rhythm' => ['type' => 'boolean'],
@@ -50,9 +50,9 @@ class TracksIndex extends AbstractIndex
                             'ps3'     => ['type' => 'boolean'],
                         ],
                     ],
-                    'score'             => ['type' => 'float'],
-                    'tracker'           => ['type' => 'string'],
-                    'tags'              => ['type' => 'string'],
+                    'score'   => ['type' => 'float'],
+                    'tracker' => ['type' => 'string'],
+                    'tags'    => ['type' => 'string'],
                 ],
             ],
         ];

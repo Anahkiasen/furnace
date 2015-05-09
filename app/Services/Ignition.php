@@ -293,7 +293,7 @@ class Ignition
         $infos   = [];
         $crawler = new Crawler($page);
         $crawler->filter('.ipb_table tr')->each(function (Crawler $node) use (&$infos) {
-            $cells            = $node->filter('td')->extract('_text');
+            $cells = $node->filter('td')->extract('_text');
             $infos[$cells[0]] = $cells[1];
         });
 
